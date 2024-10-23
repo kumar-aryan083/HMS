@@ -1,0 +1,13 @@
+.register-form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ex-register{
+    padding-top: 20px;
+    font-weight: 500;
+}
+.ex-register p a{
+    color: black;
+}
