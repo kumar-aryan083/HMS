@@ -53,12 +53,17 @@
     list-style-type: none;
     gap: 30px;
     font-size: 18px;
+    position: relative;
 }
 
 .listItems {
     padding: 10px 0;
     display: flex;
     flex-direction: column;
+    color: var(--textCol);
+    font-weight: 500;
+    cursor: pointer;
+    position: relative; /* Needed for dropdown positioning */
 }
 
 .listItems::after {
@@ -76,7 +81,7 @@
     width: 100%;
 }
 
-.listItems>a {
+.listItems > a {
     text-decoration: none;
     color: white;
     font-weight: 500;
@@ -105,20 +110,118 @@
     height: 2px;
     background-color: #FFFFFF;
 }
-.inner h1:last-child{
+
+.inner h1:last-child {
     display: none;
 }
-.logoutBtn{
+
+.logoutBtn {
     color: var(--secondBase);
     font-weight: 800;
     cursor: pointer;
     user-select: none;
 }
+
+/* Dropdown Menu Styles */
+.dropdownToggle {
+    cursor: pointer;
+    color: white;
+    font-weight: 500;
+}
+
+.dropdownMenu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--base-hover);
+    border-radius: 5px;
+    padding: 10px 0;
+    display: none; /* Initially hidden */
+    flex-direction: column;
+    list-style-type: none;
+    z-index: 1000;
+    width: 205px;
+}
+
+.listItems:hover .dropdownMenu {
+    display: flex; /* Show the dropdown on hover */
+}
+
+.dropdownMenu li {
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dropdownMenu li:hover {
+    background-color: #EF8354;
+}
+
+.dropdownMenu li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    font-weight: 500;
+}
+
+/* Popup Modal for Login */
+.loginPopup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginPopupContent {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 300px;
+    position: relative;
+}
+
+.loginOptionBtn {
+    margin: 10px;
+    padding: 10px;
+    width: 100%;
+    background-color: var(--base);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.loginOptionBtn:hover {
+    background-color: var(--base-hover);
+}
+
+.closePopupBtn {
+    background: none;
+    border: none;
+    background: var(--secondBase);
+    padding: 5px 10px;
+    border-radius: 50%;
+    font-size: 20px;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    cursor: pointer;
+}
+
+/* Mobile Responsiveness */
 @media screen and (max-width: 950px) {
     .bgr {
         display: flex;
     }
-    .listItems>a {
+    .listItems > a {
         text-decoration: none;
         color: white;
         font-weight: 500;
@@ -162,12 +265,26 @@
         display: none;
         height: 0;
     }
+
+    /* Dropdown in Mobile */
+    .dropdownMenu {
+        position: relative; /* For mobile, show dropdown inline */
+        display: none;
+        background-color: rgba(0, 0, 0, 0.85);
+        width: 100%;
+        padding: 0;
+    }
+
+    .listItems:hover .dropdownMenu {
+        display: block;
+    }
 }
+
 @media screen and (max-width: 469px) {
-    .inner h1:first-child{
+    .inner h1:first-child {
         display: none;
     }
-    .inner h1:last-child{
+    .inner h1:last-child {
         display: block;
     }
 }

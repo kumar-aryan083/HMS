@@ -8,6 +8,6 @@ router.post('/patient-register', verifyToken, patientRegister);
 router.get('/patients-list', verifyToken, patientList);
 router.delete('/delete-patient/:pId', verifyToken, deletePatient);
 router.get('/get-patient/:uhid', verifyToken, getPatient);
-router.post('/update-patient/:uhid', verifyToken, updatePatient);
+router.put('/update-patient/:uhid', verifyToken, updatePatient);
 
 export default router;

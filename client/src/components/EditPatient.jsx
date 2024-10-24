@@ -104,7 +104,7 @@ const EditPatient = ({setNotification, user}) => {
         e.preventDefault();
         try {
             const res = await fetch(`http://localhost:8000/api/patient/update-patient/${uhid}`,{
-                method: "POST",
+                method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
                     token: localStorage.getItem('token')
@@ -487,7 +487,7 @@ const EditPatient = ({setNotification, user}) => {
                         />
                     </div>
                 </div>
-                <button type="submit" className="submit-btn">Register</button>
+                <button type="submit" className="submit-btn">Update Patient</button>
             </form>
         </div>
     </>

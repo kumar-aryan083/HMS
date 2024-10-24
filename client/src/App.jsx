@@ -8,6 +8,7 @@ import EmpLogin from './pages/EmpLogin';
 import PRegister from './pages/PRegister';
 import PList from './pages/PList';
 import EditPatient from './components/EditPatient';
+import AdminLogin from './components/AdminLogin';
 
 const App = () => {
   const [user, setUser] = useState(() => {
@@ -35,8 +36,9 @@ const App = () => {
         <Route path='/' element={<Home />} />
           <Route path='/emp-register' element={<EmpRegister setNotification={setNotification} newUser = {newUser} user={user}/>} />
           <Route path='/emp-login' element={<EmpLogin setNotification={setNotification} newUser = {newUser} user={user}/>} />
+          <Route path='/admin-login' element={<AdminLogin user={user} setNotification={setNotification} newUser={newUser} />} />
           <Route path='/patient-register' element={<PRegister user={user} setNotification={setNotification} />} />
-          <Route path='/patient-list' element={<PList setNotification={setNotification} />} />
+          <Route path='/patient-list' element={<PList setNotification={setNotification} user={user} />} />
           <Route path='/edit-patient/:uhid' element={<EditPatient setNotification={setNotification} user={user} />} />
         </Routes>
       </main>

@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './styles/Navbar.css';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -9,8 +9,14 @@ const Navbar = ({
     user,
     newUser,
 }) => {
+
+    const [showLoginPopup, setShowLoginPopup] = useState(false);
+    const [dropdownVisible, setDropdownVisible] = useState(false);
+
+    const nav = useNavigate();
+
     useEffect(() => {
-        if(message !== ""){
+        if (message !== "") {
             (() => toast(message))()
         }
     }, [message])
@@ -40,6 +46,29 @@ const Navbar = ({
         localStorage.removeItem("token");
         (() => toast("Logged out successfully."))();
     }
+
+    const handleLoginClick = () => {
+        setShowLoginPopup(true);
+    }
+
+    const handleClosePopup = () => {
+        setShowLoginPopup(false);
+    }
+
+    const handleEmployeeLogin = () => {
+        nav('/emp-login');
+        handleClosePopup();
+    }
+
+    const handleAdminLogin = () => {
+        nav('/admin-login');
+        handleClosePopup();
+    }
+
+    const toggleDropdown = () => {
+        setDropdownVisible(!dropdownVisible);
+      };
+
     return (
         <>
             <nav className="navbar">
@@ -55,9 +84,24 @@ const Navbar = ({
                 <div className="rightNav">
                     <ul className="navList">
                         <li className="listItems"><Link to="/" onClick={handleClose}>Home</Link></li>
-                        {user && <li className="listItems"><Link to="/patient-register" onClick={handleClose}>Patient Registration</Link></li>}
-                        {user && <li className="listItems"><Link to="/patient-list" onClick={handleClose}>Patients List</Link></li>}
-                        {!user && <li className="listItems"><Link to="/emp-login" onClick={handleClose}>Login</Link></li>}
+                        {/* {user && <li className="listItems"><Link to="/patient-register" onClick={handleClose}>Patient Registration</Link></li>}
+                        {user && <li className="listItems"><Link to="/patient-list" onClick={handleClose}>Patients List</Link></li>} */}
+
+                        {user && (
+                            <li className="listItems">
+                                <span onClick={toggleDropdown} className="dropdownToggle">
+                                    Patient
+                                </span>
+                                {dropdownVisible && (
+                                    <ul className="dropdownMenu">
+                                        <li className="listItems"><Link to="/patient-register" onClick={handleClose}>Patient Registration</Link></li>
+                                        <li className="listItems"><Link to="/patient-list" onClick={handleClose}>Patients List</Link></li>
+                                    </ul>
+                                )}
+                            </li>
+                        )}
+
+                        {!user && <li className="listItems" onClick={handleLoginClick}>Login</li>}
                         {!user && <li className="listItems"><Link to="/emp-register" onClick={handleClose}>Employee Register</Link></li>}
                         {user && <li className="listItems logoutBtn" onClick={handleLogout}>Logout</li>}
                     </ul>
@@ -69,6 +113,18 @@ const Navbar = ({
                     <div className="line"></div>
                 </div>
             </nav>
+            {showLoginPopup && (
+                <div className="loginPopup">
+                    <div className="loginPopupContent">
+                        <button onClick={handleClosePopup} className="closePopupBtn">X</button>
+                        <h2>Login Options</h2>
+                        <div className="loginOptions">
+                            <button className="loginOptionBtn" onClick={handleEmployeeLogin}>Employee Login</button>
+                            <button className="loginOptionBtn" onClick={handleAdminLogin}>Admin Login</button>
+                        </div>
+                    </div>
+                </div>
+            )}
 
             <ToastContainer
                 position="bottom-right"

@@ -5,6 +5,7 @@ import env from 'dotenv';
 import cors from 'cors';
 import  employeeRouter  from './routers/employee.router.js';
 import  patientRouter  from './routers/patient.router.js';
+import  adminRouter  from './routers/admin.router.js';
 env.config();
 
 const app = express();
@@ -26,8 +27,9 @@ const corsAllow = {
 
 app.use(express.json());
 app.use(cors(corsAllow));
-app.use("/api/employee", employeeRouter)
-app.use("/api/patient", patientRouter)
+app.use("/api/employee", employeeRouter);
+app.use("/api/patient", patientRouter);
+app.use("/api/admin", adminRouter);
 
 app.get('/', (req, res)=>{
     res.status(200).json({

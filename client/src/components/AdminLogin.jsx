@@ -1,13 +1,19 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import './styles/Login.css';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const Login = ({ newUser, setNotification }) => {
+const AdminLogin = ({setNotification, user, newUser}) => {
     const [formData, setFormData] = useState({
         email: '',
         password: ''
     });
     const nav = useNavigate();
+
+    useEffect(()=>{
+        document.title = "Admin Login | HMS";
+        if(user){
+            nav('/');
+        }
+    },[user])
 
     const handleChange = (e) => {
         setFormData({
@@ -19,7 +25,7 @@ const Login = ({ newUser, setNotification }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch("http://localhost:8000/api/employee/empLogin", {
+            const res = await fetch("http://localhost:8000/api/admin/admin-login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -30,7 +36,7 @@ const Login = ({ newUser, setNotification }) => {
             if (res.ok) {
                 setNotification(data.message);
                 localStorage.setItem("token", data.token);
-                newUser(data.emp);
+                newUser(data.admin);
                 nav('/');
             }
         } catch (error) {
@@ -41,7 +47,7 @@ const Login = ({ newUser, setNotification }) => {
     return (
         <>
             <section className="login-form-container">
-                <h2>Employee Login</h2>
+                <h2>Admin Login</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group login-form">
                         <div className="inline-item">
@@ -65,12 +71,9 @@ const Login = ({ newUser, setNotification }) => {
                     </div>
                     <button type="submit" className="submit-btn">Login</button>
                 </form>
-                <div className="ex-login">
-                    <p>Don't have an accout? <span><Link to='/emp-register'>Register here</Link></span></p>
-                </div>
             </section>
         </>
     );
 }
 
-export default Login;
+export default AdminLogin;

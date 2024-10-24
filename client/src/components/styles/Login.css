@@ -11,3 +11,14 @@
 .ex-login p a{
     color: black;
 }
+.login-form-container {
+    max-width: 800px;
+    width: 90%;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: var(--front-op);
+    border-radius: 15px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
