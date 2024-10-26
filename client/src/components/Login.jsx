@@ -32,6 +32,8 @@ const Login = ({ newUser, setNotification }) => {
                 localStorage.setItem("token", data.token);
                 newUser(data.emp);
                 nav('/');
+            }else{
+                setNotification(data.message);
             }
         } catch (error) {
             console.log(error);

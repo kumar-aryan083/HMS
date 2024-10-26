@@ -1,6 +1,7 @@
 import employeeModel from "../models/employee.model.js";
 import bcrypt from 'bcrypt';
 import jwt from "jsonwebtoken";
+import doctorModel from "../models/doctor.model.js";
 
 export const employeeRegistration = async(req, res)=>{
     try {
@@ -58,6 +59,26 @@ export const employeeLogin = async(req, res)=>{
             token,
             emp
         });
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const getDoctors = async(req, res)=>{
+    try {
+        const doctors = await doctorModel.find();
+        if(doctors){
+            return res.status(200).json({
+                success: true, 
+                message: "All doctors fetched.",
+                doctors
+            })
+        }else{
+            return res.status(404).json({
+                success: false,
+                message: "Unable to fetch doctors."
+            })
+        }
     } catch (error) {
         console.log(error);
     }

@@ -1,5 +1,8 @@
 import patientModel from "../models/patient.model.js"
+import doctorModel from "../models/doctor.model.js"
+import departmentModel from "../models/department.model.js"
 import { getNextUHID } from '../utils/uhidGenerator.js'
+import appointmentModel from "../models/appointment.model.js"
 
 export const patientRegister = async (req, res) => {
     try {
@@ -136,3 +139,92 @@ export const updatePatient = async (req, res) => {
         console.log(error);
     }
 }
+
+export const bookAppointment = async (req, res) => {
+    try {
+        const { patientId, doctor, department, appointmentDate, appointmentTime, reason } = req.body;
+        if(!patientId){
+            return res.status(404).json({ message: 'Patient not found. First create a patient then only you can book appointment.' });
+        }
+        if (!patientId || !doctor || !department || !appointmentDate || !appointmentTime || !reason) {
+            return res.status(400).json({ message: 'Please provide all required fields.' });
+        }
+        console.log(req.body);
+        const patient = await patientModel.findById(patientId);
+        if (!patient) {
+            return res.status(404).json({ message: 'Patient not found. First create a patient then only you can book appointment.' });
+        }
+
+        const doc = await doctorModel.findById(doctor);
+        if (!doc) {
+            return res.status(404).json({ message: 'Doctor not found.' });
+        }
+
+        // Verify department exists
+        const dept = await departmentModel.findById(department);
+        if (!dept) {
+            return res.status(404).json({ message: 'Department not found.' });
+        }
+
+        // Check for existing appointment for the same patient, doctor, date, and time
+        const existingAppointment = await appointmentModel.findOne({
+            patient: patientId,
+            doctor,
+            appointmentDate,
+            "appointmentTime.from": appointmentTime.from,
+            "appointmentTime.to": appointmentTime.to,
+        });
+
+        if (existingAppointment) {
+            return res.status(409).json({ message: 'An appointment already exists for this patient with the selected doctor, date, and time.' });
+        }
+
+        // Create new appointment
+        const newAppointment = new appointmentModel({
+            patient: patientId,
+            doctor,
+            department,
+            appointmentDate,
+            appointmentTime,
+            reason,
+            status: 'Scheduled',
+        });
+
+        await newAppointment.save();
+
+        await doctorModel.findByIdAndUpdate(doctor, {
+            $push: { appointments: newAppointment._id }
+        });
+        res.status(201).json({ message: 'Appointment booked successfully!', appointment: newAppointment });
+    } catch (error) {
+        console.error('Error booking appointment:', error);
+        res.status(500).json({ message: 'Server error. Please try again later.' });
+    }
+};
+
+export const searchPatientsByName = async (req, res) => {
+    try {
+      const nameQuery = req.query.name;
+  
+      if (!nameQuery) {
+        return res.status(400).json({ error: 'Name query parameter is required.' });
+      }
+  
+      const patients = await patientModel.find({patientName: new RegExp(nameQuery, 'i') }).limit(10);
+      if(patients){
+        return res.status(200).json({
+            success: true,
+            message: 'patient fectched',
+            patients
+        })
+      }else{
+        return res.status(400).json({
+            success: false,
+            message: 'unable to fetch data'
+        })
+      }
+    } catch (error) {
+      console.error('Error searching patients:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  };

@@ -84,9 +84,20 @@ const Navbar = ({
                 <div className="rightNav">
                     <ul className="navList">
                         <li className="listItems"><Link to="/" onClick={handleClose}>Home</Link></li>
-                        {/* {user && <li className="listItems"><Link to="/patient-register" onClick={handleClose}>Patient Registration</Link></li>}
-                        {user && <li className="listItems"><Link to="/patient-list" onClick={handleClose}>Patients List</Link></li>} */}
 
+                        {user && (
+                            <li className="listItems">
+                                <span onClick={toggleDropdown} className="dropdownToggle">
+                                    Administration
+                                </span>
+                                {dropdownVisible && (
+                                    <ul className="dropdownMenu">
+                                        <li className="listItems"><Link to="/add-department" onClick={handleClose}>Add Departments</Link></li>
+                                        <li className="listItems"><Link to="/add-doctor" onClick={handleClose}>Add Doctors</Link></li>
+                                    </ul>
+                                )}
+                            </li>
+                        )}
                         {user && (
                             <li className="listItems">
                                 <span onClick={toggleDropdown} className="dropdownToggle">
@@ -101,6 +112,7 @@ const Navbar = ({
                             </li>
                         )}
 
+                        {user && <li className="listItems"><Link to="/appointments" onClick={handleClose}>Appointments</Link></li>}
                         {!user && <li className="listItems" onClick={handleLoginClick}>Login</li>}
                         {!user && <li className="listItems"><Link to="/emp-register" onClick={handleClose}>Employee Register</Link></li>}
                         {user && <li className="listItems logoutBtn" onClick={handleLogout}>Logout</li>}

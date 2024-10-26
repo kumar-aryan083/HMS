@@ -39,7 +39,11 @@ const doctorSchema = new mongoose.Schema({
   availableTime: {
     from: { type: String, required: true },
     to: { type: String, required: true },
-  }
+  },
+  appointments: [{ 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'Appointment' 
+  }],
 },{timestamps: true});
 
 export default mongoose.model('Doctor', doctorSchema);

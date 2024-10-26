@@ -9,6 +9,9 @@ import PRegister from './pages/PRegister';
 import PList from './pages/PList';
 import EditPatient from './components/EditPatient';
 import AdminLogin from './components/AdminLogin';
+import AddDoctor from './components/AddDoctor';
+import AddDepartment from './components/AddDepartment';
+import Appointment from './components/Appointment';
 
 const App = () => {
   const [user, setUser] = useState(() => {
@@ -40,6 +43,9 @@ const App = () => {
           <Route path='/patient-register' element={<PRegister user={user} setNotification={setNotification} />} />
           <Route path='/patient-list' element={<PList setNotification={setNotification} user={user} />} />
           <Route path='/edit-patient/:uhid' element={<EditPatient setNotification={setNotification} user={user} />} />
+          <Route path='/add-doctor' element={<AddDoctor setNotification={setNotification} user={user} />} />
+          <Route path='/add-department' element={<AddDepartment setNotification={setNotification} user={user} />} />
+          <Route path='/appointments' element={<Appointment setNotification={setNotification} user={user} />} />
         </Routes>
       </main>
       <footer className="footerMain">

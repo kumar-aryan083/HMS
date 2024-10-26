@@ -1,0 +1,90 @@
+/* Container with elevation and unique border */
+.department-form-container {
+    max-width: 800px;
+    width: 90%;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: var(--front-op);
+    border-radius: 15px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.department-form-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15), 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading styles */
+.department-form-headline {
+    text-align: center;
+    color: var(--base);
+    font-weight: 900;
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.department-headline-line {
+    width: 100%;
+    height: 1px;
+    background-color: #0000008e;
+    margin-bottom: 10px;
+}
+
+/* Form Group */
+.department-form-group {
+    margin-bottom: 10px;
+}
+
+/* Labels */
+label {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+/* Input Styling */
+input {
+    width: 100%;
+    padding: 12px 8px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #fafafa;
+    transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+input:focus {
+    border-color: #007bff;
+    background-color: #fff;
+    outline: none;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+input:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Submit Button */
+.submit-department-btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 10px;
+    background-color: var(--base);
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.submit-department-btn:hover {
+    background-color: var(--base-hover);
+}
