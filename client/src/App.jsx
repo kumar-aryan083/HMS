@@ -12,6 +12,8 @@ import AdminLogin from './components/AdminLogin';
 import AddDoctor from './components/AddDoctor';
 import AddDepartment from './components/AddDepartment';
 import Appointment from './components/Appointment';
+import OpdForm from './components/OpdForm';
+import OpdFile from './components/OpdFile';
 
 const App = () => {
   const [user, setUser] = useState(() => {
@@ -46,6 +48,8 @@ const App = () => {
           <Route path='/add-doctor' element={<AddDoctor setNotification={setNotification} user={user} />} />
           <Route path='/add-department' element={<AddDepartment setNotification={setNotification} user={user} />} />
           <Route path='/appointments' element={<Appointment setNotification={setNotification} user={user} />} />
+          <Route path='/opd' element={<OpdForm setNotification={setNotification} user={user} />} />
+          <Route path='/opd-files' element={<OpdFile setNotification={setNotification} user={user} />} />
         </Routes>
       </main>
       <footer className="footerMain">

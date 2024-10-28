@@ -23,6 +23,7 @@
     /* background-color: #f5f5f5; */
     background-color: var(--front);
     font-weight: bold;
+    color: var(--textCol);
 }
 .header-item {
     padding: 12px;

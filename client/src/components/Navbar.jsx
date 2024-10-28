@@ -111,7 +111,21 @@ const Navbar = ({
                                 )}
                             </li>
                         )}
+                        {user && (
+                            <li className="listItems">
+                                <span onClick={toggleDropdown} className="dropdownToggle">
+                                    OPD
+                                </span>
+                                {dropdownVisible && (
+                                    <ul className="dropdownMenu">
+                                        <li className="listItems"><Link to="/opd" onClick={handleClose}>Create OPD</Link></li>
+                                        <li className="listItems"><Link to="/opd-files" onClick={handleClose}>OPD Files</Link></li>
+                                    </ul>
+                                )}
+                            </li>
+                        )}
 
+                        {/* {user && <li className="listItems"><Link to="/opd" onClick={handleClose}>OPD</Link></li>} */}
                         {user && <li className="listItems"><Link to="/appointments" onClick={handleClose}>Appointments</Link></li>}
                         {!user && <li className="listItems" onClick={handleLoginClick}>Login</li>}
                         {!user && <li className="listItems"><Link to="/emp-register" onClick={handleClose}>Employee Register</Link></li>}

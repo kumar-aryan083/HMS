@@ -21,6 +21,7 @@ const Appointment = ({ setNotification, user }) => {
     weight: '',
     age: ''
   });
+  
   const [patientSuggestions, setPatientSuggestions] = useState([]);
   const [doctorList, setDoctorList] = useState([]);
   const [departmentList, setDepartmentList] = useState([]);
