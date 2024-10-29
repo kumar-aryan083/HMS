@@ -157,12 +157,13 @@ const OpdForm = ({setNotification, user}) => {
           />
         </div>
         <div className="opd-form-group">
-          <label>Patient Phone</label>
+          <label>Patient Phone <span className="required">*</span></label>
           <input
             type="text"
             name="phone"
             value={formData.phone}
             onChange={handleInputChange}
+            required
           />
         </div>
       </div>
@@ -170,12 +171,13 @@ const OpdForm = ({setNotification, user}) => {
       {/* Appointment Details */}
       <div className="opd-input-pair">
         <div className="opd-form-group">
-          <label>Appointment Date</label>
+          <label>Appointment Date <span className="required">*</span></label>
           <input
             type="date"
             name="appointment.date"
             value={formData.appointment.date}
             onChange={handleInputChange}
+            required
           />
         </div>
         <div className="opd-form-group">
@@ -188,12 +190,13 @@ const OpdForm = ({setNotification, user}) => {
           />
         </div>
         <div className="opd-form-group">
-          <label>Department</label>
+          <label>Department <span className="required">*</span></label>
           <select
             type="text"
             name="appointment.department"
             value={formData.appointment.department}
             onChange={handleInputChange}
+            required
           >
             <option value="">Select Department</option>
             {departments.map((dept) => (
@@ -206,12 +209,13 @@ const OpdForm = ({setNotification, user}) => {
       </div>
       <div className="opd-input-pair">
         <div className="opd-form-group">
-          <label>Doctor</label>
+          <label>Doctor <span className="required">*</span></label>
           <select
             type="text"
             name="appointment.doctor"
             value={formData.appointment.doctor}
             onChange={handleInputChange}
+            required
           >
             <option value="">Select Department</option>
             {doctors.map((doct) => (
@@ -222,11 +226,12 @@ const OpdForm = ({setNotification, user}) => {
           </select>
         </div>
         <div className="opd-form-group">
-          <label>Consultation Type</label>
+          <label>Consultation Type <span className="required">*</span></label>
           <select
             name="appointment.consultationType"
             value={formData.appointment.consultationType}
             onChange={handleInputChange}
+            required
           >
             <option value="New Consultation">New Consultation</option>
             <option value="Follow-up">Follow-up</option>

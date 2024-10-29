@@ -26,15 +26,38 @@ export const createOpd = async (req, res) => {
 
 export const getAllOpdRecords = async (req, res) => {
   try {
-    const opdRecords = await opdModel
+    const opdDetails = await opdModel
       .find()
-      .populate("patientId", "patientName age gender") // Adjust fields as per your patient model
+      .populate("patientId", "patientName age gender mobile") // Adjust fields as per your patient model
       .populate("appointment.department", "name")
       .populate("appointment.doctor", "name");
-    res.status(200).json(opdRecords);
+      res.status(200).json({
+        success: true,
+        message: 'All opds fetched.',
+        opdDetails
+      })
   } catch (error) {
     res
       .status(500)
       .json({ message: "Error retrieving OPD records", error: error.message });
   }
 };
+export const deleteOpd = async(req, res)=>{
+  try {
+    const deleted = await opdModel.findByIdAndDelete(req.params.oId);
+        if (deleted) {
+            return res.status(200).json({
+                success: true,
+                message: "OPD deleted successfully.",
+                deleted
+            })
+        } else {
+            return res.status(400).json({
+                success: false,
+                message: "Unable to delete the OPD"
+            })
+        }
+  } catch (error) {
+    console.log("error: ", error);
+  }
+}

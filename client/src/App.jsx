@@ -14,6 +14,7 @@ import AddDepartment from './components/AddDepartment';
 import Appointment from './components/Appointment';
 import OpdForm from './components/OpdForm';
 import OpdFile from './components/OpdFile';
+import OpdRx from './pages/OpdRx';
 
 const App = () => {
   const [user, setUser] = useState(() => {
@@ -33,6 +34,7 @@ const App = () => {
     const u = JSON.stringify(currUser);
     localStorage.setItem('user', u);
   }
+  
   return (
     <>
       <Navbar message={message} user ={user} newUser={newUser}/>
@@ -50,6 +52,7 @@ const App = () => {
           <Route path='/appointments' element={<Appointment setNotification={setNotification} user={user} />} />
           <Route path='/opd' element={<OpdForm setNotification={setNotification} user={user} />} />
           <Route path='/opd-files' element={<OpdFile setNotification={setNotification} user={user} />} />
+          <Route path='/opd/:opdRx' element={<OpdRx setNotification={setNotification} user={user} />} />
         </Routes>
       </main>
       <footer className="footerMain">
