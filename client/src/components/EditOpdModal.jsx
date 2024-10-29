@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./styles/EditOpdModal.css";
+import { useNavigate } from "react-router-dom";
 
-const EditOpdModal = ({ isOpen, onClose, opdData }) => {
+const EditOpdModal = ({ isOpen, onClose, opdData, setNotification, onUpdateOpd }) => {
   if (!isOpen) return null;
 
   const [departments, setDepartments] = useState([]);
@@ -58,7 +59,7 @@ const EditOpdModal = ({ isOpen, onClose, opdData }) => {
       fetchDepartments();
       fetchDoctors();
     }
-  }, [isOpen]);
+  }, [isOpen, onClose]);
 
   const fetchDepartments = async () => {
     try {
@@ -122,6 +123,26 @@ const EditOpdModal = ({ isOpen, onClose, opdData }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
+    try {
+      const res = await fetch(`http://localhost:8000/api/opd/update-opd/${opdData._id}`,{
+        method: "PUT",
+        headers:{
+          "Content-Type": "application/json",
+          token: localStorage.getItem('token')
+        },
+        body: JSON.stringify(formData)
+      });
+      const data = await res.json();
+      if(res.ok){
+        setNotification(data.message);
+        onUpdateOpd(data.updatedOpd);
+        onClose();
+      }else{
+        setNotification(data.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -144,6 +165,7 @@ const EditOpdModal = ({ isOpen, onClose, opdData }) => {
                 name="patientName"
                 value={formData.patientName}
                 onChange={handleInputChange}
+                readOnly
               />
             </div>
             <div className="opd-form-group">
@@ -156,6 +178,7 @@ const EditOpdModal = ({ isOpen, onClose, opdData }) => {
                 value={formData.phone}
                 onChange={handleInputChange}
                 required
+                readOnly
               />
             </div>
           </div>

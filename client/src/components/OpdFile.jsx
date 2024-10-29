@@ -34,7 +34,6 @@ const OpdFile = ({ setNotification, user }) => {
       });
       const data = await res.json();
       if (res.ok) {
-        console.log(data);
         setOpds(data.opdDetails);
         setFilteredOpds(data.opdDetails); // Initialize filteredOpds with all OPDs
       } else {
@@ -73,13 +72,20 @@ const OpdFile = ({ setNotification, user }) => {
     setCurrentPage(1);
   };
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setCurrentOpd((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+  const handleUpdateOpd = async (updatedOpd) => {
+    try {
+      setOpds((prevOpds) =>
+        prevOpds.map((opd) => (opd._id === updatedOpd._id ? updatedOpd : opd))
+      );
+      setFilteredOpds((prevFilteredOpds) =>
+        prevFilteredOpds.map((opd) => (opd._id === updatedOpd._id ? updatedOpd : opd))
+      );
+      setNotification("OPD updated successfully!");
+    } catch (error) {
+      console.error("Error fetching updated OPD:", error);
+    }
   };
+
 
   const handleEdit = (opd) => {
     setCurrentOpd(opd); // Set the current OPD data
@@ -211,7 +217,8 @@ const OpdFile = ({ setNotification, user }) => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         opdData={currentOpd}
-        handleInputChange={handleInputChange}
+        setNotification={setNotification}
+        onUpdateOpd={handleUpdateOpd}
       />
     </div>
   );
