@@ -1,0 +1,59 @@
+.medication-component {
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-width: 1100px;
+    margin: 10px auto;
+    background-color: var(--bodyBg);
+  }
+  .mc-top{
+    display: flex;
+    gap: 10px;
+  }
+  .mc-top>button{
+    height: fit-content;
+    margin: 20px 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--secondBase);
+    color: var(--textCol);
+    font-weight: 600;
+  }
+  h2 {
+    text-align: center;
+  }
+  
+  .medication-input {
+    border: 1px solid #7d7a7a;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    background-color: #fff
+  }
+  .med-inpts{
+    display: flex;
+    gap: 20px;
+  }
+  .medication-input h4 {
+    margin: 0;
+  }
+  
+  input {
+    width: calc(100% - 10px);
+    border: 1px solid #b4aeae;
+    padding: 5px;
+    margin-top: 5px;
+  }
+  
+  .assign-med-btn{
+    height: fit-content;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--base);
+    color: var(--textCol);
+    font-weight: 600;
+  }

@@ -52,7 +52,7 @@ const App = () => {
           <Route path='/appointments' element={<Appointment setNotification={setNotification} user={user} />} />
           <Route path='/opd' element={<OpdForm setNotification={setNotification} user={user} />} />
           <Route path='/opd-files' element={<OpdFile setNotification={setNotification} user={user} />} />
-          <Route path='/opd/:opdRx' element={<OpdRx setNotification={setNotification} user={user} />} />
+          <Route path='/opd/:opdRx/*' element={<OpdRx setNotification={setNotification} user={user} />} />
         </Routes>
       </main>
       <footer className="footerMain">

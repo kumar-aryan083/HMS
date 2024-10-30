@@ -39,19 +39,22 @@ const opdSchema = new mongoose.Schema({
     },
     reasonForVisit: String,
   },
-  medicalHistory: {
-    allergies: String,
-    chronicConditions: String,
-    pastSurgeries: String,
-    currentMedications: String,
-    familyMedicalHistory: String,
-  },
   treatment: {
     medications: [
       {
+        name: { type: String, required: true },
+        dosage: { type: String, required: true },
+        frequency: { type: String, required: true },
+        assignedDate: { type: Date, default: Date.now },
+        isPrevious: { type: Boolean, default: false },
+      },
+    ],
+    allergies: [
+      {
         name: String,
-        dosage: String,
-        frequency: String,
+        severity: String, // e.g., mild, moderate, severe
+        reaction: String, // description of reaction
+        isCured: Boolean, // to mark if the allergy has been cured
       },
     ],
     testsRequired: [String],

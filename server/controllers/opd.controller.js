@@ -122,3 +122,80 @@ export const getOpd = async (req, res) => {
     console.log(error);
   }
 };
+
+export const addMedications = async(req, res)=>{
+  const { oId } = req.params;
+  const medications = req.body;
+  try {
+
+    const validMedications = medications.filter(
+      (med) => med.name && med.dosage && med.frequency
+    );
+
+    // If no valid medications, return an error response
+    if (validMedications.length === 0) {
+      return res.status(400).json({ message: 'No valid medications provided' });
+    }
+
+    // Find the OPD record by ID
+    const opd = await opdModel.findOne({opdId: oId});
+    if (!opd) {
+      return res.status(404).json({ message: 'OPD not found' });
+    }
+
+    // Mark existing medications as previous
+    opd.treatment.medications.forEach(med => {
+      med.isPrevious = true; // Mark existing medications as previous
+    });
+
+    // Add new medications to the medications array
+    const newMedications = medications.map(med => ({
+      ...med,
+      isPrevious: false, // New medications will not be marked as previous
+    }));
+    
+    opd.treatment.medications.push(...newMedications);
+
+    // Save the updated OPD record
+    await opd.save();
+
+    return res.status(200).json({ message: 'Medications assigned successfully', opd });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: 'Server error', error });
+  }
+}
+
+export const addAllergies = async (req, res) => {
+  const { oId } = req.params;
+  const allergies = req.body;
+
+  try {
+    // Validate each allergy to ensure it has the required fields
+    const validAllergies = (allergies || []).filter(
+      (allergy) => allergy.name && allergy.severity && allergy.reaction
+    );
+
+    // If no valid allergies, return an error response
+    if (validAllergies.length === 0) {
+      return res.status(400).json({ message: 'No valid allergies provided' });
+    }
+
+    // Find the OPD record by ID
+    const opd = await opdModel.findOne({ opdId: oId });
+    if (!opd) {
+      return res.status(404).json({ message: 'OPD not found' });
+    }
+
+    // Add the valid allergies to the allergies array
+    opd.treatment.allergies.push(...validAllergies);
+
+    // Save the updated OPD record
+    await opd.save();
+
+    return res.status(200).json({ message: 'Allergies added successfully', opd });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: 'Server error', error });
+  }
+};

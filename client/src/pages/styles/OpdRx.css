@@ -1,0 +1,13 @@
+.full-opd-rx {
+    display: flex;
+}
+
+.opd-rx-sideContent {
+    flex-grow: 1; 
+    height: calc(100vh - 83px);
+    padding-left: 20px;
+    overflow: auto;
+}
+.opd-rx-sideContent::-webkit-scrollbar{
+    display: none;
+}
