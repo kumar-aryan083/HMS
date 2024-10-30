@@ -2,9 +2,10 @@
     padding: 30px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 10px auto;
-    background-color: var(--bodyBg);
+    height: 97%;
+    background-color: var(--front-op);
   }
   .mc-top{
     display: flex;

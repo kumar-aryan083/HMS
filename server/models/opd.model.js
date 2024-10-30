@@ -49,14 +49,7 @@ const opdSchema = new mongoose.Schema({
         isPrevious: { type: Boolean, default: false },
       },
     ],
-    allergies: [
-      {
-        name: String,
-        severity: String, // e.g., mild, moderate, severe
-        reaction: String, // description of reaction
-        isCured: Boolean, // to mark if the allergy has been cured
-      },
-    ],
+    allergies: String,
     testsRequired: [String],
     followUpDate: String,
     instructions: String

@@ -167,35 +167,33 @@ export const addMedications = async(req, res)=>{
 }
 
 export const addAllergies = async (req, res) => {
-  const { oId } = req.params;
-  const allergies = req.body;
-
   try {
-    // Validate each allergy to ensure it has the required fields
-    const validAllergies = (allergies || []).filter(
-      (allergy) => allergy.name && allergy.severity && allergy.reaction
-    );
+    const { oId } = req.params;
+    const { allergyContent } = req.body;
 
-    // If no valid allergies, return an error response
-    if (validAllergies.length === 0) {
-      return res.status(400).json({ message: 'No valid allergies provided' });
+    const opdRecord = await opdModel.findOne({ opdId: oId });
+
+    if (!opdRecord) {
+      return res.status(404).json({ message: "OPD record not found." });
     }
 
-    // Find the OPD record by ID
-    const opd = await opdModel.findOne({ opdId: oId });
-    if (!opd) {
-      return res.status(404).json({ message: 'OPD not found' });
+    // Check if allergies field already has content
+    if (opdRecord.treatment.allergies) {
+      // Update existing content
+      opdRecord.treatment.allergies = allergyContent;
+    } else {
+      // Add content for the first time
+      opdRecord.treatment.allergies = allergyContent;
     }
-
-    // Add the valid allergies to the allergies array
-    opd.treatment.allergies.push(...validAllergies);
 
     // Save the updated OPD record
-    await opd.save();
+    await opdRecord.save();
 
-    return res.status(200).json({ message: 'Allergies added successfully', opd });
+    res.status(200).json({
+      message: "Allergy content updated successfully.",
+      allergies: opdRecord.treatment.allergies,
+    });
   } catch (error) {
-    console.error(error);
-    return res.status(500).json({ message: 'Server error', error });
+    res.status(500).json({ message: "Error updating allergy content", error });
   }
 };

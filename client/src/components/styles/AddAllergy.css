@@ -1,0 +1,31 @@
+.full-allergy{
+    background-color: var(--front-op);
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.allergy-header{
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.allergy-header h3{
+    font-size: 1.7rem;
+}
+.allergy-btn{
+    padding: 5px 10px;
+    background-color: var(--base);
+    color: var(--textCol);
+    margin: 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-weight: 600;
+}
+.allergy-btn:hover{
+    background-color: var(--base-hover);
+}
