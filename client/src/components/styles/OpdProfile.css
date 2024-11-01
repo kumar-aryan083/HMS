@@ -1,0 +1,134 @@
+/* Container Styling */
+.opd-profile-container {
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.12);
+    max-width: 1200px;
+    margin: 30px auto;
+    font-family: Arial, sans-serif;
+}
+
+/* Main Heading */
+.opd-profile-container h2 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #2a3e52;
+    margin-bottom: 25px;
+}
+
+/* Section Styling */
+.opd-section {
+    margin-bottom: 25px;
+    padding: 20px;
+    background-color: #f7f8fa;
+    border-radius: 8px;
+    border: 1px solid #d1d9e0;
+}
+
+/* Section Headings */
+.opd-section h3 {
+    color: #007cba;
+    font-size: 18px;
+    font-weight: 600;
+    border-bottom: 2px solid #007cba;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+/* Subheadings */
+.opd-section h4 {
+    color: #495057;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 15px;
+}
+
+/* Paragraph and List Items */
+.opd-section p, 
+.opd-section li {
+    color: #4a4a4a;
+    line-height: 1.7;
+    margin: 5px 0;
+}
+
+/* Unordered List */
+.opd-section ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.opd-section ul li {
+    padding: 10px;
+    border-bottom: 1px solid #e3e6ea;
+}
+
+.opd-section ul li:last-child {
+    border-bottom: none;
+}
+
+/* Strong Text Styling */
+.opd-section strong {
+    color: #333333;
+    font-weight: 600;
+}
+
+/* Additional Styling for Better Readability */
+.opd-section p {
+    margin: 8px 0;
+}
+
+/* Specific Styling for Labels and Text */
+.label {
+    font-weight: 700;
+    color: #2a3e52;
+}
+
+.value {
+    font-weight: 500;
+    color: #007cba;
+}
+
+/* Table Styling */
+.opd-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.opd-table th, .opd-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.opd-table th {
+    background-color: #007cba;
+    color: white;
+}
+
+.opd-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Flexbox for Side-by-Side Layout */
+.patient-info,
+.appointment-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.patient-info div,
+.appointment-info div {
+    flex: 1;
+    min-width: 200px; /* Adjust based on your design */
+    margin-right: 20px; /* Spacing between items */
+}
+
+.patient-info div:last-child,
+.appointment-info div:last-child {
+    margin-right: 0; /* Remove margin from the last item */
+}

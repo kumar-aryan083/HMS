@@ -48,7 +48,7 @@ const AddAllergy = ({ opdId, setNotification }) => {
         <Editor
           apiKey="cen6pw58w47qzqvolhnhn1l5xtuxtnqg49kopee4ld29cet1"
           onInit={(_evt, editor) => (editorRef.current = editor)}
-          initialValue="<p>Remove this and write Allergies.</p>"
+          initialValue="<p>Remove this and write about patients Allergies.</p>"
           onEditorChange={handleEditorChange} // Corrected onEditorChange prop
           init={{
             height: 800,

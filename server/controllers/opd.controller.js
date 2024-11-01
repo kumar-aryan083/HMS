@@ -173,6 +173,30 @@ export const getOpd = async (req, res) => {
     console.log(error);
   }
 };
+export const getOpdByOpdId = async (req, res) => {
+  try {
+    const { oId } = req.params;
+    console.log("hit");
+    // Find OPD by ID and populate the necessary fields
+    const opdDetails = await opdModel.findOne({opdId: oId})
+      .populate('patientId', 'name age gender')
+      .populate('appointment.department', 'name location')
+      .populate('appointment.doctor', 'name specialty')
+      .populate('treatment.assignedTests.testId', 'name description')
+      .populate('paymentIds', 'amount date mode transactionId purpose');
+
+      console.log(opdDetails);
+
+    if (!opdDetails) {
+      return res.status(404).json({ message: 'OPD record not found' });
+    }
+
+    res.status(200).json({ success: true, opdDetails });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: 'Server error' });
+  }
+};
 
 export const addMedications = async (req, res) => {
   const { oId } = req.params;
