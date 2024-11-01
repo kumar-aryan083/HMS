@@ -37,6 +37,28 @@
     display: flex;
     gap: 20px;
   }
+
+  .med-inpts select {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #bdb7b7;
+    border-radius: 10px;
+    background-color: #fff; /* White background */
+    color: #333; /* Dark text color */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+/* Dropdown Hover Effect */
+.med-inpts select:hover {
+    border-color: #007bff; /* Change border color on hover */
+}
+
+/* Dropdown Focus Effect */
+.med-inpts select:focus {
+    outline: none; /* Remove default outline */
+    border-color: #007bff; /* Highlight border color on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add shadow for focus */
+}
   .medication-input h4 {
     margin: 0;
   }

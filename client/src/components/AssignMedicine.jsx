@@ -11,6 +11,18 @@ const AssignMedicine = ({ opdId, setNotification, user }) => {
     }))
   );
 
+  const frequencyOptions = [
+    { label: "Once a day (1 0 0)", value: "1 0 0" },
+    { label: "Twice a day (1 1 0)", value: "1 1 0" },
+    { label: "Three times a day (1 1 1)", value: "1 1 1" },
+    { label: "Only morning (1 0 0)", value: "1 0 0" },
+    { label: "Only afternoon (0 1 0)", value: "0 1 0" },
+    { label: "Only evening (0 0 1)", value: "0 0 1" },
+    { label: "Every 8 hours (1 1 1)", value: "1 1 1" },
+    { label: "Every 12 hours (1 0 1)", value: "1 0 1" },
+    { label: "As needed (0 0 0)", value: "0 0 0" },
+  ];
+
   const addMedicationField = () => {
     setNumMedications(numMedications + 1);
     setMedications([...medications, { name: "", dosage: "", frequency: "" }]);
@@ -88,15 +100,20 @@ const AssignMedicine = ({ opdId, setNotification, user }) => {
                 }
                 required
               />
-              <input
-                type="text"
-                placeholder="Frequency"
+              <select
                 value={med.frequency}
                 onChange={(e) =>
                   handleInputChange(index, "frequency", e.target.value)
                 }
                 required
-              />
+              >
+                <option value="">Select Frequency</option>
+                {frequencyOptions.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
           </div>
         </div>
       ))}

@@ -19,12 +19,13 @@ const SideNav = () => {
         <li>
           <Link to="assign-test">Assign Tests</Link>
         </li>
-        {/* <li>
-          <Link to="/opd/payments">Payments</Link>
+        <li>
+          <Link to="payments">Payments History</Link>
         </li>
         <li>
-          <Link to="/opd/assessment">Assessment</Link>
+          <Link to="assessment">Assessment</Link>
         </li>
+        {/* <
         <li>
           <Link to="/opd/diagnosis">Diagnosis</Link>
         </li>

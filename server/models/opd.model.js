@@ -50,7 +50,17 @@ const opdSchema = new mongoose.Schema({
       },
     ],
     allergies: String,
-    testsRequired: [String],
+    assignedTests: [
+      {
+        testId: {
+          type: mongoose.Schema.Types.ObjectId, // ID of the test assigned
+          ref: 'Test', // Reference to the Test model
+        },
+        assignedDate: { type: Date, default: Date.now }, // Date when the test was assigned
+        status: { type: String, enum: ['Pending', 'Completed', 'In Progress'], default: 'Pending' }, // Status of the test
+        results: String, // Optional: Results field for storing the outcome
+      }
+    ],    
     followUpDate: String,
     instructions: String
   },
@@ -67,6 +77,16 @@ const opdSchema = new mongoose.Schema({
     billingInformation: String,
     transactionId: String
   },
+  assessment: {
+    type: String,
+    default: "",
+  },
+  paymentIds: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Payment',
+    },
+  ],
 }, { timestamps: true });
 
 // Auto-incrementing hook

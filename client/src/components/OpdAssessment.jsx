@@ -3,7 +3,7 @@ import { Editor } from "@tinymce/tinymce-react";
 import "./styles/AddAllergy.css";
 import { useNavigate } from "react-router-dom";
 
-const AddAllergy = ({ opdId, setNotification }) => {
+const OpdAssessment = ({ opdId, setNotification }) => {
   const nav = useNavigate();
   const editorRef = useRef(null);
   const [content, setContent] = useState("");
@@ -15,40 +15,37 @@ const AddAllergy = ({ opdId, setNotification }) => {
   const saveContent = async () => {
     console.log(content);
     try {
-      const res = await fetch(
-        `http://localhost:8000/api/opd/add-allergy/${opdId}`,
-        {
+        const res = await fetch(`http://localhost:8000/api/opd/add-assessment/${opdId}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             token: localStorage.getItem("token"),
           },
-          body: JSON.stringify({ allergyContent: content }),
+          body: JSON.stringify({ assessmentContent: content }),
+        });
+        const data = await res.json();
+        if (res.ok) {
+          setNotification(data.message);
+          nav(`/opd/${opdId}`)
+        } else {
+          setNotification(data.message);
         }
-      );
-      const data = await res.json();
-      if (res.ok) {
-        setNotification(data.message);
-        nav(`/opd/${opdId}`)
-      } else {
-        setNotification(data.message);
+      } catch (error) {
+        console.log("Error saving content:", error);
       }
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   return (
     <>
       <div className="full-allergy">
         <div className="allergy-header">
-          <h3>Add Allergy</h3>
+          <h3>Add Assessment to this OPD</h3>
         </div>
         {/* Editor component */}
         <Editor
           apiKey="cen6pw58w47qzqvolhnhn1l5xtuxtnqg49kopee4ld29cet1"
           onInit={(_evt, editor) => (editorRef.current = editor)}
-          initialValue="<p>Remove this and write Allergies.</p>"
+          initialValue="<p>Remove this and write your assessment.</p>"
           onEditorChange={handleEditorChange} // Corrected onEditorChange prop
           init={{
             height: 800,
@@ -84,11 +81,11 @@ const AddAllergy = ({ opdId, setNotification }) => {
           }}
         />
         <button onClick={saveContent} className="allergy-btn">
-          Add Allergy
+          Add Assessment
         </button>
       </div>
     </>
   );
 };
 
-export default AddAllergy;
+export default OpdAssessment;
