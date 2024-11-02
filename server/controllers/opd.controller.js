@@ -176,16 +176,16 @@ export const getOpd = async (req, res) => {
 export const getOpdByOpdId = async (req, res) => {
   try {
     const { oId } = req.params;
-    console.log("hit");
+    // console.log("hit");
     // Find OPD by ID and populate the necessary fields
     const opdDetails = await opdModel.findOne({opdId: oId})
-      .populate('patientId', 'name age gender')
+      .populate('patientId', 'name age gender uhid')
       .populate('appointment.department', 'name location')
       .populate('appointment.doctor', 'name specialty')
       .populate('treatment.assignedTests.testId', 'name description')
       .populate('paymentIds', 'amount date mode transactionId purpose');
 
-      console.log(opdDetails);
+      // console.log(opdDetails);
 
     if (!opdDetails) {
       return res.status(404).json({ message: 'OPD record not found' });
@@ -243,34 +243,32 @@ export const addMedications = async (req, res) => {
 };
 
 export const addAllergies = async (req, res) => {
+  const { oId } = req.params;
+  const { allergyName, severity, notes } = req.body;
+
+  if (!allergyName || !severity) {
+    return res.status(400).json({ message: 'Allergy name and severity are required.' });
+  }
+
   try {
-    const { oId } = req.params;
-    const { allergyContent } = req.body;
-
-    const opdRecord = await opdModel.findOne({ opdId: oId });
-
-    if (!opdRecord) {
-      return res.status(404).json({ message: "OPD record not found." });
+    const opd = await opdModel.findOne({ opdId: oId });
+    if (!opd) {
+      return res.status(404).json({ message: 'OPD record not found.' });
     }
 
-    // Check if allergies field already has content
-    if (opdRecord.treatment.allergies) {
-      // Update existing content
-      opdRecord.treatment.allergies = allergyContent;
-    } else {
-      // Add content for the first time
-      opdRecord.treatment.allergies = allergyContent;
-    }
+    const newAllergy = {
+      name: allergyName,
+      severity,
+      notes,
+      dateReported: new Date(),
+    };
 
-    // Save the updated OPD record
-    await opdRecord.save();
+    opd.treatment.allergies.push(newAllergy);
+    await opd.save();
 
-    res.status(200).json({
-      message: "Allergy content updated successfully.",
-      allergies: opdRecord.treatment.allergies,
-    });
+    res.status(200).json({ message: 'Allergy added successfully.', allergy: newAllergy });
   } catch (error) {
-    res.status(500).json({ message: "Error updating allergy content", error });
+    res.status(500).json({ message: 'An error occurred while adding the allergy.', error });
   }
 };
 

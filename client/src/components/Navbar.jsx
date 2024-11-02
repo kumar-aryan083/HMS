@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './styles/Navbar.css';
 import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
@@ -14,6 +14,9 @@ const Navbar = ({
     const [dropdownVisible, setDropdownVisible] = useState(false);
 
     const nav = useNavigate();
+    const closeRef = useRef();
+    const rNavRef = useRef();
+    const bgrRef = useRef();
 
     useEffect(() => {
         if (message !== "") {
@@ -23,21 +26,21 @@ const Navbar = ({
     const handleClose = () => {
         const screenWidth = window.screen.width;
         if (screenWidth < 950) {
-            const close = document.querySelector('.closeNav');
-            const rNav = document.querySelector('.rightNav');
-            const bgr = document.querySelector('.bgr');
-            close.style.display = 'none';
-            rNav.style.display = "none";
-            bgr.style.display = 'flex';
+            // const close = document.querySelector('.closeNav');
+            // const rNav = document.querySelector('.rightNav');
+            // const bgr = document.querySelector('.bgr');
+            closeRef.current.style.display = 'none';
+            rNavRef.current.style.display = "none";
+            bgrRef.current.style.display = 'flex';
         }
     }
     const handleBgr = () => {
-        const close = document.querySelector('.closeNav');
-        const rNav = document.querySelector('.rightNav');
-        const bgr = document.querySelector('.bgr');
-        close.style.display = 'block';
-        rNav.style.display = "flex";
-        bgr.style.display = 'none';
+        // const close = document.querySelector('.closeNav');
+        // const rNav = document.querySelector('.rightNav');
+        // const bgr = document.querySelector('.bgr');
+        closeRef.current.style.display = 'block';
+        rNavRef.current.style.display = "flex";
+        bgrRef.current.style.display = 'none';
     }
     const handleLogout = () => {
         handleClose()
@@ -81,7 +84,7 @@ const Navbar = ({
                         </div>
                     </div>
                 </div>
-                <div className="rightNav">
+                <div className="rightNav" ref={rNavRef}>
                     <ul className="navList">
                         <li className="listItems"><Link to="/" onClick={handleClose}>Home</Link></li>
 
@@ -132,8 +135,8 @@ const Navbar = ({
                         {user && <li className="listItems logoutBtn" onClick={handleLogout}>Logout</li>}
                     </ul>
                 </div>
-                <div className="closeNav" onClick={handleClose}><i className="fa-solid fa-xmark"></i></div>
-                <div className="bgr" onClick={handleBgr}>
+                <div className="closeNav" ref={closeRef} onClick={handleClose}><i className="fa-solid fa-xmark"></i></div>
+                <div className="bgr" ref={bgrRef} onClick={handleBgr}>
                     <div className="line"></div>
                     <div className="line"></div>
                     <div className="line"></div>

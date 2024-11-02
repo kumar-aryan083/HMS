@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import './styles/OpdProfile.css';
+import React, { useEffect, useState } from "react";
+import "./styles/OpdProfile.css";
 
 const OpdProfile = ({ opdId, setNotification }) => {
   const [opdData, setOpdData] = useState({});
@@ -7,13 +7,16 @@ const OpdProfile = ({ opdId, setNotification }) => {
   useEffect(() => {
     const fetchOpdData = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/api/opd/get-opd/${opdId}`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            token: localStorage.getItem('token'),
-          },
-        });
+        const response = await fetch(
+          `http://localhost:8000/api/opd/get-opd/${opdId}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              token: localStorage.getItem("token"),
+            },
+          }
+        );
         const data = await response.json();
         if (response.ok) {
           setOpdData(data.opdDetails);
@@ -38,19 +41,46 @@ const OpdProfile = ({ opdId, setNotification }) => {
         <h3>Patient Information</h3>
         <div className="opd-flex-container">
           <div className="opd-info">
-            <p><strong>Name:</strong> {opdData.patientName}</p>
-            <p><strong>ID:</strong> {opdData.patientId?._id}</p>
-            <p><strong>Gender:</strong> {opdData.patientId?.gender}</p>
-            <p><strong>Age:</strong> {opdData.patientId?.age}</p>
+            <p>
+              <strong>Name:</strong> {opdData.patientName}
+            </p>
+            <p>
+              <strong>UHID:</strong> {opdData.patientId?.uhid}
+            </p>
+            <p>
+              <strong>Gender:</strong> {opdData.patientId?.gender}
+            </p>
+            <p>
+              <strong>Age:</strong> {opdData.patientId?.age}
+            </p>
           </div>
-            <h3>Appointment Details</h3>
+          <h3>Appointment Details</h3>
           <div className="opd-info">
-            <p><strong>Date:</strong> {opdData.appointment?.date ? new Date(opdData.appointment.date).toLocaleDateString() : 'N/A'}</p>
-            <p><strong>Time:</strong> {opdData.appointment?.time || 'N/A'}</p>
-            <p><strong>Department:</strong> {opdData.appointment?.department?.name || 'N/A'}</p>
-            <p><strong>Doctor:</strong> {opdData.appointment?.doctor?.name || 'N/A'}</p>
-            <p><strong>Consultation Type:</strong> {opdData.appointment?.consultationType}</p>
-            <p><strong>Reason for Visit:</strong> {opdData.appointment?.reasonForVisit}</p>
+            <p>
+              <strong>Date:</strong>{" "}
+              {opdData.appointment?.date
+                ? new Date(opdData.appointment.date).toLocaleDateString()
+                : "N/A"}
+            </p>
+            <p>
+              <strong>Time:</strong> {opdData.appointment?.time || "N/A"}
+            </p>
+            <p>
+              <strong>Department:</strong>{" "}
+              {opdData.appointment?.department?.name || "N/A"}
+            </p>
+            <p>
+              <strong>Doctor:</strong>{" "}
+              {opdData.appointment?.doctor?.name || "N/A"}
+            </p>
+            <p>
+              <strong>Consultation Type:</strong>{" "}
+              {opdData.appointment?.consultationType}
+            </p>
+            <p>
+              <strong>Reason for Visit:</strong>{" "}
+              {opdData.appointment?.reasonForVisit}
+            </p>
           </div>
         </div>
       </section>
@@ -59,86 +89,136 @@ const OpdProfile = ({ opdId, setNotification }) => {
       <section className="opd-section">
         <h3>Treatment</h3>
         <h4>Medications</h4>
-        <table className="opd-table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Dosage</th>
-              <th>Frequency</th>
-            </tr>
-          </thead>
-          <tbody>
-            {opdData.treatment?.medications?.map((med, index) => (
-              <tr key={index}>
-                <td>{med.name}</td>
-                <td>{med.dosage}</td>
-                <td>{med.frequency}</td>
+        {opdData.treatment?.medications?.length > 0 ? (
+          <table className="opd-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Dosage</th>
+                <th>Frequency</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-        <p><strong>Allergies:</strong> {opdData.treatment?.allergies || 'None'}</p>
+            </thead>
+            <tbody>
+              {opdData.treatment.medications.map((med, index) => (
+                <tr key={index}>
+                  <td>{med.name}</td>
+                  <td>{med.dosage}</td>
+                  <td>{med.frequency}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p className="no-medications">No medications assigned yet.</p>
+        )}
+
+        <h4>Allergies</h4>
+        <div className="allergy-container">
+          {opdData.treatment?.allergies?.length > 0 ? (
+            opdData.treatment.allergies.map((allergy, index) => (
+              <div key={index} className="allergy-card">
+                <div className="allergy-details">
+                  <p>
+                    <strong>Name:</strong> {allergy.name}
+                  </p>
+                  <p>
+                    <strong>Severity:</strong> {allergy.severity}
+                  </p>
+                </div>
+                <div className="allergy-notes">
+                  <h5>Notes:</h5>
+                  <div
+                    className="allergy-notes-content"
+                    dangerouslySetInnerHTML={{ __html: allergy.notes }}
+                  ></div>
+                </div>
+              </div>
+            ))
+          ) : (
+            <p className="no-allergies">No allergies reported.</p>
+          )}
+        </div>
+
         <h4>Assigned Tests</h4>
-        <ul>
-          {opdData.treatment?.assignedTests?.map((test, index) => (
-            <li key={index}>
-              <p><strong>Test Name:</strong> {test.testId?.name || 'N/A'}</p>
-              <p><strong>Status:</strong> {test.status}</p>
-              <p><strong>Results:</strong> {test.results || 'Pending'}</p>
-            </li>
-          ))}
-        </ul>
+        <div className="assigned-tests-container">
+          {opdData.treatment?.assignedTests?.length > 0 ? (
+            opdData.treatment.assignedTests.map((test, index) => (
+              <div key={index} className="assigned-test-card">
+                <h5>{test.testId?.name || "N/A"}</h5>
+                <p>
+                  <strong>Status:</strong> {test.status}
+                </p>
+                <p>
+                  <strong>Results:</strong> {test.results || "Pending"}
+                </p>
+              </div>
+            ))
+          ) : (
+            <p className="no-tests">No tests assigned yet.</p>
+          )}
+        </div>
       </section>
 
       {/* Administrative Details Section */}
       <section className="opd-section">
         <h3>Administrative Details</h3>
         <div className="opd-info">
-          <p><strong>Status:</strong> {opdData.administrativeDetails?.status}</p>
-          <p><strong>Consultation Fee:</strong> ${opdData.administrativeDetails?.consultationFee}</p>
-          <p><strong>Payment Mode:</strong> {opdData.administrativeDetails?.paymentMode}</p>
-          <p><strong>Transaction ID:</strong> {opdData.administrativeDetails?.transactionId}</p>
+          <p>
+            <strong>Status:</strong> {opdData.administrativeDetails?.status}
+          </p>
+          <p>
+            <strong>Consultation Fee:</strong> $
+            {opdData.administrativeDetails?.consultationFee}
+          </p>
+          <p>
+            <strong>Payment Mode:</strong>{" "}
+            {opdData.administrativeDetails?.paymentMode}
+          </p>
+          <p>
+            <strong>Transaction ID:</strong>{" "}
+            {opdData.administrativeDetails?.transactionId}
+          </p>
         </div>
       </section>
 
       {/* Assessment Section */}
       <section className="opd-section">
         <h3>Assessment</h3>
-        <p>{opdData.assessment || 'No assessment recorded'}</p>
+        <p>{opdData.assessment || "No assessment recorded"}</p>
       </section>
 
       {/* Payment History Section */}
       <section className="opd-section">
-  <h3>Payment History</h3>
-  <table className="opd-table">
-    <thead>
-      <tr>
-        <th>Payment ID</th>
-        <th>Amount</th>
-        <th>Date</th>
-        <th>Purpose</th>
-        <th>Consultation Fee</th>
-        <th>Payment Mode</th>
-        <th>Transaction Id</th>
-      </tr>
-    </thead>
-    <tbody>
-      {opdData.paymentIds?.map((payment, index) => (
-        <tr key={index}>
-          <td>{payment._id}</td>
-          <td>${payment.amount}</td>
-          <td>{new Date(payment.date).toLocaleDateString()}</td>
-          <td>{payment?.purpose ?? "N/A"}</td>
-          <td>{opdData.administrativeDetails?.consultationFee ?? "N/A"}</td>
-          <td>{opdData.administrativeDetails?.paymentMode ?? "N/A"}</td>
-          <td>{payment?.transactionId ?? "N/A"}</td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-</section>
-
-
+        <h3>Payment History</h3>
+        <table className="opd-table">
+          <thead>
+            <tr>
+              <th>Payment ID</th>
+              <th>Amount</th>
+              <th>Date</th>
+              <th>Purpose</th>
+              <th>Consultation Fee</th>
+              <th>Payment Mode</th>
+              <th>Transaction Id</th>
+            </tr>
+          </thead>
+          <tbody>
+            {opdData.paymentIds?.map((payment, index) => (
+              <tr key={index}>
+                <td>{payment._id}</td>
+                <td>Rs {payment.amount}</td>
+                <td>{new Date(payment.date).toLocaleDateString()}</td>
+                <td>{payment?.purpose ?? "N/A"}</td>
+                <td>
+                  {opdData.administrativeDetails?.consultationFee ?? "N/A"}
+                </td>
+                <td>{opdData.administrativeDetails?.paymentMode ?? "N/A"}</td>
+                <td>{payment?.transactionId ?? "N/A"}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
     </div>
   );
 };

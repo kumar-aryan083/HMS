@@ -49,7 +49,14 @@ const opdSchema = new mongoose.Schema({
         isPrevious: { type: Boolean, default: false },
       },
     ],
-    allergies: String,
+    allergies: [
+      {
+        name: { type: String, required: true },
+        severity: { type: String, enum: ['Mild', 'Moderate', 'Severe'], required: true },
+        notes: { type: String },
+        dateReported: { type: Date, default: Date.now },
+      }
+    ],
     assignedTests: [
       {
         testId: {

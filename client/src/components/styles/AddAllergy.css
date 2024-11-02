@@ -1,31 +1,62 @@
-.full-allergy{
+/* AddAllergy.css */
+.full-allergy {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
     background-color: var(--front-op);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .allergy-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .allergy-header h3 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .form-group {
+    margin-bottom: 10px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .allergy-input {
     width: 100%;
-    height: 100%;
     padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.allergy-header{
-    padding: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.allergy-header h3{
-    font-size: 1.7rem;
-}
-.allergy-btn{
-    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .allergy-input:focus {
+    outline: none;
+    border-color: var(--base-hover);
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.25);
+  }
+  
+  .allergy-btn {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
     background-color: var(--base);
-    color: var(--textCol);
-    margin: 20px;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
-    border-radius: 10px;
-    font-weight: 600;
-}
-.allergy-btn:hover{
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  .allergy-btn:hover {
     background-color: var(--base-hover);
-}
+  }
