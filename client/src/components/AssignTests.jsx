@@ -1,24 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Editor } from '@tinymce/tinymce-react'; // Ensure you have TinyMCE installed
 import './styles/AssignTests.css';
 
 const AssignTests = ({ opdId, setNotification }) => {
   const [testOptions, setTestOptions] = useState([]);
   const [selectedTests, setSelectedTests] = useState([]);
+  const [notes, setNotes] = useState('');
   const [loading, setLoading] = useState(false);
+  const editorRef = useRef(null);
 
   useEffect(() => {
     const fetchTests = async () => {
       setLoading(true);
       try {
-        const response = await fetch('http://localhost:8000/api/tests/get-tests',{
+        const response = await fetch('http://localhost:8000/api/tests/get-tests', {
           method: "GET",
-          headers:{
+          headers: {
             "Content-Type": "application/json",
-            token: localStorage.getItem('token')
-          }
+            token: localStorage.getItem('token'),
+          },
         });
         const data = await response.json();
-        if(response.ok){
+        if (response.ok) {
           setTestOptions(data);
         }
       } catch (error) {
@@ -36,49 +39,80 @@ const AssignTests = ({ opdId, setNotification }) => {
     );
   };
 
+  const handleEditorChange = (value) => {
+    setNotes(value); // Update notes state with editor content
+  };
+
   const handleAssignTests = async () => {
-    console.log(selectedTests);
+    // console.log(selectedTests);
+    // console.log(notes);
     setLoading(true);
-  try {
-    const response = await fetch(`http://localhost:8000/api/opd/${opdId}/assign-tests`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        token: localStorage.getItem('token'),
-      },
-      body: JSON.stringify({ tests: selectedTests }), // Send the selected tests
-    });
-    const data = await response.json();
-    if (response.ok) {
-      setNotification(data.message);
-      setSelectedTests([]); // Reset the selected tests
-    } else {
-      alert('Error assigning tests');
+    try {
+      const response = await fetch(`http://localhost:8000/api/opd/${opdId}/assign-tests`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          token: localStorage.getItem('token'),
+        },
+        body: JSON.stringify({ tests: selectedTests, notes }),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setNotification(data.message);
+        setSelectedTests([]);
+        setNotes(''); // Reset notes
+        if (editorRef.current) editorRef.current.setContent(''); // Clear editor
+      } else {
+        setNotification('Error assigning tests');
+      }
+    } catch (error) {
+      console.error('Error assigning tests:', error);
+      setNotification('Error assigning tests');
+    } finally {
+      setLoading(false);
     }
-  } catch (error) {
-    console.error('Error assigning tests:', error);
-    setNotification('Error assigning tests');
-  } finally {
-    setLoading(false);
-  }
   };
 
   return (
     <div className="assign-tests-container">
       <h2 className="assign-tests-title">Assign Tests</h2>
       {loading && <div className="loading">Loading...</div>}
-      <ul className="assign-tests-list">
+      <div className="assign-tests-options">
         {testOptions.map((test) => (
-          <li key={test._id} className="assign-tests-list-item">
+          <div key={test._id} className="assign-tests-option">
             <input
               type="checkbox"
               checked={selectedTests.includes(test._id)}
               onChange={() => handleTestSelection(test._id)}
             />
             <label>{test.name}</label>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
+      <div className="notes-container">
+        <h3>Notes</h3>
+        <Editor
+          apiKey="cen6pw58w47qzqvolhnhn1l5xtuxtnqg49kopee4ld29cet1" // Replace with your actual API key
+          onInit={(_evt, editor) => (editorRef.current = editor)}
+          initialValue="<p>Write notes about the tests here...</p>"
+          onEditorChange={handleEditorChange}
+          init={{
+            height: 300,
+            menubar: false,
+            plugins: [
+              "advlist autolink lists link image charmap preview anchor",
+              "searchreplace visualblocks code fullscreen",
+              "insertdatetime media table code help wordcount",
+            ],
+            toolbar:
+              "undo redo | formatselect | bold italic | " +
+              "alignleft aligncenter alignright alignjustify | " +
+              "bullist numlist outdent indent | removeformat | help",
+            content_style:
+              "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+          }}
+        />
+      </div>
       <button
         className="assign-tests-button"
         onClick={handleAssignTests}

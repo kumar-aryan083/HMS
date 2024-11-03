@@ -47,7 +47,6 @@ const OpdAssessment = ({ opdId, setNotification }) => {
         onEditorChange={handleEditorChange}
         init={{
           height: 400,
-          width: 860,
           menubar: false,
           plugins: [
             "advlist",

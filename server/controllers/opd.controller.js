@@ -274,7 +274,7 @@ export const addAllergies = async (req, res) => {
 
 export const assignTests = async (req, res) => {
   const { id } = req.params; // Get the OPD ID from the request parameters
-  const { tests } = req.body; // Get the array of test IDs from the request body
+  const { tests, notes } = req.body; // Get the array of test IDs and the single note from the request body
 
   try {
     // Use findOneAndUpdate directly to find and update in one step
@@ -286,6 +286,7 @@ export const assignTests = async (req, res) => {
             $each: tests.map((testId) => ({ testId })),
           },
         },
+        "treatment.notes": notes, // Store the single note for all tests
       },
       { new: true, runValidators: true } // Return the updated document
     );
@@ -306,6 +307,8 @@ export const assignTests = async (req, res) => {
     return res.status(500).json({ message: "Server error", error });
   }
 };
+
+
 
 export const addAssessment = async (req, res) => {
   const { opdId } = req.params; // Get the opdId from URL parameters

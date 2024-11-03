@@ -68,6 +68,7 @@ const opdSchema = new mongoose.Schema({
         results: String, // Optional: Results field for storing the outcome
       }
     ],    
+    notes: { type: String },
     followUpDate: String,
     instructions: String
   },
