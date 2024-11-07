@@ -3,32 +3,58 @@ import "./styles/OpdProfile.css";
 
 const OpdProfile = ({ opdId, setNotification }) => {
   const [opdData, setOpdData] = useState({});
+  const [followUpHistory, setFollowUpHistory] = useState([]);
 
   useEffect(() => {
-    const fetchOpdData = async () => {
-      try {
-        const response = await fetch(
-          `http://localhost:8000/api/opd/get-opd/${opdId}`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              token: localStorage.getItem("token"),
-            },
-          }
-        );
-        const data = await response.json();
-        if (response.ok) {
-          setOpdData(data.opdDetails);
-        } else {
-          setNotification(data.message);
-        }
-      } catch (error) {
-        setNotification("Error fetching OPD details");
-      }
-    };
     fetchOpdData();
+    fetchFollowUpHistory();
   }, [opdId]);
+
+  const fetchFollowUpHistory = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:8000/api/opd/${opdId}/followup-history`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            token: localStorage.getItem("token"),
+          },
+        }
+      );
+      const data = await response.json();
+      if (response.ok) {
+        setFollowUpHistory(data.followUpHistory);
+      } else {
+        console.error(data.message);
+      }
+    } catch (error) {
+      console.error("Error fetching follow-up history:", error);
+    }
+  };
+
+  const fetchOpdData = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:8000/api/opd/get-opd/${opdId}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            token: localStorage.getItem("token"),
+          },
+        }
+      );
+      const data = await response.json();
+      if (response.ok) {
+        setOpdData(data.opdDetails);
+      } else {
+        setNotification(data.message);
+      }
+    } catch (error) {
+      setNotification("Error fetching OPD details");
+    }
+  };
 
   if (!opdData) return <div>Loading...</div>;
 
@@ -219,6 +245,43 @@ const OpdProfile = ({ opdId, setNotification }) => {
           </tbody>
         </table>
       </section>
+
+      {/* Follow up history */}
+      <section>
+        <div className="follow-up-history-container">
+          <h3>Follow-Up History</h3>
+          <table className="follow-up-history-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Notes</th>
+                <th>Assigned By</th>
+              </tr>
+            </thead>
+            <tbody>
+              {followUpHistory.length > 0 ? (
+                followUpHistory.map((entry, index) => (
+                  <tr key={index}>
+                    <td>{new Date(entry.date).toLocaleDateString()}</td>
+                    <td><div
+                    className="allergy-notes-content"
+                    dangerouslySetInnerHTML={{ __html: entry.notes }}
+                  ></div></td>
+                    <td>{entry.assignedBy?.name || "N/A"}</td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="3" className="no-history">
+                    No follow-up history available.
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
     </div>
   );
 };

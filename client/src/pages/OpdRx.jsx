@@ -8,6 +8,7 @@ import AssignTests from '../components/AssignTests';
 import './styles/opdRx.css';
 import OpdAssessment from '../components/OpdAssessment';
 import PaymentsHistory from '../components/PaymentsHistory';
+import Followup from '../components/Followup';
 
 const OpdRx = ({setNotification, user}) => {
   const nav = useNavigate();
@@ -32,10 +33,11 @@ const OpdRx = ({setNotification, user}) => {
           <Route path="assign-test" element={<AssignTests opdId={opdRx} setNotification={setNotification}/>} />
           <Route path="assessment" element={<OpdAssessment opdId={opdRx} setNotification={setNotification}/>} />
           <Route path="payments" element={<PaymentsHistory opdId={opdRx} setNotification={setNotification}/>} />
+          <Route path="follow-up" element={<Followup opdId={opdRx} setNotification={setNotification}/>} />
           {/*
           <Route path="diagnosis" element={<Diagnosis />} />
           <Route path="treatment" element={<Treatment />} />
-          <Route path="follow-up" element={<FollowUp />} /> */}
+           */}
         </Routes>
         </div>
       </div>

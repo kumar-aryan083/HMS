@@ -363,3 +363,47 @@ export const getPaymentsHistory = async (req, res) => {
     });
   }
 };
+
+export const addFollowUpDate = async (req, res) => {
+  const { opdId } = req.params; // The OPD ID passed in the request parameters
+  const { followUpDate, notes, doctorId } = req.body; // Data for the new follow-up
+
+  try {
+    // Find the OPD record by ID
+    const opd = await opdModel.findOne({opdId: opdId});
+    if (!opd) {
+      return res.status(404).json({ message: "OPD record not found" });
+    }
+
+    // Add the new follow-up date to the history
+    opd.treatment.followUpDatesHistory.push({
+      date: followUpDate,
+      notes,
+      assignedBy: doctorId
+    });
+
+    // Save the updated OPD record
+    await opd.save();
+
+    res.status(200).json({ message: "Follow-up date added successfully", followUpHistory: opd.treatment.followUpDatesHistory });
+  } catch (error) {
+    res.status(500).json({ message: "Error adding follow-up date", error: error.message });
+  }
+};
+
+// Controller to get all follow-up dates for a specific OPD
+export const getFollowUpHistory = async (req, res) => {
+  const { opdId } = req.params;
+
+  try {
+    // Find the OPD record and only select the follow-up dates history
+    const opd = await opdModel.findOne({opdId: opdId}).select('treatment.followUpDatesHistory').populate('treatment.followUpDatesHistory.assignedBy', 'name');
+    if (!opd) {
+      return res.status(404).json({ message: "OPD record not found" });
+    }
+
+    res.status(200).json({ followUpHistory: opd.treatment.followUpDatesHistory });
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching follow-up history", error: error.message });
+  }
+};

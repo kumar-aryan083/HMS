@@ -1,6 +1,6 @@
 import express from 'express';
 import { verifyToken } from '../verifyToken.js';
-import { addAllergies, addAssessment, addMedications, assignTests, createOpd, deleteOpd, getAllOpdRecords, getOpd, getOpdByOpdId, getPaymentsHistory, updateOpd } from '../controllers/opd.controller.js';
+import { addAllergies, addAssessment, addFollowUpDate, addMedications, assignTests, createOpd, deleteOpd, getAllOpdRecords, getFollowUpHistory, getOpd, getOpdByOpdId, getPaymentsHistory, updateOpd } from '../controllers/opd.controller.js';
 
 const router = express.Router();
 
@@ -15,5 +15,7 @@ router.post('/add-allergy/:oId', verifyToken, addAllergies);
 router.post('/:id/assign-tests', verifyToken, assignTests);
 router.post('/add-assessment/:opdId',verifyToken, addAssessment);
 router.get('/:oId/payments',verifyToken, getPaymentsHistory);
+router.post('/:opdId/followup',verifyToken, addFollowUpDate);
+router.get('/:opdId/followup-history',verifyToken, getFollowUpHistory);
 
 export default router;

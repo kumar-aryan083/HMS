@@ -25,6 +25,9 @@ const SideNav = () => {
         <li>
           <Link to="assessment">Assessment</Link>
         </li>
+        <li>
+          <Link to="follow-up">Follow Up</Link>
+        </li>
         {/* <
         <li>
           <Link to="/opd/diagnosis">Diagnosis</Link>
@@ -32,9 +35,7 @@ const SideNav = () => {
         <li>
           <Link to="/opd/treatment">Treatment</Link>
         </li>
-        <li>
-          <Link to="/opd/follow-up">Follow Up</Link>
-        </li> */}
+         */}
       </ul>
     </div>
   );

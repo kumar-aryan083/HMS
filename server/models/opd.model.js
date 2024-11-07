@@ -70,7 +70,14 @@ const opdSchema = new mongoose.Schema({
     ],    
     notes: { type: String },
     followUpDate: String,
-    instructions: String
+    instructions: String,
+    followUpDatesHistory: [
+      {
+        date: { type: Date, required: true },  // Date of each follow-up appointment
+        notes: String,  // Additional notes for each follow-up
+        assignedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'Doctor' }, // Tracking doctor assigning this follow-up
+      }
+    ]
   },
   administrativeDetails: {
     status: {
