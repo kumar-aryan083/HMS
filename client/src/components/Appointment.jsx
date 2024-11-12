@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './styles/Appointment.css';
 import { useNavigate } from 'react-router-dom';
+import { AppContext } from '../context/AppContext.jsx';
 
-const Appointment = ({ setNotification, user }) => {
+const Appointment = () => {
+  const {setNotification, user} = useContext(AppContext);
   const nav = useNavigate();
   const [formData, setFormData] = useState({
     patientId: '',

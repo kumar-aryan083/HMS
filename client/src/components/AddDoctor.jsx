@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './styles/AddDoctor.css';
 import { useNavigate } from 'react-router-dom';
+import { AppContext } from '../context/AppContext.jsx';
 
-const AddDoctor = ({ setNotification, user }) => {
+const AddDoctor = () => {
+  const {setNotification, user} = useContext(AppContext);
   const nav = useNavigate();
   const [formData, setFormData] = useState({
     name: '',

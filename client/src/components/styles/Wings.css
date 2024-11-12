@@ -1,0 +1,64 @@
+.upper-wing{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    padding: 10px 0;
+}
+.upper-wing>h2{
+    margin: auto 0;
+}
+.upper-wing>button{
+    height: fit-content;
+    padding: 12px 20px;
+    margin: auto 0;
+    border: none;
+    background-color: var(--secondBase2);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 20px;
+}
+.upper-wing>button:hover{
+    background-color: var(--secondBase);
+}
+
+.wing-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .wing-table th, .wing-table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  .wing-table th {
+    background-color: var(--base-hover);
+    color: var(--textCol);
+    font-weight: bold;
+  }
+  
+  .wing-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  .wing-btn{
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin: auto 0;
+  }
+ .wings-rooms{
+    /* width: 200px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon{
+    cursor: pointer;
+    font-size: 20px;
+}
+.icon:hover{
+    color: rgb(71, 71, 71);
+}

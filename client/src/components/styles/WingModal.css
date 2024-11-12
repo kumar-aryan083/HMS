@@ -1,0 +1,49 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+  }
+  
+  .modal-content h3 {
+    margin-bottom: 10px;
+  }
+  .modal-content>form>label{
+    display: flex;
+    flex-direction: column;
+  }
+  .modal-content>form>label>textarea{
+    outline: none;
+    padding: 5px;
+    resize: none;
+  }
+  .modal-content button {
+    margin-top: 10px;
+  }
+  .closeBtn{
+    padding: 5px 10px;
+    background-color: var(--secondBase);
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-weight: 600;
+  }
+  

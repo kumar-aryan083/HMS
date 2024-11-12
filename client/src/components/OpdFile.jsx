@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./styles/OpdFile.css";
 import { useNavigate } from "react-router-dom";
 import EditOpdModal from "./EditOpdModal";
+import { AppContext } from "../context/AppContext.jsx";
 
-const OpdFile = ({ setNotification, user }) => {
+const OpdFile = () => {
+  const {setNotification, user} = useContext(AppContext);
   const nav = useNavigate();
   const [opds, setOpds] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -217,7 +219,6 @@ const OpdFile = ({ setNotification, user }) => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         opdData={currentOpd}
-        setNotification={setNotification}
         onUpdateOpd={handleUpdateOpd}
       />
     </div>

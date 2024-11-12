@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Register from '../components/Register';
 import { useNavigate } from 'react-router-dom';
+import { AppContext } from '../context/AppContext.jsx';
 
-const EmpRegister = ({
-  setNotification,
-  newUser,
-  user
-}) => {
+const EmpRegister = () => {
+  const {setNotification, newUser, user} = useContext(AppContext);
+
   const nav = useNavigate();
   
   useEffect(() => {

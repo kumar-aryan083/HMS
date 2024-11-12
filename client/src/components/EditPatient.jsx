@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { AppContext } from '../context/AppContext.jsx';
 
-const EditPatient = ({setNotification, user}) => {
+const EditPatient = () => {
+    const {setNotification, user} = useContext(AppContext);
     const nav = useNavigate();
     const { uhid } = useParams()
     const [formData, setFormData] = useState({

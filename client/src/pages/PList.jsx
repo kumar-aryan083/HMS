@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import PatientList from '../components/PatientList';
 import { useNavigate } from 'react-router-dom';
+import { AppContext } from '../context/AppContext.jsx';
 
-const PList = ({setNotification, user}) => {
+const PList = () => {
+  const {user} = useContext(AppContext);
   const nav = useNavigate();
   useEffect(()=>{
     if(!user){
@@ -11,7 +13,7 @@ const PList = ({setNotification, user}) => {
   },[user])
   return (
     <>
-      <PatientList setNotification={setNotification} />
+      <PatientList  />
     </>
   );
 }

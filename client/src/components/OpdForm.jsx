@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./styles/OpdForm.css";
 import { useNavigate } from "react-router-dom";
+import { AppContext } from "../context/AppContext.jsx";
 
-const OpdForm = ({setNotification, user}) => {
+const OpdForm = () => {
+  const {setNotification, user} = useContext(AppContext);
   const [departments, setDepartments] = useState([]);
   const [doctors, setDoctors] = useState([]);
   const [formData, setFormData] = useState({

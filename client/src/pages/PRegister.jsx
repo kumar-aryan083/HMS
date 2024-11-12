@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import PatientRegistration from '../components/PatientRegistration';
 import { useNavigate } from 'react-router-dom';
+import { AppContext } from '../context/AppContext.jsx';
 
-const PRegister = ({user, setNotification}) => {
+const PRegister = () => {
+  const {user} = useContext(AppContext);
   const nav = useNavigate();
 
   useEffect(()=>{
@@ -14,7 +16,7 @@ const PRegister = ({user, setNotification}) => {
 
   return (
     <> 
-      <PatientRegistration setNotification={setNotification} />
+      <PatientRegistration />
     </>
   );
 }

@@ -1,14 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import './styles/Navbar.css';
 import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { AppContext } from '../context/AppContext.jsx';
 
-const Navbar = ({
-    message,
-    user,
-    newUser,
-}) => {
+const Navbar = () => {
+
+    const {message, user, newUser} = useContext(AppContext);
 
     const [showLoginPopup, setShowLoginPopup] = useState(false);
     const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -26,18 +25,12 @@ const Navbar = ({
     const handleClose = () => {
         const screenWidth = window.screen.width;
         if (screenWidth < 950) {
-            // const close = document.querySelector('.closeNav');
-            // const rNav = document.querySelector('.rightNav');
-            // const bgr = document.querySelector('.bgr');
             closeRef.current.style.display = 'none';
             rNavRef.current.style.display = "none";
             bgrRef.current.style.display = 'flex';
         }
     }
     const handleBgr = () => {
-        // const close = document.querySelector('.closeNav');
-        // const rNav = document.querySelector('.rightNav');
-        // const bgr = document.querySelector('.bgr');
         closeRef.current.style.display = 'block';
         rNavRef.current.style.display = "flex";
         bgrRef.current.style.display = 'none';
@@ -116,6 +109,18 @@ const Navbar = ({
                         )}
                         {user && (
                             <li className="listItems">
+                                <span onClick={toggleDropdown} className="dropdownToggle">IPD</span>
+                                {dropdownVisible && (
+                                    <ul className="dropdownMenu">
+                                        <li className="listItems"><Link to='/ipd/admit-patient' onClick={handleClose}>Admit Patient</Link></li>
+                                        <li className="listItems"><Link to='/ipd/all-ipds' onClick={handleClose}>All IPDs</Link></li>
+                                        <li className="listItems"><Link to='/ipd/ipd-setting' onClick={handleClose}>IPD Settings</Link></li>
+                                    </ul>
+                                )}
+                            </li>
+                        )}
+                        {user && (
+                            <li className="listItems">
                                 <span onClick={toggleDropdown} className="dropdownToggle">
                                     OPD
                                 </span>
@@ -130,6 +135,7 @@ const Navbar = ({
 
                         {/* {user && <li className="listItems"><Link to="/opd" onClick={handleClose}>OPD</Link></li>} */}
                         {user && <li className="listItems"><Link to="/appointments" onClick={handleClose}>Appointments</Link></li>}
+                        {user && <li className="listItems"><Link to="/accounts" onClick={handleClose}>Accounts</Link></li>}
                         {!user && <li className="listItems" onClick={handleLoginClick}>Login</li>}
                         {!user && <li className="listItems"><Link to="/emp-register" onClick={handleClose}>Employee Register</Link></li>}
                         {user && <li className="listItems logoutBtn" onClick={handleLogout}>Logout</li>}

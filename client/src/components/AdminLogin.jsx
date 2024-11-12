@@ -1,7 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AppContext } from '../context/AppContext.jsx';
 
-const AdminLogin = ({setNotification, user, newUser}) => {
+const AdminLogin = () => {
+
+    const {setNotification, user, newUser} = useContext(AppContext);
+    
     const [formData, setFormData] = useState({
         email: '',
         password: ''

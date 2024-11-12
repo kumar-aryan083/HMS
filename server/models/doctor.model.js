@@ -31,6 +31,7 @@ const doctorSchema = new mongoose.Schema({
     ref: 'Department',
     required: true,
   },
+  opdFees: { type: Number, required: true },
   availableDays: {
     type: [String],
     required: true,

@@ -72,7 +72,6 @@ export const createOpd = async (req, res) => {
 
 
 
-
 export const getAllOpdRecords = async (req, res) => {
   try {
     const opdDetails = await opdModel
@@ -338,10 +337,20 @@ export const getPaymentsHistory = async (req, res) => {
   try {
     const { oId } = req.params; // Get opdId from request parameters
 
-    // Find the OPD record by ID and populate the paymentIds array
-    const opdRecord = await opdModel.findOne({opdId: oId})
+    // Find the OPD record by ID and populate the paymentIds array with doctor details
+    const opdRecord = await opdModel.findOne({ opdId: oId })
       .populate('paymentIds') // Populate paymentIds with payment details
-      .populate('patientId', 'mobile'); // Optionally populate patient details
+      .populate('patientId', 'mobile') // Optionally populate patient details
+      .populate({
+        path: 'paymentIds', // Populate payments array
+        populate: {
+          path: 'opdId', // Reference to OPD model
+          populate: {
+            path: 'appointment.doctor', // Get doctor details from OPD
+            select: 'name specialization', // Specify the fields you need from the doctor
+          },
+        },
+      });
 
     if (!opdRecord) {
       return res.status(404).json({
@@ -363,6 +372,7 @@ export const getPaymentsHistory = async (req, res) => {
     });
   }
 };
+
 
 export const addFollowUpDate = async (req, res) => {
   const { opdId } = req.params; // The OPD ID passed in the request parameters

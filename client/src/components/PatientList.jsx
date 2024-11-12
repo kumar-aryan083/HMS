@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './styles/PatientList.css';
 import { useNavigate } from 'react-router-dom';
+import { AppContext } from '../context/AppContext.jsx';
 
-const PatientList = ({ setNotification }) => {
+const PatientList = () => {
+    const {setNotification} = useContext(AppContext);
     const nav = useNavigate();
     const [patients, setPatients] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);

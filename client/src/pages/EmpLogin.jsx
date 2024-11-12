@@ -1,8 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Login from '../components/Login';
 import { useNavigate } from 'react-router-dom';
+import { AppContext } from '../context/AppContext.jsx';
 
-const EmpLogin = ({user, setNotification, newUser}) => {
+const EmpLogin = () => {
+  
+    const {user, setNotification, newUser} = useContext(AppContext);
     const nav = useNavigate();
   
     useEffect(() => {

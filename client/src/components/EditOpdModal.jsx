@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./styles/EditOpdModal.css";
 import { useNavigate } from "react-router-dom";
+import { AppContext } from "../context/AppContext.jsx";
 
-const EditOpdModal = ({ isOpen, onClose, opdData, setNotification, onUpdateOpd }) => {
+const EditOpdModal = ({ isOpen, onClose, opdData, onUpdateOpd }) => {
   if (!isOpen) return null;
+  const {setNotification} = useContext(AppContext);
 
   const [departments, setDepartments] = useState([]);
   const [doctors, setDoctors] = useState([]);

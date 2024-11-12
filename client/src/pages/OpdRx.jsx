@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import SideNav from '../components/SideNav';
 import { Routes, Route, useParams, useNavigate } from 'react-router-dom';
 import OpdProfile from '../components/OpdProfile';
@@ -9,8 +9,10 @@ import './styles/opdRx.css';
 import OpdAssessment from '../components/OpdAssessment';
 import PaymentsHistory from '../components/PaymentsHistory';
 import Followup from '../components/Followup';
+import { AppContext } from '../context/AppContext.jsx';
 
-const OpdRx = ({setNotification, user}) => {
+const OpdRx = ({setNotification}) => {
+  const {user} = useContext(AppContext);
   const nav = useNavigate();
   const { opdRx } = useParams();
 

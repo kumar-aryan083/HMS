@@ -1,0 +1,31 @@
+.upper-is{
+    padding: 60px 60px 10px 100px;
+    /* margin: 0 auto; */
+}
+.tab-menu{
+    display: flex;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.442);
+    background-color: var(--front-op);
+}
+.tab-menu>button {
+    padding: 10px 20px;
+    border: none;
+    border-left: 1px solid rgba(0, 0, 0, 0.442);
+    /* background: transparent; */
+    cursor: pointer;
+    width: 100%;
+    font-weight: 600;
+}
+.tab-menu>button:last-child{
+    border-right: 1px solid rgba(0, 0, 0, 0.442);
+}
+.tab-menu>button:hover{
+    background-color: var(--front-op);
+}
+.tab-menu > button.active {
+    background-color: var(--base-hover); 
+    color: white; 
+}
+.lower-is{
+    padding: 10px 60px 10px 100px;
+}

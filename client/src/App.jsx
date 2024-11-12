@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Navbar from './components/Navbar';
 import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
@@ -15,44 +15,35 @@ import Appointment from './components/Appointment';
 import OpdForm from './components/OpdForm';
 import OpdFile from './components/OpdFile';
 import OpdRx from './pages/OpdRx';
+import Accounts from './pages/Accounts';
+import IpdSettings from './pages/IpdSettings';
+import { AppContext } from './context/AppContext.jsx';
+
 
 const App = () => {
-  const [user, setUser] = useState(() => {
-    const u = localStorage.getItem('user');
-    return u?JSON.parse(u):null
-  })
-  const [message, setMessage] = useState('');
-  const setNotification = (msg) => {
-    setMessage(msg);
-    setTimeout(() => {
-      setMessage('');
-    }, 2000);
-  }
-  const newUser = (currUser) => {
-    // console.log(currUser);
-    setUser(currUser);
-    const u = JSON.stringify(currUser);
-    localStorage.setItem('user', u);
-  }
+  const {user, setNotification} = useContext(AppContext);
   
   return (
     <>
-      <Navbar message={message} user ={user} newUser={newUser}/>
+      <Navbar />
       <main className="fullBody">
         <Routes>
         <Route path='/' element={<Home />} />
-          <Route path='/emp-register' element={<EmpRegister setNotification={setNotification} newUser = {newUser} user={user}/>} />
-          <Route path='/emp-login' element={<EmpLogin setNotification={setNotification} newUser = {newUser} user={user}/>} />
-          <Route path='/admin-login' element={<AdminLogin user={user} setNotification={setNotification} newUser={newUser} />} />
-          <Route path='/patient-register' element={<PRegister user={user} setNotification={setNotification} />} />
-          <Route path='/patient-list' element={<PList setNotification={setNotification} user={user} />} />
-          <Route path='/edit-patient/:uhid' element={<EditPatient setNotification={setNotification} user={user} />} />
-          <Route path='/add-doctor' element={<AddDoctor setNotification={setNotification} user={user} />} />
-          <Route path='/add-department' element={<AddDepartment setNotification={setNotification} user={user} />} />
-          <Route path='/appointments' element={<Appointment setNotification={setNotification} user={user} />} />
-          <Route path='/opd' element={<OpdForm setNotification={setNotification} user={user} />} />
-          <Route path='/opd-files' element={<OpdFile setNotification={setNotification} user={user} />} />
-          <Route path='/opd/:opdRx/*' element={<OpdRx setNotification={setNotification} user={user} />} />
+          <Route path='/emp-register' element={<EmpRegister />} />
+          <Route path='/emp-login' element={<EmpLogin />} />
+          <Route path='/admin-login' element={<AdminLogin />} />
+          <Route path='/patient-register' element={<PRegister />} />
+          <Route path='/patient-list' element={<PList />} />
+          <Route path='/edit-patient/:uhid' element={<EditPatient />} />
+          <Route path='/add-doctor' element={<AddDoctor />} />
+          <Route path='/add-department' element={<AddDepartment />} />
+          <Route path='/appointments' element={<Appointment />} />
+          <Route path='/opd' element={<OpdForm />} />
+          <Route path='/opd-files' element={<OpdFile />} />
+          <Route path='/opd/:opdRx/*' element={<OpdRx setNotification={setNotification}/>} />
+          <Route path='/accounts' element={<Accounts setNotification={setNotification} user={user} />} />
+          <Route path='/ipd/ipd-setting' element={<IpdSettings />} />
+          
         </Routes>
       </main>
       <footer className="footerMain">

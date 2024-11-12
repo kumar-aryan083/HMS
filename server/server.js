@@ -8,6 +8,9 @@ import  patientRouter  from './routers/patient.router.js';
 import  adminRouter  from './routers/admin.router.js';
 import  opdRouter  from './routers/opd.router.js';
 import  testRouter  from './routers/tests.router.js';
+import paymentRouter from './routers/payments.router.js';
+import ipdRouter from './routers/ipd.router.js';
+
 env.config();
 
 const app = express();
@@ -34,6 +37,8 @@ app.use("/api/patient", patientRouter);
 app.use("/api/admin", adminRouter);
 app.use("/api/opd", opdRouter);
 app.use("/api/tests", testRouter);
+app.use('/api/payment', paymentRouter);
+app.use('/api/ipd', ipdRouter);
 
 app.get('/', (req, res)=>{
     res.status(200).json({
