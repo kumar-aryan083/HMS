@@ -52,6 +52,7 @@ export const getWings = async (req, res) => {
 export const addRoom = async (req, res)=>{
     try {
         // Check if the wing exists
+        console.log(req.body);
         const wingExists = await wingModel.findById(req.body.wingId);
         if (!wingExists) {
           return res.status(404).json({ success: false, message: 'Wing not found' });
@@ -96,4 +97,114 @@ export const getRooms = async (req, res)=>{
             message: "Server error"
         })
     }
+}
+export const deleteWing = async(req, res)=>{
+  try {
+    const { wId } = req.params;  // Get the wing ID from the route params
+    
+    // Check if the wing exists
+    const wing = await wingModel.findById(wId);
+    if (!wing) {
+      return res.status(404).json({
+        success: false,
+        message: "Wing not found",
+      });
+    }
+    await wingModel.findByIdAndDelete(wId);
+
+    return res.status(200).json({
+      success: true,
+      message: "Wing deleted successfully.",
+      deletedWing: wing,  // Return the deleted wing's information if needed
+    });
+    
+  } catch (error) {
+    console.error("Error deleting wing:", error);  // Better error logging
+    return res.status(500).json({
+      success: false,
+      message: "Server error, failed to delete wing",
+    });
+  }
+}
+export const editWing = async(req, res)=>{
+  try {
+    const { wId } = req.params;
+    const updates = req.body;
+
+    const updatedWing = await wingModel.findByIdAndUpdate(wId, updates, { new: true });
+
+    if (!updatedWing) {
+      return res.status(404).json({
+        success: false,
+        message: "Wing not found.",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Wing updated successfully.",
+      updatedWing,
+    });
+  } catch (error) {
+    console.error("Error deleting wing:", error);  // Better error logging
+    return res.status(500).json({
+      success: false,
+      message: "Server error, failed to update wing",
+    });
+  }
+}
+export const deleteRoom = async(req, res)=>{
+  try {
+    const { rId } = req.params;  // Get the wing ID from the route params
+    
+    // Check if the wing exists
+    const room = await roomModel.findById(rId);
+    if (!room) {
+      return res.status(404).json({
+        success: false,
+        message: "Room not found",
+      });
+    }
+    await roomModel.findByIdAndDelete(rId);
+
+    return res.status(200).json({
+      success: true,
+      message: "Room deleted successfully.",
+      deletedRoom: room,  
+    });
+    
+  } catch (error) {
+    console.error("Error deleting room:", error);  // Better error logging
+    return res.status(500).json({
+      success: false,
+      message: "Server error, failed to delete room",
+    });
+  }
+}
+export const editRoom = async(req, res)=>{
+  try {
+    const { rId } = req.params;
+    const updates = req.body;
+
+    const updatedRoom = await roomModel.findByIdAndUpdate(rId, updates, { new: true });
+
+    if (!updatedRoom) {
+      return res.status(404).json({
+        success: false,
+        message: "Room not found.",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Room updated successfully.",
+      updatedRoom,
+    });
+  } catch (error) {
+    console.error("Error deleting room:", error);  // Better error logging
+    return res.status(500).json({
+      success: false,
+      message: "Server error, failed to update room",
+    });
+  }
 }
