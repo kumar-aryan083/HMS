@@ -46,4 +46,15 @@
     right: 10px;
     font-weight: 600;
   }
-  
+  .vd-dropdown{
+    height: 37px;
+    padding: 0;
+    margin-top: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.241);
+  }
+  .vd-email{
+    width: 89%;
+  }
+  .vd-inpt{
+    margin-bottom: 2px;
+  }

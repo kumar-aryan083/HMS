@@ -1,4 +1,6 @@
+import nursingModel from "../models/nursing.model.js";
 import roomModel from "../models/room.model.js";
+import visitingDoctorModel from "../models/visitingDoctor.model.js";
 import wingModel from "../models/wing.model.js";
 
 export const createWing = async (req, res) => {
@@ -84,7 +86,7 @@ export const addRoom = async (req, res)=>{
 }
 export const getRooms = async (req, res)=>{
     try {
-        const rooms = await roomModel.find();
+        const rooms = await roomModel.find().populate('wingId');
         return res.status(200).json({
             success: true,
             message: 'rooms fetched.',
@@ -100,9 +102,8 @@ export const getRooms = async (req, res)=>{
 }
 export const deleteWing = async(req, res)=>{
   try {
-    const { wId } = req.params;  // Get the wing ID from the route params
+    const { wId } = req.params; 
     
-    // Check if the wing exists
     const wing = await wingModel.findById(wId);
     if (!wing) {
       return res.status(404).json({
@@ -115,11 +116,11 @@ export const deleteWing = async(req, res)=>{
     return res.status(200).json({
       success: true,
       message: "Wing deleted successfully.",
-      deletedWing: wing,  // Return the deleted wing's information if needed
+      deletedWing: wing,  
     });
     
   } catch (error) {
-    console.error("Error deleting wing:", error);  // Better error logging
+    console.error("Error deleting wing:", error); 
     return res.status(500).json({
       success: false,
       message: "Server error, failed to delete wing",
@@ -146,18 +147,17 @@ export const editWing = async(req, res)=>{
       updatedWing,
     });
   } catch (error) {
-    console.error("Error deleting wing:", error);  // Better error logging
+    console.error("Error deleting wing:", error);  
     return res.status(500).json({
       success: false,
       message: "Server error, failed to update wing",
     });
   }
 }
-export const deleteRoom = async(req, res)=>{
+export const deleteRoom = async (req, res) => {
   try {
-    const { rId } = req.params;  // Get the wing ID from the route params
+    const { rId } = req.params; 
     
-    // Check if the wing exists
     const room = await roomModel.findById(rId);
     if (!room) {
       return res.status(404).json({
@@ -165,6 +165,15 @@ export const deleteRoom = async(req, res)=>{
         message: "Room not found",
       });
     }
+    
+    // Find the wing that contains this room
+    const wing = await wingModel.findOne({ rooms: rId });
+    if (wing) {
+      // Remove the room ID from the wing's rooms array
+      wing.rooms.pull(rId);
+      await wing.save();  // Save the updated wing document
+    }
+
     await roomModel.findByIdAndDelete(rId);
 
     return res.status(200).json({
@@ -180,7 +189,7 @@ export const deleteRoom = async(req, res)=>{
       message: "Server error, failed to delete room",
     });
   }
-}
+};
 export const editRoom = async(req, res)=>{
   try {
     const { rId } = req.params;
@@ -205,6 +214,236 @@ export const editRoom = async(req, res)=>{
     return res.status(500).json({
       success: false,
       message: "Server error, failed to update room",
+    });
+  }
+}
+export const addVisitingDoctor = async(req, res)=>{
+  try {
+    const { name, email, phone, specialization, visitFees } = req.body;
+
+    const existingDoctor = await visitingDoctorModel.findOne({ email });
+    if (existingDoctor) {
+      return res.status(400).json({
+        success: false,
+        message: "A doctor with this email already exists.",
+      });
+    }
+
+    // Check if the specialization is valid (optional if enum is strictly enforced in schema)
+    const validSpecializations = ["ENT", "Physician", "Cardiology", "Gynecology", "General Surgery", "Neurology", "Psychiatry"];
+    if (!validSpecializations.includes(specialization)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid specialization.",
+      });
+    }
+
+    // Create the new visiting doctor
+    const newDoctor = new visitingDoctorModel({
+      name,
+      email,
+      phone,
+      specialization,
+      visitFees,
+    });
+
+    // Save the new doctor to the database
+    await newDoctor.save();
+
+    return res.status(201).json({
+      success: true,
+      message: "Visiting doctor added successfully.",
+      doctor: newDoctor,
+    });
+  } catch (error) {
+    console.error("Error adding visiting doctor:", error);  
+    return res.status(500).json({
+      success: false,
+      message: "Server error, failed to add visiting doctor",
+    });
+  }
+}
+export const getVisitingDoctor = async (req, res)=>{
+  try {
+      const doctors = await visitingDoctorModel.find();
+      return res.status(200).json({
+          success: true,
+          message: 'Visiting Doctors fetched.',
+          doctors
+      })
+  } catch (error) {
+      console.log(error);
+      return res.json({
+          success: false,
+          message: "Server error"
+      })
+  }
+}
+export const deleteVisitingDoctor = async(req, res)=>{
+  try {
+    const { dId } = req.params; 
+    
+    const doctor = await visitingDoctorModel.findById(dId);
+    if (!doctor) {
+      return res.status(404).json({
+        success: false,
+        message: "doctor not found",
+      });
+    }
+
+    await visitingDoctorModel.findByIdAndDelete(dId);
+
+    return res.status(200).json({
+      success: true,
+      message: "visiting Doctor deleted.",
+      deletedDoctor: doctor,  
+    });
+  } catch (error) {
+    console.error("Error deleting visiting doctor:", error);  
+    return res.status(500).json({
+      success: false,
+      message: "Server error, failed to delete visiting doctor",
+    });
+  }
+}
+export const editVisitingDoctor = async(req, res)=>{
+  try {
+    const { dId } = req.params;
+    const updates = req.body;
+
+    const updatedDoctor = await visitingDoctorModel.findByIdAndUpdate(dId, updates, { new: true });
+
+    if (!updatedDoctor) {
+      return res.status(404).json({
+        success: false,
+        message: "Visiting Doctor not found.",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Visiting Doctor updated.",
+      updatedDoctor,
+    });
+  } catch (error) {
+    console.error("Error editing visiting doctor:", error);  
+    return res.status(500).json({
+      success: false,
+      message: "Server error, failed to edit visiting doctor",
+    });
+  }
+}
+export const addNursing = async(req, res)=>{
+  try {
+    const { name, phone, gender, perUnitPrice } = req.body;
+
+    // Check if a nurse with the same phone number already exists
+    const existingNurse = await nursingModel.findOne({ phone });
+    if (existingNurse) {
+      return res.status(400).json({
+        success: false,
+        message: "A nurse with this phone number already exists.",
+      });
+    }
+
+    const validGenders = ["Male", "Female", "Other"];
+    if (!validGenders.includes(gender)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid gender value.",
+      });
+    }
+
+    // Create a new Nursing staff member
+    const newNurse = new nursingModel({
+      name,
+      phone,
+      gender,
+      perUnitPrice,
+    });
+    await newNurse.save();
+
+    return res.status(201).json({
+      success: true,
+      message: "Nurse added successfully.",
+      nurse: newNurse,
+    });
+
+  } catch (error) {
+    console.error("Error editing visiting doctor:", error);  
+    return res.status(500).json({
+      success: false,
+      message: "Server error, failed to edit visiting doctor",
+    });
+  }
+}
+export const getNursing = async (req, res)=>{
+  try {
+      const nurses = await nursingModel.find();
+      return res.status(200).json({
+          success: true,
+          message: 'All Nurses fetched.',
+          nurses
+      })
+  } catch (error) {
+      console.log(error);
+      return res.json({
+          success: false,
+          message: "Server error"
+      })
+  }
+}
+export const deleteNursing = async(req, res)=>{
+  try {
+    const { nId } = req.params; 
+    
+    const nurse = await nursingModel.findById(nId);
+    if (!nurse) {
+      return res.status(404).json({
+        success: false,
+        message: "Nurse not found",
+      });
+    }
+
+    await nursingModel.findByIdAndDelete(nId);
+
+    return res.status(200).json({
+      success: true,
+      message: "Nurse deleted.",
+      deletedNurse: nurse,  
+    });
+  } catch (error) {
+    console.error("Error deleting Nurse:", error);  
+    return res.status(500).json({
+      success: false,
+      message: "Server error, failed to delete Nursing",
+    });
+  }
+}
+export const editNursing = async(req, res)=>{
+  try {
+    const { nId } = req.params;
+    const updates = req.body;
+
+    const updatedNurse = await nursingModel.findByIdAndUpdate(nId, updates, { new: true });
+
+    if (!updatedNurse) {
+      return res.status(404).json({
+        success: false,
+        message: "Nurse not found.",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Nurse updated.",
+      updatedNurse,
+    });
+  } catch (error) {
+    console.error("Error editing nurse:", error);  // Better error logging
+    return res.status(500).json({
+      success: false,
+      message: "Server error, failed to edit nurse",
     });
   }
 }

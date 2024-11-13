@@ -14,39 +14,14 @@ const Rooms = () => {
     charges: "",
     capacity: "",
     roomType: "",
-    wingId: "",
+    wingName: "",
+    wingId: ""
   });
   const [wings, setWings] = useState([]);
 
   useEffect(() => {
-    fetchWings();
-  }, []);
-
-  const fetchWings = async () => {
-    try {
-      const res = await fetch("http://localhost:8000/api/ipd/get-wings", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          token: localStorage.getItem("token"),
-        },
-      });
-      const data = await res.json();
-      if (res.ok) {
-        // console.log(data.wings);
-        setWings(data.wings);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const [id, setId] = useState("");
-
-  const editRef = useRef();
-
-  useEffect(() => {
     fetchRooms();
+    fetchWings();
   }, []);
 
   const fetchRooms = async () => {
@@ -67,6 +42,30 @@ const Rooms = () => {
       console.log(error);
     }
   };
+  
+  const fetchWings = async () => {
+    try {
+      const res = await fetch("http://localhost:8000/api/ipd/get-wings", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          token: localStorage.getItem("token"),
+        },
+      });
+      const data = await res.json();
+      if (res.ok) {
+        // console.log(data.wings);
+        setWings(data.wings);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
+
+  const [id, setId] = useState("");
+
+  const editRef = useRef();
 
   const handleAddRoom = async (room) => {
     // console.log(wing);
@@ -128,7 +127,8 @@ const Rooms = () => {
       charges: room.charges,
       capacity: room.capacity,
       roomType: room.roomType,
-      wingId: room.wingId,
+      wingName: room.wingName,
+      wingId: room.wingId
     });
   };
 
@@ -170,9 +170,9 @@ const Rooms = () => {
           <thead>
             <tr>
               <th>Room Number</th>
+              <th>Ward</th>
               <th>Description</th>
               <th>Room Type</th>
-              <th>Capacity</th>
               <th>Charges</th>
               <th>Actions</th>
             </tr>
@@ -182,9 +182,9 @@ const Rooms = () => {
               rooms.map((room) => (
                 <tr key={room._id}>
                   <td>{room.roomNumber}</td>
+                  <td>{room.wingId.name}</td>
                   <td>{room.description}</td>
                   <td>{room.roomType}</td>
-                  <td>{room.capacity}</td>
                   <td>{room.charges}</td>
                   <td className="wing-btn">
                     <FontAwesomeIcon

@@ -134,8 +134,8 @@ const Wings = () => {
           <thead>
             <tr>
               <th>Name</th>
-              <th className="wings-rooms">Number of Rooms</th>
               <th>Description</th>
+              <th className="wings-rooms">Total Rooms</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -144,8 +144,8 @@ const Wings = () => {
               wings.map((wing)=>(
                 <tr key={wing._id}>
                   <td>{wing.name}</td> 
-                  <td className="wings-rooms">{wing.rooms.length}</td> 
                   <td>{wing.description}</td> 
+                  <td className="wings-rooms">{wing.rooms.length}</td> 
                   <td className="wing-btn">
                   <FontAwesomeIcon
                       icon={faEdit}
