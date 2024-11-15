@@ -2,6 +2,9 @@ import nursingModel from "../models/nursing.model.js";
 import roomModel from "../models/room.model.js";
 import visitingDoctorModel from "../models/visitingDoctor.model.js";
 import wingModel from "../models/wing.model.js";
+import patientModel from "../models/patient.model.js";
+import doctorModel from "../models/doctor.model.js";
+import PatientAdmissionModel from "../models/PatientAdmission.model.js";
 
 export const createWing = async (req, res) => {
   try {
@@ -444,6 +447,63 @@ export const editNursing = async(req, res)=>{
     return res.status(500).json({
       success: false,
       message: "Server error, failed to edit nurse",
+    });
+  }
+}
+export const patientAdmission = async(req, res)=>{
+  try {
+    const { patientId, doctorId, roomId, wingId, reasonForAdmission } = req.body;
+
+    // Validate patient, doctor, room, and wing exist
+    const patient = await patientModel.findById(patientId);
+    const doctor = await doctorModel.findById(doctorId);
+    const room = await roomModel.findById(roomId);
+    const wing = await wingModel.findById(wingId);
+
+    if (!patient || !doctor || !room || !wing) {
+      return res.status(404).json({ message: 'Invalid patient, doctor, room, or wing.' });
+    }
+
+    // Check room availability
+    if (!room.isAvailable()) {
+      return res.status(400).json({ message: 'This room is fully occupied.' });
+    }
+
+    // If the room type is "Private Room", set occupancy to limit
+    if (room.roomType === 'Private Room') {
+      room.currentOccupancy = room.capacity;  // Fully occupy the room
+      room.isOccupied = true;                       // Mark as occupied
+    } else {
+      // For other room types, increment occupancy
+      room.currentOccupancy += 1;
+      if (room.currentOccupancy >= room.capacity) {
+        room.isOccupied = true;
+      }
+    }
+    await room.save();
+
+    // Create the admission record
+    const admission = new PatientAdmissionModel({
+      patientId,
+      doctorId,
+      roomId,
+      wingId,
+      reasonForAdmission,
+      nursingRate: room.charges
+    });
+    await admission.save();
+
+    if (room.currentOccupancy >= room.occupancyLimit) {
+      room.isOccupied = true;
+    }
+    await room.save();
+
+    res.status(201).json({ message: 'Patient admitted successfully', admission });
+  } catch (error) {
+    console.error("Error admitting patient:", error);  // Better error logging
+    return res.status(500).json({
+      success: false,
+      message: "Server error, failed to admit patient.",
     });
   }
 }

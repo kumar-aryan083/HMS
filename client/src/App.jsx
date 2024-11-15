@@ -18,6 +18,7 @@ import OpdRx from './pages/OpdRx';
 import Accounts from './pages/Accounts';
 import IpdSettings from './pages/IpdSettings';
 import { AppContext } from './context/AppContext.jsx';
+import PatientAdmissionForm from './components/PatientAdmissionForm.jsx';
 
 
 const App = () => {
@@ -43,6 +44,7 @@ const App = () => {
           <Route path='/opd/:opdRx/*' element={<OpdRx setNotification={setNotification}/>} />
           <Route path='/accounts' element={<Accounts setNotification={setNotification} user={user} />} />
           <Route path='/ipd/ipd-setting' element={<IpdSettings />} />
+          <Route path='/ipd/admit-patient' element={<PatientAdmissionForm />} />
           
         </Routes>
       </main>
