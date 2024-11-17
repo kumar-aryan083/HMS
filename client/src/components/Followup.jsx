@@ -1,8 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { Editor } from "@tinymce/tinymce-react";
 import './styles/Followup.css';
+import { AppContext } from '../context/AppContext';
 
-const Followup = ({ opdId, setNotification }) => {
+const Followup = ({ opdId }) => {
+  const {setNotification} = useContext(AppContext);
   const [followUpDate, setFollowUpDate] = useState('');
   const [doctorId, setDoctorId] = useState('');
   const [doctors, setDoctors] = useState([]);

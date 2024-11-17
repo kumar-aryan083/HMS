@@ -1,9 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import "./styles/OpdAssessment.css";
 import { useNavigate } from "react-router-dom";
+import { AppContext } from "../context/AppContext";
 
-const OpdAssessment = ({ opdId, setNotification }) => {
+const OpdAssessment = ({ opdId }) => {
+  const {setNotification} = useContext(AppContext);
   const nav = useNavigate();
   const editorRef = useRef(null);
   const [content, setContent] = useState("");

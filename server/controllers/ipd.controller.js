@@ -507,3 +507,20 @@ export const patientAdmission = async(req, res)=>{
     });
   }
 }
+
+export const allIpds = async(req, res)=>{
+  try {
+    const ipds = await PatientAdmissionModel.find().populate('patientId').populate('doctorId');
+    return res.status(200).json({
+      success: true,
+      message: "All ipds fetched.",
+      ipds
+    })
+  } catch (error) {
+    console.error("Error fetching ipds", error);
+    return res.status(500).json({
+      success: false,
+      message: "Server error, failed to fetch all ipds."
+    })
+  }
+}

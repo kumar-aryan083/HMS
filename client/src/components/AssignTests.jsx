@@ -1,8 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { Editor } from '@tinymce/tinymce-react'; // Ensure you have TinyMCE installed
 import './styles/AssignTests.css';
+import { AppContext } from '../context/AppContext';
 
-const AssignTests = ({ opdId, setNotification }) => {
+const AssignTests = ({ opdId }) => {
+  const {setNotification} = useContext(AppContext);
   const [testOptions, setTestOptions] = useState([]);
   const [selectedTests, setSelectedTests] = useState([]);
   const [notes, setNotes] = useState('');

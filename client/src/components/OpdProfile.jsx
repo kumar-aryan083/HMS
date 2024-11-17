@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./styles/OpdProfile.css";
+import { AppContext } from "../context/AppContext";
 
-const OpdProfile = ({ opdId, setNotification }) => {
+const OpdProfile = ({ opdId }) => {
   const [opdData, setOpdData] = useState({});
   const [followUpHistory, setFollowUpHistory] = useState([]);
+  const {setNotification} = useContext(AppContext);
 
   useEffect(() => {
     fetchOpdData();

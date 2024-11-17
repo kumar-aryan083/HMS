@@ -11,7 +11,7 @@ import PaymentsHistory from '../components/PaymentsHistory';
 import Followup from '../components/Followup';
 import { AppContext } from '../context/AppContext.jsx';
 
-const OpdRx = ({setNotification}) => {
+const OpdRx = () => {
   const {user} = useContext(AppContext);
   const nav = useNavigate();
   const { opdRx } = useParams();
@@ -26,20 +26,16 @@ const OpdRx = ({setNotification}) => {
   return (
     <>
       <div className="full-opd-rx">
-        <SideNav opdId={opdRx} user={user}/>
+        <SideNav />
         <div className="opd-rx-sideContent">
         <Routes>
-          <Route path="" element={<OpdProfile opdId={opdRx} setNotification={setNotification} />} />
-          <Route path="assign-medicine" element={<AssignMedicine opdId={opdRx} setNotification={setNotification}/>} />
-          <Route path="add-allergy" element={<AddAllergy opdId={opdRx} setNotification={setNotification}/>} />
-          <Route path="assign-test" element={<AssignTests opdId={opdRx} setNotification={setNotification}/>} />
-          <Route path="assessment" element={<OpdAssessment opdId={opdRx} setNotification={setNotification}/>} />
-          <Route path="payments" element={<PaymentsHistory opdId={opdRx} setNotification={setNotification}/>} />
-          <Route path="follow-up" element={<Followup opdId={opdRx} setNotification={setNotification}/>} />
-          {/*
-          <Route path="diagnosis" element={<Diagnosis />} />
-          <Route path="treatment" element={<Treatment />} />
-           */}
+          <Route path="" element={<OpdProfile opdId={opdRx} />} />
+          <Route path="assign-medicine" element={<AssignMedicine opdId={opdRx} />} />
+          <Route path="add-allergy" element={<AddAllergy opdId={opdRx} />} />
+          <Route path="assign-test" element={<AssignTests opdId={opdRx} />} />
+          <Route path="assessment" element={<OpdAssessment opdId={opdRx} />} />
+          <Route path="payments" element={<PaymentsHistory opdId={opdRx} />} />
+          <Route path="follow-up" element={<Followup opdId={opdRx} />} />
         </Routes>
         </div>
       </div>

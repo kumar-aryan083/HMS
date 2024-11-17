@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./styles/AssignMedicine.css";
+import { AppContext } from "../context/AppContext";
 
-const AssignMedicine = ({ opdId, setNotification, user }) => {
+const AssignMedicine = ({ opdId }) => {
+  const {setNotification} = useContext(AppContext);
   const [numMedications, setNumMedications] = useState(3);
   const [medications, setMedications] = useState(
     Array.from({ length: 3 }, () => ({

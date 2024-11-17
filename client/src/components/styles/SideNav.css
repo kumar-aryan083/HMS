@@ -1,15 +1,16 @@
 .sidenav {
     width: 20%;
-    background-color: var(--front);
+    background-color: var(--front-op);
     border-right: 1px solid #fcf2f2;
-    height: calc(100vh - 83px);
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   
   .sidenav h3 {
-    color: black;
+    color: var(--secondBase);
+    font-style: italic;
     margin-top: 20px;
     margin-bottom: 20px;
     text-decoration: underline;
@@ -32,6 +33,10 @@
    
   .sidenav a {
     text-decoration: none;
+    color: var(--base);
+    font-weight: 500;
+  }
+  .sidenav li:hover a{
     color: var(--textCol);
   }
   

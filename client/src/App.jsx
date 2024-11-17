@@ -19,6 +19,8 @@ import Accounts from './pages/Accounts';
 import IpdSettings from './pages/IpdSettings';
 import { AppContext } from './context/AppContext.jsx';
 import PatientAdmissionForm from './components/PatientAdmissionForm.jsx';
+import AllIpds from './components/AllIpds.jsx';
+import IpdFile from './pages/IpdFile.jsx';
 
 
 const App = () => {
@@ -45,7 +47,8 @@ const App = () => {
           <Route path='/accounts' element={<Accounts setNotification={setNotification} user={user} />} />
           <Route path='/ipd/ipd-setting' element={<IpdSettings />} />
           <Route path='/ipd/admit-patient' element={<PatientAdmissionForm />} />
-          
+          <Route path='/ipd/all-ipds' element={<AllIpds />} />
+          <Route path='/ipds/ipd-file/:uhid' element={<IpdFile />} />
         </Routes>
       </main>
       <footer className="footerMain">

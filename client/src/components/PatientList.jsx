@@ -18,6 +18,7 @@ const PatientList = () => {
         document.title = "Patients List | HMS";
         fetchDetails();
     }, []);
+    
 
     const fetchDetails = async () => {
         try {
@@ -31,7 +32,7 @@ const PatientList = () => {
             const data = await res.json();
             if (res.ok) {
                 setPatients(data.patientDetails);
-                setFilteredPatients(data.patientDetails); // Initialize filtered patients
+                setFilteredPatients(data.patientDetails);
             } else {
                 setNotification(data.message);
             }

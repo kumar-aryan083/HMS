@@ -1,5 +1,6 @@
 .full-opd-rx {
     display: flex;
+    height: calc(100vh - 83px);
 }
 
 .opd-rx-sideContent {
