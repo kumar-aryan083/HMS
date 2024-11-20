@@ -1,6 +1,6 @@
 import express from 'express';
 import { verifyToken } from '../verifyToken.js';
-import { addNursing, addRoom, addVisitingDoctor, allIpds, createWing, deleteNursing, deleteRoom, deleteVisitingDoctor, deleteWing, editNursing, editRoom, editVisitingDoctor, editWing, getNursing, getRooms, getVisitingDoctor, getWings, patientAdmission } from '../controllers/ipd.controller.js';
+import { addDischargeSummary, addNursing, addRoom, addVisitingDoctor, allIpds, createWing, deleteNursing, deleteRoom, deleteVisitingDoctor, deleteWing, editNursing, editRoom, editVisitingDoctor, editWing, getNursing, getRooms, getVisitingDoctor, getWings, patientAdmission } from '../controllers/ipd.controller.js';
 
 const router = express.Router();
 
@@ -22,6 +22,7 @@ router.delete('/delete-nursing/:nId', verifyToken, deleteNursing)
 router.put('/edit-nursing/:nId', verifyToken, editNursing)
 router.post('/admit-patient', verifyToken, patientAdmission)
 router.get('/all-ipds', verifyToken, allIpds)
+router.put('/admissions/:admissionId/discharge-summary',verifyToken, addDischargeSummary);
 
 
 export default router;

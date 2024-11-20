@@ -1,9 +1,10 @@
 import React from 'react';
+import IpdSideNav from './IpdSideNav';
 
-const IpdProfile = ({uhid}) => {
+const IpdProfile = ({admissionId}) => {
   return (
     <>
-      IPD Profile {uhid}
+      IPD Profile {admissionId}
     </>
   );
 }

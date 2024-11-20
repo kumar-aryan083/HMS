@@ -32,9 +32,6 @@ const IpdSideNav = () => {
           <Link to="visit-notes">Visit Notes</Link>
         </li>
         <li>
-          <Link to="labour-records">Labour Record</Link>
-        </li>
-        <li>
           <Link to="obs-gynae">Obs & Gynae</Link>
         </li>
         <li>

@@ -10,9 +10,16 @@ const patientAdmissionSchema = new mongoose.Schema({
       type: Date,
       default: Date.now
     },
-    dischargeDate: {
-      type: Date
-    },
+    dischargeSummary: {
+      dischargeDate: { type: Date },
+      statusAtDischarge: { type: String, enum: ['Recovered', 'Referred', 'Deceased', 'Other'] },
+      dischargeNotes: { type: String },
+      finalDiagnosis: { type: String },
+      procedures: [{ type: String }], // Array for multiple procedures
+      medications: [{ type: String }], // Array for discharge medications
+      followUpInstructions: { type: String },
+      dischargingDoctor: { type: mongoose.Schema.Types.ObjectId, ref: 'Doctor' }
+  },
     doctorId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Doctor',

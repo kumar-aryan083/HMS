@@ -5,7 +5,7 @@ import IpdSideNav from '../components/IpdSideNav';
 import IpdProfile from '../components/IpdProfile';
 
 const IpdFile = () => {
-    const {uhid} = useParams();
+    const {admissionId} = useParams();
     const {user} = useContext(AppContext);
 
     useEffect(()=>{
@@ -21,7 +21,7 @@ const IpdFile = () => {
         <IpdSideNav />
         <div className="opd-rx-sideContent">
         <Routes>
-          <Route path="" element={<IpdProfile uhid={uhid} />} />
+          <Route path="" element={<IpdProfile admissionId={admissionId} />} />
         </Routes>
         </div>
       </div>

@@ -5,6 +5,7 @@ import wingModel from "../models/wing.model.js";
 import patientModel from "../models/patient.model.js";
 import doctorModel from "../models/doctor.model.js";
 import PatientAdmissionModel from "../models/PatientAdmission.model.js";
+import mongoose from "mongoose";
 
 export const createWing = async (req, res) => {
   try {
@@ -507,7 +508,6 @@ export const patientAdmission = async(req, res)=>{
     });
   }
 }
-
 export const allIpds = async(req, res)=>{
   try {
     const ipds = await PatientAdmissionModel.find().populate('patientId').populate('doctorId');
@@ -524,3 +524,50 @@ export const allIpds = async(req, res)=>{
     })
   }
 }
+export const addDischargeSummary = async (req, res) => {
+    const { admissionId } = req.params;
+    const {
+        dischargeDate,
+        statusAtDischarge,
+        dischargeNotes,
+        finalDiagnosis,
+        procedures,
+        medications,
+        followUpInstructions,
+        dischargingDoctor
+    } = req.body;
+
+    try {
+        // Validate Admission ID
+        if (!mongoose.Types.ObjectId.isValid(admissionId)) {
+            return res.status(400).json({ error: 'Invalid admission ID' });
+        }
+
+        // Find and Update the Admission Record
+        const updatedAdmission = await PatientAdmissionModel.findByIdAndUpdate(
+            admissionId,
+            {
+                $set: {
+                    'dischargeSummary.dischargeDate': dischargeDate,
+                    'dischargeSummary.statusAtDischarge': statusAtDischarge,
+                    'dischargeSummary.dischargeNotes': dischargeNotes,
+                    'dischargeSummary.finalDiagnosis': finalDiagnosis,
+                    'dischargeSummary.procedures': procedures,
+                    'dischargeSummary.medications': medications,
+                    'dischargeSummary.followUpInstructions': followUpInstructions,
+                    'dischargeSummary.dischargingDoctor': dischargingDoctor,
+                    status: 'Discharged'
+                }
+            },
+            { new: true } // Return updated document
+        ).populate('dischargeSummary.dischargingDoctor');
+
+        if (!updatedAdmission) {
+            return res.status(404).json({ error: 'Patient admission not found' });
+        }
+
+        res.status(200).json({ message: 'Discharge summary added successfully', data: updatedAdmission });
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to add discharge summary', details: error.message });
+    }
+};

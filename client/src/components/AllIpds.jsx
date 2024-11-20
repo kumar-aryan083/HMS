@@ -124,7 +124,7 @@ const AllIpds = () => {
                   <td className="all-ipds-actions">
                     <FontAwesomeIcon
                       icon={faEye}
-                      onClick={() => nav(`/ipds/ipd-file/${ipd.patientId.uhid}`)}
+                      onClick={() => nav(`/ipds/ipd-file/${ipd._id}`)}
                       title="open"
                       className="all-ipds-icon"
                     />

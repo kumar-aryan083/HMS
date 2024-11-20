@@ -48,7 +48,7 @@ const App = () => {
           <Route path='/ipd/ipd-setting' element={<IpdSettings />} />
           <Route path='/ipd/admit-patient' element={<PatientAdmissionForm />} />
           <Route path='/ipd/all-ipds' element={<AllIpds />} />
-          <Route path='/ipds/ipd-file/:uhid' element={<IpdFile />} />
+          <Route path='/ipds/ipd-file/:admissionId' element={<IpdFile />} />
         </Routes>
       </main>
       <footer className="footerMain">
