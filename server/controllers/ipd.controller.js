@@ -566,7 +566,7 @@ export const addDischargeSummary = async (req, res) => {
             return res.status(404).json({ error: 'Patient admission not found' });
         }
 
-        res.status(200).json({ message: 'Discharge summary added successfully', data: updatedAdmission });
+        res.status(200).json({success: true, message: 'Discharge summary added successfully', updatedAdmission });
     } catch (error) {
         res.status(500).json({ error: 'Failed to add discharge summary', details: error.message });
     }
@@ -616,28 +616,51 @@ export const updatePhysicalExamination = async (req, res) => {
       return res.status(400).json({ success: false, message: "Invalid Patient Admission ID" });
     }
 
+    // Validate vitalSigns object structure
+    const { bloodPressure, heartRate, temperature, respiratoryRate, oxygenSaturation, bmi } = vitalSigns;
+    if (
+      !bloodPressure ||
+      !heartRate ||
+      !temperature ||
+      !respiratoryRate ||
+      !oxygenSaturation ||
+      !bmi
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: "All vital signs fields are required.",
+      });
+    }
+
+    // Update the physical examination fields
     const ipdFile = await PatientAdmissionModel.findOneAndUpdate(
-      { _id: patientAdmissionId }, // Correct query to match by _id
+      { _id: patientAdmissionId }, // Match the patient admission by ID
       {
         $set: {
           "physicalExamination.findings": findings,
-          "physicalExamination.vitalSigns": vitalSigns,
-          "physicalExamination.updatedAt": Date.now()
-        }
+          "physicalExamination.vitalSigns.bloodPressure": bloodPressure,
+          "physicalExamination.vitalSigns.heartRate": heartRate,
+          "physicalExamination.vitalSigns.temperature": temperature,
+          "physicalExamination.vitalSigns.respiratoryRate": respiratoryRate,
+          "physicalExamination.vitalSigns.oxygenSaturation": oxygenSaturation,
+          "physicalExamination.updatedAt": Date.now(),
+        },
       },
       { new: true, upsert: false } // Do not create a new record if it doesn't exist
     );
 
+    // Handle case where no matching document is found
     if (!ipdFile) {
       return res.status(404).json({ success: false, message: "Patient Admission not found" });
     }
 
-    res.status(200).json({ success: true, message: "Physical Examination updated", ipdFile });
+    res.status(200).json({ success: true, message: "Physical Examination updated successfully", ipdFile });
   } catch (error) {
     console.error("Error updating Physical Examination:", error);
     res.status(500).json({ success: false, message: "Failed to update Physical Examination", error });
   }
 };
+
 
 
 // Update Investigations
@@ -729,3 +752,29 @@ export const updateObsGynae = async (req, res) => {
     res.status(500).json({ success: false, message: "Failed to update Obs & Gynae", error });
   }
 };
+
+export const getDischargeSummary = async(req, res)=>{
+  const { admissionId } = req.params;
+
+  // Check if the provided ID is valid
+  if (!mongoose.Types.ObjectId.isValid(admissionId)) {
+    return res.status(400).json({ success: false, message: "Invalid Patient Admission ID" });
+  }
+
+  try {
+    // Find the admission record with the discharge summary
+    const patientAdmission = await PatientAdmissionModel.findById(admissionId).select('dischargeSummary');
+    
+    if (!patientAdmission) {
+      return res.status(404).json({ success: false, message: "Patient Admission not found" });
+    }
+
+    res.status(200).json({
+      success: true,
+      dischargeSummary: patientAdmission.dischargeSummary, // Return only the dischargeSummary field
+    });
+  } catch (error) {
+    console.error("Error fetching discharge summary:", error);
+    res.status(500).json({ success: false, message: "Failed to fetch discharge summary", error });
+  }
+} 

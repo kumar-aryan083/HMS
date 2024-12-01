@@ -53,7 +53,14 @@ const patientAdmissionSchema = new mongoose.Schema({
     },
     physicalExamination: {
       findings: { type: String },
-      vitalSigns: { type: String },
+      vitalSigns: {
+        bloodPressure: { type: String },
+        heartRate: { type: String },
+        temperature: { type: String },
+        respiratoryRate: { type: String },
+        oxygenSaturation: { type: String },
+        bmi: {type: String}
+      },
       updatedAt: { type: Date, default: Date.now }
     },
     investigations: {

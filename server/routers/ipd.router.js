@@ -1,6 +1,6 @@
 import express from 'express';
 import { verifyToken } from '../verifyToken.js';
-import { addDischargeSummary, addNursing, addRoom, addVisitingDoctor, allIpds, createWing, deleteNursing, deleteRoom, deleteVisitingDoctor, deleteWing, editNursing, editRoom, editVisitingDoctor, editWing, getNursing, getRooms, getVisitingDoctor, getWings, patientAdmission, updateAllergies, updateChemoNotes, updateChiefComplaints, updateInvestigations, updateObsGynae, updatePhysicalExamination, updateVisitNotes } from '../controllers/ipd.controller.js';
+import { addDischargeSummary, addNursing, addRoom, addVisitingDoctor, allIpds, createWing, deleteNursing, deleteRoom, deleteVisitingDoctor, deleteWing, editNursing, editRoom, editVisitingDoctor, editWing, getDischargeSummary, getNursing, getRooms, getVisitingDoctor, getWings, patientAdmission, updateAllergies, updateChemoNotes, updateChiefComplaints, updateInvestigations, updateObsGynae, updatePhysicalExamination, updateVisitNotes } from '../controllers/ipd.controller.js';
 
 const router = express.Router();
 
@@ -23,13 +23,14 @@ router.put('/edit-nursing/:nId', verifyToken, editNursing)
 router.post('/admit-patient', verifyToken, patientAdmission)
 router.get('/all-ipds', verifyToken, allIpds)
 router.put('/admissions/:admissionId/discharge-summary',verifyToken, addDischargeSummary);
-router.patch('/admissions/:admissionId/allergies', updateAllergies);
-router.patch("/:patientAdmissionId/physical-examination", updatePhysicalExamination);
-router.patch("/:patientAdmissionId/investigations", updateInvestigations);
-router.patch("/:patientAdmissionId/chief-complaints", updateChiefComplaints);
-router.patch("/:patientAdmissionId/chemo-notes", updateChemoNotes);
-router.patch("/:patientAdmissionId/visit-notes", updateVisitNotes);
-router.patch("/:patientAdmissionId/obs-gynae", updateObsGynae);
+router.patch('/admissions/:admissionId/allergies',verifyToken, updateAllergies);
+router.patch("/:patientAdmissionId/physical-examination",verifyToken, updatePhysicalExamination);
+router.patch("/:patientAdmissionId/investigations",verifyToken, updateInvestigations);
+router.patch("/:patientAdmissionId/chief-complaints",verifyToken, updateChiefComplaints);
+router.patch("/:patientAdmissionId/chemo-notes",verifyToken, updateChemoNotes);
+router.patch("/:patientAdmissionId/visit-notes",verifyToken, updateVisitNotes);
+router.patch("/:patientAdmissionId/obs-gynae",verifyToken, updateObsGynae);
+router.get("/:admissionId/get-discharge-summary",verifyToken, getDischargeSummary);
 
 
 
