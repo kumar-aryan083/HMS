@@ -34,9 +34,9 @@ const IpdSideNav = () => {
         <li>
           <Link to="obs-gynae">Obs & Gynae</Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="payment-history">Payments History</Link>
-        </li>
+        </li> */}
       </ul>
     </div>
     </>

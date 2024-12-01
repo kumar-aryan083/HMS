@@ -46,7 +46,40 @@ const patientAdmissionSchema = new mongoose.Schema({
     },
     nursingRate: {
       type: Number
-    }
+    },
+    allergies: {
+      type: String, 
+      default: '' 
+    },
+    physicalExamination: {
+      findings: { type: String },
+      vitalSigns: { type: String },
+      updatedAt: { type: Date, default: Date.now }
+    },
+    investigations: {
+      labTests: [{ type: String }], // Array for lab tests
+      imaging: [{ type: String }],  // Array for imaging tests (e.g., X-ray, CT)
+      updatedAt: { type: Date, default: Date.now }
+    },
+    chiefComplaints: {
+      complaints: [{ type: String }],
+      updatedAt: { type: Date, default: Date.now }
+    },
+    chemoNotes: {
+      cycles: { type: Number },
+      regimen: { type: String },
+      sideEffects: { type: String },
+      updatedAt: { type: Date, default: Date.now }
+    },
+    visitNotes: {
+      notes: [{ type: String }],
+      updatedAt: { type: Date, default: Date.now }
+    },
+    obsGynae: {
+      pregnancyHistory: { type: String },
+      menstrualHistory: { type: String },
+      updatedAt: { type: Date, default: Date.now }
+    },
   });
   
   export default mongoose.model('PatientAdmission', patientAdmissionSchema);

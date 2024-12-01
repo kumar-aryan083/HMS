@@ -559,7 +559,7 @@ export const addDischargeSummary = async (req, res) => {
                     status: 'Discharged'
                 }
             },
-            { new: true } // Return updated document
+            { new: true } 
         ).populate('dischargeSummary.dischargingDoctor');
 
         if (!updatedAdmission) {
@@ -570,4 +570,162 @@ export const addDischargeSummary = async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: 'Failed to add discharge summary', details: error.message });
     }
+};
+
+export const updateAllergies = async (req, res) => {
+  try {
+    const { admissionId } = req.params; // Admission ID from the URL
+    const { allergies } = req.body;    // Allergies content from the request body
+
+    // Validate input
+    if (!allergies) {
+      return res.status(400).json({ error: 'Allergies field cannot be empty.' });
+    }
+
+    // Find and update the patient admission
+    const updatedAdmission = await PatientAdmissionModel.findByIdAndUpdate(
+      admissionId,
+      { allergies },
+      { new: true, runValidators: true } // Return the updated document and validate
+    );
+
+    // If no record is found, return a 404 error
+    if (!updatedAdmission) {
+      return res.status(404).json({ error: 'Patient admission not found.' });
+    }
+
+    // Respond with success
+    res.status(200).json({
+      message: 'Allergies updated successfully.',
+      data: updatedAdmission
+    });
+  } catch (error) {
+    console.error('Error updating allergies:', error);
+    res.status(500).json({ error: 'An error occurred while updating allergies.' });
+  }
+};
+
+// Update Physical Examination
+export const updatePhysicalExamination = async (req, res) => {
+  try {
+    const { patientAdmissionId } = req.params; // This should be the _id of the PatientAdmission document
+    const { findings, vitalSigns } = req.body;
+
+    // Ensure the provided ID is a valid MongoDB ObjectId
+    if (!mongoose.Types.ObjectId.isValid(patientAdmissionId)) {
+      return res.status(400).json({ success: false, message: "Invalid Patient Admission ID" });
+    }
+
+    const ipdFile = await PatientAdmissionModel.findOneAndUpdate(
+      { _id: patientAdmissionId }, // Correct query to match by _id
+      {
+        $set: {
+          "physicalExamination.findings": findings,
+          "physicalExamination.vitalSigns": vitalSigns,
+          "physicalExamination.updatedAt": Date.now()
+        }
+      },
+      { new: true, upsert: false } // Do not create a new record if it doesn't exist
+    );
+
+    if (!ipdFile) {
+      return res.status(404).json({ success: false, message: "Patient Admission not found" });
+    }
+
+    res.status(200).json({ success: true, message: "Physical Examination updated", ipdFile });
+  } catch (error) {
+    console.error("Error updating Physical Examination:", error);
+    res.status(500).json({ success: false, message: "Failed to update Physical Examination", error });
+  }
+};
+
+
+// Update Investigations
+export const updateInvestigations = async (req, res) => {
+  try {
+    const { patientAdmissionId } = req.params;
+    const { labTests, imaging } = req.body;
+
+    const ipdFile = await PatientAdmissionModel.findOneAndUpdate(
+      { _id: patientAdmissionId },
+      { $set: { investigations: { labTests, imaging, updatedAt: Date.now() } } },
+      { new: true, upsert: true }
+    );
+
+    res.status(200).json({ success: true, message: "Investigations updated", ipdFile });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Failed to update Investigations", error });
+  }
+};
+
+// Update Chief Complaints
+export const updateChiefComplaints = async (req, res) => {
+  try {
+    const { patientAdmissionId } = req.params;
+    const { complaints } = req.body;
+
+    const ipdFile = await PatientAdmissionModel.findOneAndUpdate(
+      { _id: patientAdmissionId },
+      { $set: { chiefComplaints: { complaints, updatedAt: Date.now() } } },
+      { new: true, upsert: true }
+    );
+
+    res.status(200).json({ success: true, message: "Chief Complaints updated", ipdFile });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Failed to update Chief Complaints", error });
+  }
+};
+
+// Update Chemo Notes
+export const updateChemoNotes = async (req, res) => {
+  try {
+    const { patientAdmissionId } = req.params;
+    const { cycles, regimen, sideEffects } = req.body;
+
+    const ipdFile = await PatientAdmissionModel.findOneAndUpdate(
+      { _id: patientAdmissionId },
+      { $set: { chemoNotes: { cycles, regimen, sideEffects, updatedAt: Date.now() } } },
+      { new: true, upsert: true }
+    );
+
+    res.status(200).json({ success: true, message: "Chemo Notes updated", ipdFile });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Failed to update Chemo Notes", error });
+  }
+};
+
+// Update Visit Notes
+export const updateVisitNotes = async (req, res) => {
+  try {
+    const { patientAdmissionId } = req.params;
+    const { notes } = req.body;
+
+    const ipdFile = await PatientAdmissionModel.findOneAndUpdate(
+      { _id: patientAdmissionId },
+      { $set: { visitNotes: { notes, updatedAt: Date.now() } } },
+      { new: true, upsert: true }
+    );
+
+    res.status(200).json({ success: true, message: "Visit Notes updated", ipdFile });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Failed to update Visit Notes", error });
+  }
+};
+
+// Update Obs & Gynae
+export const updateObsGynae = async (req, res) => {
+  try {
+    const { patientAdmissionId } = req.params;
+    const { pregnancyHistory, menstrualHistory } = req.body;
+
+    const ipdFile = await PatientAdmissionModel.findOneAndUpdate(
+      { _id: patientAdmissionId },
+      { $set: { obsGynae: { pregnancyHistory, menstrualHistory, updatedAt: Date.now() } } },
+      { new: true, upsert: true }
+    );
+
+    res.status(200).json({ success: true, message: "Obs & Gynae updated", ipdFile });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Failed to update Obs & Gynae", error });
+  }
 };
