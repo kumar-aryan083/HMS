@@ -576,7 +576,7 @@ export const updateAllergies = async (req, res) => {
   try {
     const { admissionId } = req.params; // Admission ID from the URL
     const { allergies } = req.body;    // Allergies content from the request body
-
+    console.log(allergies)
     // Validate input
     if (!allergies) {
       return res.status(400).json({ error: 'Allergies field cannot be empty.' });
@@ -685,17 +685,47 @@ export const updateInvestigations = async (req, res) => {
 export const updateChiefComplaints = async (req, res) => {
   try {
     const { patientAdmissionId } = req.params;
-    const { complaints } = req.body;
+    const { complaint } = req.body;
 
-    const ipdFile = await PatientAdmissionModel.findOneAndUpdate(
-      { _id: patientAdmissionId },
-      { $set: { chiefComplaints: { complaints, updatedAt: Date.now() } } },
-      { new: true, upsert: true }
+    // Validate that `complaint` is provided and is a string
+    if (!complaint || typeof complaint !== "string") {
+      return res.status(400).json({
+        success: false,
+        message: "`complaint` is required and should be a string.",
+      });
+    }
+
+    // Push the new complaint to the array
+    const ipdFile = await PatientAdmissionModel.findByIdAndUpdate(
+      patientAdmissionId,
+      {
+        $push: { "chiefComplaints.complaints": complaint }, // Push new complaint
+        $set: { "chiefComplaints.updatedAt": new Date() }, // Update timestamp
+      },
+      { new: true } // Return the updated document
     );
 
-    res.status(200).json({ success: true, message: "Chief Complaints updated", ipdFile });
+    // If record not found
+    if (!ipdFile) {
+      return res.status(404).json({
+        success: false,
+        message: "Patient admission record not found.",
+      });
+    }
+
+    // Success response
+    res.status(200).json({
+      success: true,
+      message: "Chief Complaint added successfully.",
+      ipdFile,
+    });
   } catch (error) {
-    res.status(500).json({ success: false, message: "Failed to update Chief Complaints", error });
+    // Error response
+    res.status(500).json({
+      success: false,
+      message: "Failed to add Chief Complaint.",
+      error: error.message,
+    });
   }
 };
 
@@ -721,19 +751,34 @@ export const updateChemoNotes = async (req, res) => {
 export const updateVisitNotes = async (req, res) => {
   try {
     const { patientAdmissionId } = req.params;
-    const { notes } = req.body;
+    const { note } = req.body;  // Expecting a single note instead of an array
 
+    if (!note) {
+      return res.status(400).json({ success: false, message: "Note is required" });
+    }
+
+    // Push the single new note into the existing array of notes
     const ipdFile = await PatientAdmissionModel.findOneAndUpdate(
       { _id: patientAdmissionId },
-      { $set: { visitNotes: { notes, updatedAt: Date.now() } } },
+      {
+        $push: { 
+          "visitNotes.notes": note  // Push a single note
+        },
+        $set: {  // Use $set to update the updatedAt field separately
+          "visitNotes.updatedAt": Date.now()
+        }
+      },
       { new: true, upsert: true }
     );
 
-    res.status(200).json({ success: true, message: "Visit Notes updated", ipdFile });
+    res.status(200).json({ success: true, message: "Visit Note updated", ipdFile });
   } catch (error) {
-    res.status(500).json({ success: false, message: "Failed to update Visit Notes", error });
+    console.error(error);
+    res.status(500).json({ success: false, message: "Failed to update Visit Note", error: error.message });
   }
 };
+
+
 
 // Update Obs & Gynae
 export const updateObsGynae = async (req, res) => {
@@ -778,3 +823,25 @@ export const getDischargeSummary = async(req, res)=>{
     res.status(500).json({ success: false, message: "Failed to fetch discharge summary", error });
   }
 } 
+export const getChiefComplaints = async(req, res)=>{
+  const { admissionId } = req.params;
+
+  // Check if the provided ID is valid
+  if (!mongoose.Types.ObjectId.isValid(admissionId)) {
+    return res.status(400).json({ success: false, message: "Invalid Patient Admission ID" });
+  }
+  try {
+    const patientAdmission = await PatientAdmissionModel.findById(admissionId).select('chiefComplaints');
+    
+    // if (!patientAdmission) {
+    //   return res.status(404).json({ success: false, message: "Patient Admission not found" });
+    // }
+
+    res.status(200).json({
+      success: true,
+      complaints: patientAdmission.chiefComplaints, 
+    });
+  } catch (error) {
+    console.error("error fetching complaints", error);
+  }
+}

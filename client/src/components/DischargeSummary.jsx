@@ -75,12 +75,25 @@ const DischargeSummary = ({ admissionId }) => {
       );
       const data = await response.json();
       if (response.ok) {
-        setDischargeSummary(data.dischargeSummary || {});
+        // Set discharge summary if data exists, otherwise reset to initial state
+        setDischargeSummary(data.dischargeSummary || {
+          dischargeDate: "",
+          statusAtDischarge: "Recovered",
+          dischargeNotes: "",
+          finalDiagnosis: "",
+          procedures: [""],
+          medications: [""],
+          followUpInstructions: "",
+          dischargingDoctor: "",
+        });
+        setDiagnosisContent(data.dischargeSummary.finalDiagnosis || "");
+        setNotesContent(data.dischargeSummary.dischargeNotes || "");
+        setFollowupContent(data.dischargeSummary.followUpInstructions || "");
       } else {
-        setError("Failed to fetch discharge summary data1.");
+        setError("Failed to fetch discharge summary data.");
       }
     } catch (err) {
-      setError("Failed to fetch discharge summary data2.");
+      setError("Failed to fetch discharge summary data.");
     } finally {
       setLoading(false);
     }
@@ -115,14 +128,14 @@ const DischargeSummary = ({ admissionId }) => {
   // Submit the form to update the discharge summary
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const updatedData = {
       ...dischargeSummary,
       finalDiagnosis: diagnosisContent,
       dischargeNotes: notesContent,
       followUpInstructions: followupContent,
     };
-    console.log(updatedData);
+  
     try {
       const res = await fetch(
         `http://localhost:8000/api/ipd/admissions/${admissionId}/discharge-summary`,
@@ -135,14 +148,29 @@ const DischargeSummary = ({ admissionId }) => {
           body: JSON.stringify(updatedData),
         }
       );
+  
       const data = await res.json();
       if (res.ok) {
-        console.log(data);
         setNotification(data.message);
-        nav(`/ipds/ipd-file/${admissionId}`)
+        nav(`/ipds/ipd-file/${admissionId}`);
+  
+        // Reset form state after successful submission
+        setDischargeSummary({
+          dischargeDate: "",
+          statusAtDischarge: "Recovered",
+          dischargeNotes: "",
+          finalDiagnosis: "",
+          procedures: [""],
+          medications: [""],
+          followUpInstructions: "",
+          dischargingDoctor: "",
+        });
+        setDiagnosisContent("");
+        setNotesContent("");
+        setFollowupContent("");
       }
     } catch (err) {
-      setError("Failed to update discharge summary.", err);
+      setError("Failed to update discharge summary.");
     }
   };
 

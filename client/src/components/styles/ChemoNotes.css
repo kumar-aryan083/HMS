@@ -1,0 +1,27 @@
+.chemo-notes-container {
+    margin: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: var(--front-op);
+  }
+  
+  .chemo-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .chemo-input,
+  .chemo-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .chemo-textarea {
+    resize: vertical;
+    height: 80px;
+  }
+  

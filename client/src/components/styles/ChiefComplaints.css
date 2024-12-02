@@ -1,0 +1,52 @@
+.chief-complaints-container {
+    margin: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: var(--front-op);
+  }
+  
+  .complaint-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .complaint-form>textarea{
+    resize: none;
+    outline: none;
+  }
+  
+  .complaint-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .complaint-button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .complaint-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .complaints-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+  }
+  
+  .complaint-item {
+    margin: 5px 0;
+    padding: 8px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  

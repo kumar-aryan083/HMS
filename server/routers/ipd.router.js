@@ -1,6 +1,6 @@
 import express from 'express';
 import { verifyToken } from '../verifyToken.js';
-import { addDischargeSummary, addNursing, addRoom, addVisitingDoctor, allIpds, createWing, deleteNursing, deleteRoom, deleteVisitingDoctor, deleteWing, editNursing, editRoom, editVisitingDoctor, editWing, getDischargeSummary, getNursing, getRooms, getVisitingDoctor, getWings, patientAdmission, updateAllergies, updateChemoNotes, updateChiefComplaints, updateInvestigations, updateObsGynae, updatePhysicalExamination, updateVisitNotes } from '../controllers/ipd.controller.js';
+import { addDischargeSummary, addNursing, addRoom, addVisitingDoctor, allIpds, createWing, deleteNursing, deleteRoom, deleteVisitingDoctor, deleteWing, editNursing, editRoom, editVisitingDoctor, editWing, getChiefComplaints, getDischargeSummary, getNursing, getRooms, getVisitingDoctor, getWings, patientAdmission, updateAllergies, updateChemoNotes, updateChiefComplaints, updateInvestigations, updateObsGynae, updatePhysicalExamination, updateVisitNotes } from '../controllers/ipd.controller.js';
 
 const router = express.Router();
 
@@ -31,6 +31,7 @@ router.patch("/:patientAdmissionId/chemo-notes",verifyToken, updateChemoNotes);
 router.patch("/:patientAdmissionId/visit-notes",verifyToken, updateVisitNotes);
 router.patch("/:patientAdmissionId/obs-gynae",verifyToken, updateObsGynae);
 router.get("/:admissionId/get-discharge-summary",verifyToken, getDischargeSummary);
+router.get("/:admissionId/get-chief-complaints",verifyToken, getChiefComplaints);
 
 
 
