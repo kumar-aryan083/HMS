@@ -571,7 +571,6 @@ export const addDischargeSummary = async (req, res) => {
         res.status(500).json({ error: 'Failed to add discharge summary', details: error.message });
     }
 };
-
 export const updateAllergies = async (req, res) => {
   try {
     const { admissionId } = req.params; // Admission ID from the URL
@@ -604,7 +603,6 @@ export const updateAllergies = async (req, res) => {
     res.status(500).json({ error: 'An error occurred while updating allergies.' });
   }
 };
-
 // Update Physical Examination
 export const updatePhysicalExamination = async (req, res) => {
   try {
@@ -660,18 +658,28 @@ export const updatePhysicalExamination = async (req, res) => {
     res.status(500).json({ success: false, message: "Failed to update Physical Examination", error });
   }
 };
-
-
-
 // Update Investigations
 export const updateInvestigations = async (req, res) => {
   try {
     const { patientAdmissionId } = req.params;
-    const { labTests, imaging } = req.body;
+    const { labTest, imagingTest } = req.body;
 
+    // console.log(req.body)
+    // Ensure labTest and imagingTest are valid strings (i.e., not empty)
+    if (!labTest || !imagingTest) {
+      return res.status(400).json({ success: false, message: "Both labTest and imagingTest are required" });
+    }
+
+    // Push the new tests into the investigations field (single entries, not arrays)
     const ipdFile = await PatientAdmissionModel.findOneAndUpdate(
       { _id: patientAdmissionId },
-      { $set: { investigations: { labTests, imaging, updatedAt: Date.now() } } },
+      {
+        $push: {
+          "investigations.labTests": labTest,  // Push the new single lab test
+          "investigations.imaging": imagingTest // Push the new single imaging test
+        },
+        $set: { "investigations.updatedAt": Date.now() }
+      },
       { new: true, upsert: true }
     );
 
@@ -728,7 +736,6 @@ export const updateChiefComplaints = async (req, res) => {
     });
   }
 };
-
 // Update Chemo Notes
 export const updateChemoNotes = async (req, res) => {
   try {
@@ -746,7 +753,6 @@ export const updateChemoNotes = async (req, res) => {
     res.status(500).json({ success: false, message: "Failed to update Chemo Notes", error });
   }
 };
-
 // Update Visit Notes
 export const updateVisitNotes = async (req, res) => {
   try {
@@ -777,27 +783,62 @@ export const updateVisitNotes = async (req, res) => {
     res.status(500).json({ success: false, message: "Failed to update Visit Note", error: error.message });
   }
 };
-
-
-
 // Update Obs & Gynae
 export const updateObsGynae = async (req, res) => {
   try {
     const { patientAdmissionId } = req.params;
-    const { pregnancyHistory, menstrualHistory } = req.body;
+    const {
+      pregnancyHistory,
+      menstrualHistory,
+      lastMenstrualPeriod,
+      obstetricHistory,
+      gynecologicalHistory,
+      contraceptiveHistory,
+      fertilityHistory,
+      familyHistory,
+      sexualHistory,
+      menopauseDetails
+    } = req.body;
+    console.log(req.body);
 
+    // Find and update the IPD file with the new Obs & Gynae data
     const ipdFile = await PatientAdmissionModel.findOneAndUpdate(
       { _id: patientAdmissionId },
-      { $set: { obsGynae: { pregnancyHistory, menstrualHistory, updatedAt: Date.now() } } },
+      {
+        $set: {
+          obsGynae: {
+            pregnancyHistory,
+            menstrualHistory,
+            lastMenstrualPeriod,
+            obstetricHistory,
+            gynecologicalHistory,
+            contraceptiveHistory,
+            fertilityHistory,
+            familyHistory,
+            sexualHistory,
+            menopauseDetails,
+            updatedAt: Date.now()
+          }
+        }
+      },
       { new: true, upsert: true }
     );
 
-    res.status(200).json({ success: true, message: "Obs & Gynae updated", ipdFile });
+    // Respond with success message and updated data
+    res.status(200).json({
+      success: true,
+      message: "Obs & Gynae updated successfully",
+      ipdFile
+    });
   } catch (error) {
-    res.status(500).json({ success: false, message: "Failed to update Obs & Gynae", error });
+    // Handle error and respond with failure message
+    res.status(500).json({
+      success: false,
+      message: "Failed to update Obs & Gynae",
+      error: error.message
+    });
   }
 };
-
 export const getDischargeSummary = async(req, res)=>{
   const { admissionId } = req.params;
 

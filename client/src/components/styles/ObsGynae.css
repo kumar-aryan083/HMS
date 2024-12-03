@@ -1,0 +1,91 @@
+/* General Form Styles */
+.obs-gynae-form {
+    max-width: 1000px;
+    margin: 10px auto;
+    background-color: var(--front-op);
+    font-family: Arial, sans-serif;
+  }
+  
+  .form-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin: 15px;
+  }
+  
+  .form-label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: #333;
+  }
+  
+  .form-input,
+  .form-textarea,
+  .form-select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .form-textarea {
+    height: 80px;
+    resize: vertical;
+  }
+  
+  .form-button {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .form-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Menopause Details Section */
+  .menopause-section {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+  }
+  
+  /* Align checkboxes side by side */
+.form-row {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .form-checkbox-inline {
+    display: flex;
+    align-items: center;
+  }
+  
+  .checkbox-label {
+    margin-left: 8px;
+  }
+  
+  /* Style for the sexual history details */
+  .sexual-history-details {
+    margin-top: 10px;
+  }
+  
+  .sexual-history-details .form-group {
+    margin-bottom: 12px;
+  }
+  

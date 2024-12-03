@@ -83,10 +83,45 @@ const patientAdmissionSchema = new mongoose.Schema({
       updatedAt: { type: Date, default: Date.now }
     },
     obsGynae: {
-      pregnancyHistory: { type: String },
-      menstrualHistory: { type: String },
+      pregnancyHistory: { type: String }, // Details about previous pregnancies
+      menstrualHistory: { type: String }, // Details about menstruation
+      lastMenstrualPeriod: { type: Date }, // Date of the last menstrual period
+      obstetricHistory: { 
+        gravidity: { type: Number }, // Total pregnancies
+        parity: { type: Number }, // Live births
+        abortions: { type: Number }, // Miscarriages or abortions
+        livingChildren: { type: Number } // Number of living children
+      },
+      gynecologicalHistory: { 
+        papSmearResults: { type: String }, // Results of recent pap smear tests
+        sexuallyTransmittedInfections: { type: String }, // Any STIs or history
+        gynecologicalProcedures: [{ type: String }] // List of procedures, e.g., hysterectomy
+      },
+      contraceptiveHistory: {
+        method: { type: String }, // Current or past contraceptive method
+        duration: { type: String } // Duration of use
+      },
+      fertilityHistory: {
+        fertilityIssues: { type: String }, // Details of fertility concerns
+        treatments: [{ type: String }] // Fertility treatments, if any
+      },
+      familyHistory: { 
+        geneticConditions: { type: String }, // Genetic disorders in the family
+        relevantDiseases: { type: String } // Family history of gynecological diseases
+      },
+      sexualHistory: { 
+        sexualActivity: { type: Boolean }, // Currently sexually active
+        partners: { type: Number }, // Number of partners
+        contraceptiveUse: { type: String } // Use of protection during intercourse
+      },
+      menopauseDetails: { 
+        isMenopausal: { type: Boolean }, // Whether the patient is menopausal
+        ageAtMenopause: { type: Number }, // Age when menopause started
+        symptoms: { type: String } // Symptoms experienced during menopause
+      },
       updatedAt: { type: Date, default: Date.now }
-    },
+    }
+    
   });
   
   export default mongoose.model('PatientAdmission', patientAdmissionSchema);
