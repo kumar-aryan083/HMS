@@ -1,0 +1,294 @@
+.navbar {
+    padding: 10px 30px;
+    background-color: var(--base);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    z-index: 999;
+    justify-content: space-between;
+    height: 64px;
+}
+
+.outer {
+    width: fit-content;
+    height: fit-content;
+    padding: 5px;
+    position: relative;
+    overflow: hidden;
+}
+.dropdownToggle{
+    user-select: none;
+}
+
+/* .border {
+    width: 200%;
+    height: 30px;
+    background-color: #EF8354;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(0%, -50%) rotate(0deg);
+    transform-origin: 0 50%;
+    animation: spin 2s normal infinite;
+} */
+
+.inner {
+    position: relative;
+    z-index: 999;
+    color: white;
+    padding: 0 10px;
+    background-color: var(--base);
+}
+
+/* @keyframes spin {
+    to {
+        transform: translate(0%, -50%) rotate(360deg);
+    }
+} */
+
+.rightNav {
+    margin: auto 0;
+}
+
+.navList {
+    display: flex;
+    list-style-type: none;
+    gap: 30px;
+    font-size: 18px;
+    position: relative;
+}
+
+.listItems {
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    color: var(--textCol);
+    font-weight: 500;
+    cursor: pointer;
+    position: relative; /* Needed for dropdown positioning */
+}
+
+.listItems::after {
+    content: "";
+    width: 0%;
+    height: 4px;
+    background-color: #EF8354;
+    transform-origin: left;
+    transition: all 0.3s;
+    margin-top: 5px;
+}
+
+.listItems:hover::after {
+    display: block;
+    width: 100%;
+}
+
+.listItems > a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    user-select: none;
+}
+
+.closeNav {
+    display: none;
+}
+
+.bgr {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translate(0%, -50%);
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background-color: #EF8354;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.line {
+    width: 20px;
+    height: 2px;
+    background-color: #FFFFFF;
+}
+
+.inner h1:last-child {
+    display: none;
+}
+
+.logoutBtn {
+    color: var(--secondBase);
+    font-weight: 800;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Dropdown Menu Styles */
+.dropdownMenu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);  /* Center the dropdown */
+    background-color: var(--base-hover);
+    border-radius: 5px;
+    /* padding: 10px 0; */
+    display: none;  /* Initially hidden */
+    flex-direction: column;
+    list-style-type: none;
+    z-index: 1000;
+    width: 205px;
+}
+
+.listItems {
+    position: relative;  /* Ensures dropdown aligns to the list item */
+}
+
+.listItems:hover .dropdownMenu {
+    display: flex;  /* Show the dropdown on hover */
+}
+
+.dropdownMenu li {
+    padding: 7px 10px;
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dropdownMenu li:hover {
+    background-color: #EF8354;
+}
+
+.dropdownMenu li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    font-weight: 500;
+}
+
+/* Popup Modal for Login */
+.loginPopup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginPopupContent {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 300px;
+    position: relative;
+}
+
+.loginOptionBtn {
+    margin: 10px;
+    padding: 10px;
+    width: 100%;
+    background-color: var(--base);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.loginOptionBtn:hover {
+    background-color: var(--base-hover);
+}
+
+.closePopupBtn {
+    background: none;
+    border: none;
+    background: var(--secondBase);
+    padding: 5px 10px;
+    border-radius: 50%;
+    font-size: 20px;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    cursor: pointer;
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 950px) {
+    .bgr {
+        display: flex;
+    }
+    .listItems > a {
+        text-decoration: none;
+        color: white;
+        font-weight: 500;
+    }
+    .closeNav {
+        position: absolute;
+        display: none;
+        right: 30px;
+        top: 20px;
+        font-size: 26px;
+        color: white;
+        z-index: 9999;
+    }
+
+    .rightNav {
+        position: fixed;
+        z-index: 9999;
+        background-color: rgba(0, 0, 0, 0.515);
+        width: 100%;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        padding: 10px;
+        display: none;
+    }
+
+    .navList {
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.705);
+        padding: 50px;
+    }
+
+    .listItems {
+        background-color: #EF8354;
+        padding: 5px 20px;
+    }
+
+    .listItems::after {
+        display: none;
+        height: 0;
+    }
+
+    /* Dropdown in Mobile */
+    .dropdownMenu {
+        position: relative; /* For mobile, show dropdown inline */
+        display: none;
+        background-color: rgba(0, 0, 0, 0.85);
+        width: 100%;
+        padding: 0;
+    }
+
+    .listItems:hover .dropdownMenu {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 469px) {
+    .inner h1:first-child {
+        display: none;
+    }
+    .inner h1:last-child {
+        display: block;
+    }
+}

@@ -1,0 +1,90 @@
+.chemo-notes-container {
+  max-width: 1000px;
+  width: 100%;
+  margin: 10px auto;
+  padding: 30px;
+  background-color: var(--front-op);
+  border-radius: 15px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.chemo-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.chemo-form label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.chemo-input,
+.chemo-textarea,
+.investigation-select {
+  width: 100%;
+  padding: 12px 8px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #fafafa;
+  transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chemo-input:focus,
+.chemo-textarea:focus,
+.investigation-select:focus {
+  border-color: #007bff;
+  background-color: #fff;
+  outline: none;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+.chemo-input,
+.chemo-textarea {
+  margin-bottom: 15px;
+}
+
+.chemo-textarea {
+  min-height: 100px;
+}
+
+.investigations-container {
+  display: grid; /* Use CSS Grid */
+  grid-template-columns: repeat(3, 1fr); /* Create 3 equal columns */
+  gap: 15px; /* Space between fields */
+  margin-bottom: 20px;
+  margin-top: 15px;
+}
+
+.investigation-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.investigation-select {
+  width: 100%;
+  padding: 10px 8px;
+  margin-top: 8px;
+  font-size: 16px;
+}
+
+.chemo-submit-btn {
+  padding: 15px;
+  background-color: #007bff;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  width: 200px;
+  align-self: flex-end;
+}
+
+.chemo-submit-btn:hover {
+  background-color: #0056b3;
+}

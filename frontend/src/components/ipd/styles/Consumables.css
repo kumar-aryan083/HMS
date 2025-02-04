@@ -1,0 +1,143 @@
+/* Container styles */
+.consumables-form-container {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 10px auto;
+    background: var(--front-op);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .consumables-form-header {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .consumables-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .medication-row {
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    border-radius: 8px;
+    background-color: #ffffff;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input,
+  .form-group select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .add-row-button {
+    background-color: var(--secondBase);
+    color: white;
+    padding: 3px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: fit-content;
+    font-weight: 600;
+    font-size: 1.8rem;
+  }
+  .add-row-button:hover{
+    background-color: var(--secondBase2);
+  }
+  
+  .submit-button {
+    margin-top: 20px;
+  }
+  
+  .medicine-suggestions {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ccc;
+    background-color: white;
+    position: absolute;
+    top: 100%; /* Position the suggestions directly below the input */
+    left: 0; /* Align it to the left of the input */
+    max-height: 150px;
+    overflow-y: auto;
+    width: 100%;
+    z-index: 10;
+  }
+  
+  .medicine-suggestions li {
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  .medicine-suggestions li:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .medicine-suggestions li:active {
+    background-color: #ddd;
+  }
+  
+  /* Optional: Add margin to input to avoid suggestion overlap */
+  input[name="name"] {
+    position: relative;
+  }
+  
+  /* Medication Row styling */
+  .ipd-medication-input-header,
+.ipd-medication-input-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  font-weight: 700;
+  color: #333333db;
+}
+
+/* .ipd-medication-input-row input, */
+.ipd-medication-input-row select {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  color: #333;
+}
+
+.ipd-medication-input-row button.remove-btn {
+  padding: 2px 15px;
+  background-color: var(--secondBase);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: fit-content;
+  font-weight: 600;
+  font-size: 1.8rem;
+  margin-top: 5px;
+}
+
+.ipd-medication-input-row button.remove-btn:hover {
+  background-color: var(--secondBase2);
+}

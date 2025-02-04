@@ -1,0 +1,141 @@
+.opd-billing-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .opd-billing-modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 1000px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    height: 90%;
+    overflow-y: auto;
+  }
+  .opd-billing-modal-content::-webkit-scrollbar{
+    display: none;
+  }
+  
+  .opd-billing-close-btn {
+    width: fit-content;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 10px 15px;
+  }
+  
+  .opd-billing-close-btn:hover {
+    background-color: var(--secondBase2);
+  }
+  
+  .opd-billing-title {
+    margin: 0 0 20px 0;
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  .opd-billing-form {
+    margin-bottom: 20px;
+  }
+  
+  .opd-billing-form-group {
+    margin-bottom: 15px;
+  }
+  
+  .opd-billing-form-group label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+  }
+  
+  .opd-billing-form-group input {
+    width: 60%;
+    padding: 5px;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .opd-billing-add-item-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .opd-billing-add-item-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .opd-billing-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  
+  .opd-billing-table th,
+  .opd-billing-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .opd-billing-table th {
+    background-color: #f4f4f4;
+  }
+  
+  .opd-billing-submit-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .opd-billing-submit-btn:hover {
+    background-color: #218838;
+  }
+  .op-bill-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap; 
+    justify-content: space-between;
+  }
+  
+  .op-bill-column {
+    flex: 1; 
+    padding: 10px; /* Adds space inside each column */
+    border: 2px solid #ccc; /* Adds a boundary to the right of each column */
+    font-weight: bold;
+  }
+  .op-bill-heading{
+    width: 100px;
+  }
+  .op-bill-heading input {
+    color: black;
+    text-align: center;
+  }

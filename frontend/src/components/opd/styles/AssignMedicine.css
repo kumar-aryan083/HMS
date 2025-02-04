@@ -1,0 +1,124 @@
+.medication-component {
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  max-width: 1200px;
+  height: 97%;
+  /* position: relative;  */
+}
+
+.mc-top {
+  display: flex;
+  gap: 10px;
+  width: 15%;
+}
+
+.mc-top > button {
+  height: fit-content;
+  margin: 20px 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--secondBase);
+  color: var(--textCol);
+  font-weight: 600;
+}
+.mc-top > button:hover{
+  background-color: var(--secondBase2);
+}
+
+h2 {
+  text-align: center;
+}
+
+.medication-input {
+  margin-top: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.med-inpts {
+  display: flex;
+  gap: 20px;
+  position: relative;
+}
+
+.med-inpts select {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #bdb7b7;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #6d6c6c;
+  cursor: pointer;
+}
+
+.med-inpts select:hover {
+  border-color: #007bff;
+}
+
+.med-inpts select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.medication-input h4 {
+  margin: 0;
+}
+
+input {
+  width: calc(100% - 10px);
+  border: 1px solid #b4aeae;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.assign-med-btn {
+  height: fit-content;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--base);
+  color: var(--textCol);
+  font-weight: 600;
+}
+.assign-med-btn:hover{
+  background-color: var(--base-hover);
+}
+
+/* CSS for the suggestion dropdown */
+.medicine-suggestions {
+  position: absolute; /* Align the dropdown relative to the input container */
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-height: 200px;
+  overflow-y: auto;
+  width: calc(100% - 10px); /* Match the width of the input */
+  z-index: 100;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 5px; 
+}
+
+/* Ensure the dropdown is positioned directly below the input field */
+.input-container {
+  position: relative; /* Establish a local positioning context */
+}
+
+.input-container input {
+  position: relative;
+  display: block;
+}
+
+.medicine-suggestions li {
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.medicine-suggestions li:hover {
+  background-color: #f0f0f0;
+}

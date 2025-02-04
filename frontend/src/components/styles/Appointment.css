@@ -1,0 +1,130 @@
+.appointment-form-container {
+    max-width: 1300px;
+    width: 90%;
+    margin: 20px auto;
+    padding: 5px 15px;
+    background-color: var(--front-op);
+    border-radius: 15px;
+    border: 1px solid #e0e0e0;  
+  }
+  .appointment-closeBtn{
+    background-color: #fff;
+    color: #333;
+    width: fit-content;
+    position: absolute;
+    top: -10px;
+    right:-5px;
+    font-weight:600;
+    font-size: 20px;
+  }
+  .appointment-closeBtn:hover{
+    color: #333333d0;
+    background: none;
+  }
+  .appointment-form-heading {
+    text-align: center;
+    color: var(--base);
+    font-weight: 900;
+    font-size: 32px;
+  }
+  
+  .input-pair {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .input-pair .appointment-form-group {
+    flex: 1;
+  }
+  
+  .appointment-form-group {
+    margin-bottom: 15px;
+  }
+  
+  .appointment-form-group label {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 16px;
+  }
+  .a-label{
+    /* background-color: red; */
+    display: flex;
+    flex-direction: row;
+  }
+  
+  
+  .appointment-form-group input,
+  .appointment-form-group select {
+    width: 100%;
+    padding: 12px 8px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #fafafa;
+    transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .appointment-form-group input:focus,
+  .appointment-form-group select:focus {
+    border-color: #007bff;
+    background-color: #fff;
+    outline: none;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+  }
+  
+  .appointment-form-group input:hover,
+  .appointment-form-group select:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .patient-search-container {
+    position: relative; /* Make the container relative for absolute positioning of suggestions */
+  }
+  
+  .suggestions-list {
+    border: 1px solid #ccc;
+    max-height: 150px; /* Limit height */
+    overflow-y: auto; /* Scroll if too many items */
+    position: absolute; /* Position relative to parent */
+    background: white; /* Ensure background for visibility */
+    z-index: 10; /* Bring suggestions above other elements */
+    width: 100%; /* Make suggestions list the same width as input */
+    border-radius: 10px;
+  }
+  
+  
+  .suggestion-item {
+    padding: 10px;
+    color: black;
+    cursor: pointer; 
+  }
+  
+  .suggestion-item:hover {
+    background-color: var(--base-hover); /* Highlight on hover */
+    color: var(--textCol);
+  }
+  
+  
+  .appointment-submit-btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: var(--base);
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .appointment-submit-btn:hover {
+    background-color: var(--base-hover);
+  }
+  

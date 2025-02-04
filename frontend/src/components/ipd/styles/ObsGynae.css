@@ -1,0 +1,167 @@
+/* ObsGynae.css */
+
+/* General Styles */
+.obs-gynae-container {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: var(--front-op);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.obs-gynae-container h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Form Styles */
+.obs-gynae-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.obs-gynae-form .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.obs-gynae-form label {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.obs-gynae-form input[type="text"],
+.obs-gynae-form select,
+.obs-gynae-form .react-quill {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.obs-gynae-form input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+/* Button Styles */
+.obs-gynae-form button {
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #fff;
+  background-color: var(--secondBase);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  align-self: center;
+  transition: background-color 0.3s;
+  font-weight: 600;
+}
+
+.obs-gynae-form button:hover {
+  background-color: var(--secondBase2);
+}
+
+form input[type="checkbox"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--base);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+form input[type="checkbox"]:checked {
+  background-color: var(--base);
+  border-color: var(--base);
+  position: relative;
+}
+
+form input[type="checkbox"]:checked::after {
+  content: "✔";
+  color: white;
+  font-size: 14px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.obs-mh{
+  margin-top: 15px;
+}
+.obs-mh>label{
+  font-size: 1.2rem;
+}
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox-container label {
+  font-size: 14px;
+  color: #333;
+}
+
+.quick-checklist {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #e9f5ff;
+  border: 1px solid var(--base);
+  border-radius: 4px;
+}
+
+.quick-checklist h3 {
+  font-size: 18px;
+  color: var(--base);
+  margin-bottom: 10px;
+  text-align: left;
+}
+/* React Quill Styling */
+/* .react-quill {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  min-height: 150px;
+}
+
+.react-quill .ql-toolbar {
+  border: none;
+  background-color: #f1f1f1;
+} */
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .obs-gynae-container {
+    padding: 15px;
+  }
+
+  .obs-gynae-form button {
+    width: 100%;
+  }
+}

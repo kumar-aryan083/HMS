@@ -1,0 +1,41 @@
+.edit-opd-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 10px;
+    overflow: hidden;
+  }
+  
+  .edit-opd-modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+    max-width: 1000px; 
+    width: 100%;
+    max-height: 95vh; /* Limit height to avoid overflow */
+    overflow-y: auto; /* Enable scrolling if content overflows */
+  }
+  .edit-opd-modal-content::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 5px 10px;
+    background-color: var(--secondBase);
+    border-radius: 50%;
+    color: var(--textCol);
+  }
+  

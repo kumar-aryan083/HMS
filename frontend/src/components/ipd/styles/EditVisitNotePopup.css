@@ -1,0 +1,130 @@
+
+/* Popup container */
+.edit-visit-note-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Popup content */
+  .popup-content {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 700px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    height: 90%;
+    overflow-y: auto;
+  }
+  .popup-content::-webkit-scrollbar{
+    display: none;
+  }
+  
+  /* Close button */
+  .close-popup-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    width: fit-content;
+    background-color: red;
+  }
+  
+  /* Title */
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Form group */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  /* Input fields and textarea */
+  input[type="text"],
+  input[type="datetime-local"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px;
+    box-sizing: border-box;
+  }
+  
+  /* Doctor search suggestions */
+  .doctor-suggestions {
+    list-style: none;
+    padding: 0;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: #fff;
+    position: absolute;
+    width: 100%;
+    z-index: 9999;
+  }
+  
+  .doctor-suggestions li {
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  .doctor-suggestions li:hover {
+    background-color: #c3c0c0;
+  }
+  
+  /* Note editor */
+  form-group .tox.tox-silver-surfers {
+    width: 100% !important;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Save button */
+  .save-btn {
+    background-color: var(--secondBase);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  
+  .save-btn:hover {
+    background-color: var(--secondBase2);
+  }
+  
+  /* Error message */
+  .error {
+    color: red;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* Loading state */
+  .loading {
+    text-align: center;
+    font-size: 16px;
+    color: #555;
+  }
+  .edit-visit-note-popup .tox-editor-container {
+    direction: ltr !important;
+  }

@@ -1,0 +1,154 @@
+/* General container styling */
+.discharge-summary-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 10px auto;
+  padding: 20px;
+  background-color: var(--front-op);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+.ds-head{
+  text-align: left;
+  margin-bottom: 0;
+}
+
+/* Form Row */
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.form-group {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+/* Input, select, and textarea styling */
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
+
+/* Medication Row styling */
+.medication-input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.medication-input-row input,
+.medication-input-row select {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.medication-input-row button.remove-btn {
+  padding: 4px 15px;
+  background-color: var(--secondBase);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: fit-content;
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+
+.medication-input-row button.remove-btn:hover {
+  background-color: var(--secondBase2);
+}
+
+/* General Button Styles */
+button {
+  padding: 10px 15px;
+  background-color: var(--secondBase);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--secondBase2);
+}
+.add-btn{
+  padding: 5px 15px;
+  background-color: var(--secondBase);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: fit-content;
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+.add-btn:hover{
+  background-color: var(--secondBase2);
+}
+
+/* Medication item styling */
+.medication-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.medication-item input {
+  flex: 1;
+}
+
+/* Form actions container */
+.form-actions {
+  display: flex;
+  justify-content: center;
+}
+
+/* Submit button styling */
+.submit-button {
+  background-color: #28a745;
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.submit-button:hover {
+  background-color: #218838;
+}
+
+.print-only {
+  display: none;
+}
+
+@media print {
+  .print-only {
+    display: block !important;
+  }
+}

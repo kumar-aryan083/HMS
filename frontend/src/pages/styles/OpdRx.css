@@ -1,0 +1,15 @@
+.full-opd-rx {
+    display: flex;
+    /* height: calc(100vh - 60px); */
+    margin-top: -8px;
+}
+
+.opd-rx-sideContent {
+    flex-grow: 1; 
+    height: calc(100vh - 75px);
+    overflow: auto;
+    width: 100%;
+}
+.opd-rx-sideContent::-webkit-scrollbar{
+    display: none;
+}

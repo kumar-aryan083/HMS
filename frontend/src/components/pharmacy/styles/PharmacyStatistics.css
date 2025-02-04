@@ -1,0 +1,91 @@
+.date-filters {
+  display: flex;
+  margin-top: 20px;
+}
+.statistics-search {
+  width: fit-content;
+  height: fit-content;
+  margin: auto 20px;
+  font-weight: 500;
+}
+.top-bar-stats{
+    display: flex;
+    justify-content: space-between;
+}
+.stats-gt{
+    display: flex;
+    margin-top: 40px;
+    padding: 10px 0;
+}
+.stats-gt>p{
+    margin: 0 20px;
+    font-weight: 600;
+}
+/* Modal Overlay */
+.pharmacy-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Modal Content */
+.pharmacy-modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 70%;
+  max-width: 1000px;
+  position: relative;
+  overflow-y: auto;
+}
+.pharmacy-modal-content::-webkit-scrollbar{
+  display: none;
+}
+
+/* Close Button */
+.pharmacy-close-modal {
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  background-color: red;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+  width: fit-content;
+  border-radius: 50%;
+  font-weight: 500;
+}
+.detailed-stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.detailed-stats-table th, .detailed-stats-table td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd; /* Add border to separate columns */
+}
+
+.detailed-stats-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.detailed-stats-table td {
+  background-color: #fafafa;
+}
+
+.detailed-stats-table tr:hover td {
+  background-color: #f1f1f1;
+}

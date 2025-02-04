@@ -1,0 +1,89 @@
+.upper-lab {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  padding: 10px 0;
+  margin: 0 20px;
+}
+.upper-lab > h2 {
+  margin: auto 0;
+}
+.upper-lab > button {
+  height: fit-content;
+  padding: 12px 20px;
+  margin: auto 0;
+  border: none;
+  background-color: var(--secondBase2);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 20px;
+  width: fit-content;
+}
+.upper-lab > button:hover {
+  background-color: var(--secondBase);
+}
+.lower-lab {
+  margin: 20px;
+}
+.lab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.lab-table th,
+.lab-table td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.lab-table th {
+  background-color: var(--base-hover);
+  color: var(--textCol);
+  font-weight: bold;
+}
+
+.lab-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Alternate row coloring */
+.lab-table tr:nth-child(even) {
+  background-color: #e6e5e5; 
+}
+
+.lab-table tr:nth-child(odd) {
+  background-color: #ffffff; /* White for even rows */
+}
+.lab-btn {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: auto 0;
+  font-size: 20px;
+  height: 50px;
+}
+.lab-rooms {
+  width: 150px;
+}
+.icon {
+  cursor: pointer;
+  font-size: 20px;
+}
+.icon:hover {
+  color: rgb(71, 71, 71);
+}
+.edit-lab {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}

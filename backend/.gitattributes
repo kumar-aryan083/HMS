@@ -1,0 +1,6 @@
+Dockerfile merge=ours
+config/config.js merge=ours
+server.js merge=ours
+Dockerfile cherry-pick=ours
+config/config.js cherry-pick=ours
+server.js cherry-pick=ours

@@ -1,0 +1,91 @@
+/* Base Container */
+.change-ward-history-form {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    background: var(--front-op);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Form Title */
+  .change-ward-history-form .form-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Form Rows */
+  .change-ward-history-form .form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  /* Labels */
+  .change-ward-history-form .form-label {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 5px;
+  }
+  
+  /* Select Inputs */
+  .change-ward-history-form .form-select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #fff;
+    transition: border-color 0.3s ease;
+  }
+  
+  .change-ward-history-form .form-select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Submit Button */
+  .change-ward-history-form .form-submit-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background: var(--secondBase);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .change-ward-history-form .form-submit-button:hover {
+    background: var(--secondBase2);
+  }
+  
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .change-ward-history-form {
+      padding: 15px;
+    }
+  
+    .change-ward-history-form .form-title {
+      font-size: 1.25rem;
+    }
+  
+    .change-ward-history-form .form-select {
+      font-size: 0.9rem;
+    }
+  
+    .change-ward-history-form .form-submit-button {
+      font-size: 0.9rem;
+    }
+  }
+  

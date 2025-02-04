@@ -1,0 +1,73 @@
+.pharmacy-bill-summary-section{
+    display: flex;
+    /* flex-direction: column; */
+    flex: 1;
+    justify-content: space-between;
+    /* align-items: flex-end; */
+    /* background-color: red; */
+  }
+  .pharmacy-bill-summary-section>h2{
+    margin-bottom: 10px;
+    /* background-color: red; */
+  }
+  .pharmacy-bill-summary-section>p:last-child{
+    /* background-color: red; */
+    width: 100%;
+    padding-left: 10px;
+    /* text-align: center; */
+  }
+  .pharmacy-bill-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .pharmacy-bill-terms-condition{
+    width: 50%;
+    /* background-color: green; */
+    padding-top: 20px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+  
+  .pharmacy-summary-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 350px;
+    margin-top: 10px;
+    /* background-color: blue; */
+  }
+  .pharmacy-summary-item {
+    display: flex;
+    align-items: center;
+  }
+  .pharmacy-summary-item strong {
+    min-width: 150px;
+  }
+
+  .remove-return-btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin-left: 15px; */
+    /* background-color: blue; */
+    width: fit-content;
+    height: fit-content;
+    margin-top: 22px
+  }
+  
+  .remove-return-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    width: fit-content;
+    font-weight: 500;
+  }
+  
+  .remove-return-btn:hover {
+    background-color: darkred;
+  }

@@ -1,0 +1,294 @@
+/* DischargeSummary.css */
+.container {
+  font-family: Arial, sans-serif;
+  margin: 0 auto;
+  /* padding: 40px; */
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  max-width: 1000px;
+  /* background-color: red; */
+}
+
+.print-container {
+  padding: 0 20px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+}
+.container, .print-container {
+    page-break-before: auto;
+    page-break-after: auto;
+  }
+
+.header {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  color: #2c3e50;
+  border-bottom: 1px solid #ddd;
+  /* padding-bottom: 10px; */
+  margin-bottom: 5px;
+  /* background-color: red; */
+}
+
+.sub-header {
+  margin-bottom: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #34495e;
+  /* background-color: blue; */
+}
+
+.ds-image-container {
+  margin: 0;
+}
+
+.ds-hospital-image {
+  width: 100%;
+  max-height: 400px;
+  height: 150px;
+  object-fit: fill;
+  border-radius: 10px;
+}
+
+.patient-details-container {
+  /* background-color: red; */
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 5px;
+  /* font-size: 2px; */
+}
+
+.top-border{
+  border: 0.5px solid rgba(0, 0, 0, 0.459);
+  padding: 10px;
+}
+
+.patient-detail {
+  display: flex;
+  width: calc(50% - 20px);
+  justify-content: space-between;
+  /* border: 0.5px solid rgba(0, 0, 0, 0.459); */
+}
+
+.patient-label {
+  font-size: 15px;
+  font-weight: bold;
+  color: #333;
+  padding: 2px;
+  width: 160px;
+  text-align: left;
+  border: none;
+  /* background-color: blue; */
+}
+
+.patient-value {
+  font-size: 16px;
+  color: black;
+  font-weight: 450;
+  padding: 2px 4px;
+  flex: 2;
+  text-align: left;
+  border: none;
+  /* background-color: red; */
+}
+
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+.label,
+.table-header {
+  font-weight: 600;
+  padding: 8px;
+  border: 1px solid #9b9999;
+  background-color: #d1caca83;
+  width: 250px;
+  text-align: left;
+}
+.ds-value{
+  padding: 6px;
+    color: #333;
+    background-color: #fff;
+    word-wrap: break-word;
+    border: 1px solid #9b9999;
+    font-weight: 500;
+}
+
+.value {
+  padding: 8px;
+  border: 1px solid #9b9999;
+  font-size: 16px;
+  background-color: #fff;
+  color: #555;
+}
+
+.ds-strong {
+  display: inline-block;
+  /* margin-top: 20px; */
+  /* margin-bottom: 5px; */
+  font-size: 18px;
+  color: #333;
+}
+
+.ds-div {
+  page-break-inside: avoid;
+  /* margin-bottom: 5px; */
+  line-height: 1.8 ;
+  padding-left: 10px;
+}
+.ds-para{
+  /* margin: auto 0; */
+  margin-top: 10px;
+  width: fit-content;
+  color: rgba(0, 0, 0, 0.836);
+  display: flex;
+  gap: 10px;
+}
+.ds-para p{
+  font-size: 16px;
+margin: auto 0;
+}
+
+.ds-div p{
+  color: rgba(0, 0, 0, 0.836);
+  font-size: 16px;
+}
+
+/* Custom Header Styling */
+.custom-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #333333ec;
+  border-radius: 50px;
+  margin-bottom: 20px;
+  gap: 20px;
+  background-color: #ffffff;
+}
+
+/* .custom-header img {
+  width: 100px; 
+  height: auto;
+  margin-right: 20px;
+} */
+.hospital-logo{
+  width: 90px; /* Adjust based on your logo size */
+  height: auto;
+  margin-right: 20px;
+}
+.hospital-logoo{
+  width: 90px; /* Adjust based on your logo size */
+  height: auto;
+  margin-left: 20px;
+}
+
+.custom-header-text {
+  text-align: center;
+}
+
+.custom-header h2 {
+  font-size: 32px;
+  color: #3f3279; /* Matching the blue tone in the logo */
+  margin: 0;
+}
+
+.custom-header p {
+  font-size: 19px;
+  color: #619f9f; /* Matching the green tone in the logo */
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Print Styling */
+@media print {
+  .container {
+    max-width: none;
+    padding: 20px;
+    margin: 0;
+    box-shadow: none;
+    border: none;
+  }
+  .print-button {
+    display: none;
+  }
+  .header {
+    font-size: 24px;
+  }
+  .sub-header {
+    font-size: 18px;
+  }
+  .value,
+  .label {
+    font-size: 16px;
+  }
+  .table {
+    page-break-after: always;
+  }
+}
+/* Unique styling for the medications table and authorized signatory section */
+.unique-no-page-break {
+  page-break-inside: avoid; /* Prevent page break inside this container */
+}
+
+.unique-medication-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.unique-table-header {
+  font-weight: bold;
+  border-bottom: 2px solid #ddd;
+  text-align: left;
+  padding: 8px;
+  background-color: #f4f4f4; /* Unique background for header */
+}
+
+.unique-table-data {
+  border-bottom: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.unique-no-data-message {
+  text-align: center;
+  font-style: italic;
+  color: #999;
+}
+
+.unique-space-signature {
+  margin-top: 20px;
+}
+
+.unique-signature-section {
+  text-align: center;
+  padding-top: 10px;
+  font-size: 14px;
+}
+
+.discharge-medications-header {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+
+.ds-medications-list-text {
+  padding: 0 10px;
+}
+
+.ds-medication-item {
+  margin-bottom: 2px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+}

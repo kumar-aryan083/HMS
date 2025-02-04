@@ -1,0 +1,54 @@
+.referral-report-container {
+    max-width: 1100;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  }
+  
+  .referral-report-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    /* margin-bottom: 15px; */
+    color: #333;
+  }
+  
+  .referral-report-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+  }
+  
+  .referral-report-table th,
+  .referral-report-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .referral-report-table th {
+    background: var(--base-hover);
+    color: white;
+  }
+  
+  .referral-report-table tbody tr:nth-child(even) {
+    background: #e6e6e6;
+  }
+  
+  .referral-report-total {
+    font-size: 18px;
+    text-align: right;
+    font-weight: bold;
+    color: #333;
+  }
+  .referral-report-header{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .report-filters-container{
+    display: flex;
+    gap: 10px;
+  }

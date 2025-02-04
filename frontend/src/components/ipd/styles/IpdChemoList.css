@@ -1,0 +1,158 @@
+.chemo-list {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 1100px;
+    margin: 30px auto;
+  }
+  
+  .am-head {
+    display: flex;
+    justify-content: end;
+  }
+  
+  .am-h-line {
+    margin: 10px 0;
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Table Styling */
+  .chemo-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .chemo-table th,
+  .chemo-table td {
+    border: 1px solid #dee2e6;
+    padding: 10px;
+    text-align: left;
+    font-size: 14px;
+  }
+  
+  .chemo-table th {
+    background-color: var(--base-hover);
+    color: white;
+  }
+  
+  .chemo-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .no-data {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+  }
+  
+  /* Buttons */
+  .add-chemo-btn {
+    padding: 10px 15px;
+    background-color: var(--secondBase);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    width: fit-content;
+  }
+  
+  .add-chemo-btn:hover {
+    background-color: var(--secondBase2);
+  }
+  
+  .chemo-table td {
+    vertical-align: top; /* Ensure all cells align correctly */
+    padding: 10px;
+  }
+  
+  .chemo-icon {
+    margin: auto 5px;
+    cursor: pointer;
+    color: #333;
+  }
+  .chemo-icon:hover {
+    color: #757070;
+  }
+  
+  .chemo-table tr {
+    height: auto; /* Ensures row stretches naturally */
+  }
+  
+  /* Popup Container */
+  .chemo-popup {
+    position: fixed;
+    top: 0;
+    left: 20%;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure the popup stays on top of other content */
+    overflow-y: auto; /* Enable scrolling if content is too tall for viewport */
+    padding: 20px;
+  }
+  
+  /* Popup Content */
+  .chemo-popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 1200px; /* Adjust max-width for responsiveness */
+    max-height: 90%; /* Prevent content from exceeding the viewport */
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    overflow-y: auto; /* Enable scrolling for large content */
+    animation: fadeIn 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column; /* Ensure proper content alignment */
+    /* justify-content: center; */
+    margin-top: 50px;
+    margin-right: 300px;
+  }
+  .chemo-popup-content::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Close Button */
+  .chemo-close-popup-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    border: none;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 4px 10px;
+    width: fit-content;
+  }
+  
+  .chemo-close-popup-btn:hover {
+    background-color: var(--secondBase);
+  }
+  
+  /* Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  

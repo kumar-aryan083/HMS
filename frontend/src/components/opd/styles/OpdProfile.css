@@ -1,0 +1,127 @@
+/* General Container */
+.opd-profile {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 30px;
+  color: #333;
+}
+
+/* .opd-profile:hover {
+  box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.15);
+} */
+
+/* Title Styling */
+.opd-profile-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--base);
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Grid Container */
+.opd-profile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+/* Section Styling */
+.opd-profile-section {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.opd-profile-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Headers */
+.opd-profile-section h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--base);
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--base);
+  padding-bottom: 5px;
+}
+
+/* Details Styling */
+.opd-profile-section p {
+  margin: 10px 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.opd-profile-section p strong {
+  color: #555;
+  font-weight: 600;
+}
+
+/* Assessment Section */
+.opd-profile-section div[dangerouslySetInnerHTML] {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fafafa;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #444;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.opd-profile-section div[dangerouslySetInnerHTML]::-webkit-scrollbar {
+  width: 8px;
+}
+
+.opd-profile-section div[dangerouslySetInnerHTML]::-webkit-scrollbar-thumb {
+  background-color: #c0c0c0;
+  border-radius: 4px;
+}
+
+/* Error Message */
+.error {
+  color: red;
+  font-size: 18px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Loading Message */
+p {
+  text-align: left;
+  font-size: 14px;
+  color: black;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .opd-profile {
+    padding: 20px;
+  }
+
+  .opd-profile-title {
+    font-size: 26px;
+  }
+
+  .opd-profile-section h2 {
+    font-size: 20px;
+  }
+
+  .opd-profile-section p {
+    font-size: 14px;
+  }
+
+  .opd-profile-grid {
+    gap: 20px;
+  }
+}

@@ -1,0 +1,241 @@
+.report-view-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+}
+
+.report-view-modal-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); */
+  width: 60%;
+  position: relative;
+  text-align: center;
+  height: 85%;
+  overflow-y: auto;
+}
+.report-view-modal-content::-webkit-scrollbar{
+  display: none;
+}
+
+.report-view-close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  background-color: var(--secondBase);
+  border-radius: 50%;
+  padding: 2px 8px;
+  color: white;
+}
+
+.hospital-image-wrapper {
+  width: 100%; /* Ensures the container takes the full width */
+  height: 100%; /* Optional: You can set a fixed height if needed */
+  display: flex; /* Makes sure the image aligns properly */
+  justify-content: center; /* Center the image horizontally */
+  align-items: center; /* Center the image vertically */
+  overflow: hidden; /* Hides any part of the image outside the container */
+  background-color: #f9f9f9; /* Optional: Background color for the container */
+  margin-top: 0;
+}
+
+/* Style for the image itself */
+.report-hospital-image {
+  width: 100%; /* Ensures the image scales to the full container width */
+  height: 80%; /* Maintains aspect ratio */
+  object-fit: cover; /* Ensures the image covers the container without distortion */
+  display: block; /* Prevents inline spacing issues with images */
+}
+
+/* .total-bill-image-container {
+  margin-bottom: 20px;
+} */
+
+.total-hospital-image {
+  width: 100%;
+  max-height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.report-table th,
+.report-table td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.report-table th {
+  background-color: #aba7a7;
+  font-weight: bold;
+}
+
+.report-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.report-table td {
+  font-size: 14px;
+}
+
+.report-table td,
+.report-table th {
+  color: #333;
+}
+
+.report-table td {
+  word-wrap: break-word;
+}
+
+.report-table th {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.print-button {
+  width: fit-content;
+  margin-top: 20px;
+  margin-bottom: 0;
+  font-weight: 500;
+}
+@media print {
+  .report-print-container {
+    width: 100%;
+    padding: 20px;
+  }
+
+  /* .total-hospital-image {
+    max-width: 200px;
+    margin: 0 auto;
+  } */
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+}
+
+/* @media print {
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .pagination-controls,
+  .report-view-close,
+  .wing-btn,
+  .print-button {
+    display: none !important;
+  }
+
+  .report-view-modal {
+    display: block !important;
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    background-color: #fff;
+    box-shadow: none;
+  }
+
+  .report-view-modal-content {
+    width: 100% !important;
+    padding: 30px !important;
+    height: 100% !important;
+  }
+
+  .report-view-modal-content {
+    page-break-before: always;
+  }
+
+  .report-table {
+    width: 100% !important;
+    border-collapse: collapse;
+  }
+
+  .report-table th,
+  .report-table td {
+    border: 1px solid #00000029;
+    padding: 8px;
+    text-align: left;
+  }
+
+  .total-hospital-image {
+    max-width: 100%;
+    height: auto;
+  }
+} */
+
+.report-tab-container {
+  display: flex;
+  gap: 20px;
+  width: 400px;
+  margin-top: 20px;
+  font-weight: 500;
+}
+.lab-action-btn {
+  background-color: var(--base);
+  color: white;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin: 0;
+  cursor: pointer;
+  user-select: none;
+}
+.lab-action-btn:hover{
+  background-color: var(--base-hover);
+}
+.lab-report-btn {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  height: 90px;
+}
+.clinical-notes{
+  margin-top: 20px;
+}
+.clinical-notes>div>div>p{
+  text-align: left;
+  color: black;
+}
+
+.report-signature-section p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+.report-signature-section p:last-child{
+  text-align: center;
+}
+
+.report-signature-section {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.report-signature-section p:first-child {
+  margin-bottom: 20px;
+}
+.report-space-signature{
+  display: flex;
+  justify-content: space-around;
+}

@@ -1,0 +1,77 @@
+/* .item-wise-container {
+    width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .item-wise-tabs {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+  }
+  
+  .single-tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    color: #555;
+    border: none;
+    background: none;
+    transition: all 0.3s ease;
+  }
+  
+  .single-tab.active {
+    color: var(--base-hover);
+    border-bottom: 2px solid var(--base);
+  }
+  
+  .item-wise-report-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .item-wise-report-table th, .report-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .item-wise-report-table th {
+    background-color: #f7f7f7;
+  }
+  
+  .item-wise-total {
+    text-align: right;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 20px;
+  }
+   */
+   .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+  }
+  
+  .pagination button {
+    padding: 5px 10px;
+    cursor: pointer;
+    width: fit-content;
+  }
+  
+  .pagination button.active {
+    background-color: var(--base);
+    color: white;
+  }
+  
+  .pagination button:disabled {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+  }

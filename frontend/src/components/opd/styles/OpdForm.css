@@ -1,0 +1,234 @@
+.opd-form-container {
+    max-width: 1000px;
+    width: 100%;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: var(--front-op);
+    border-radius: 15px;
+    border: 1px solid #e0e0e0;
+  }
+  
+  
+  .opd-form-heading {
+    text-align: center;
+    color: var(--base);
+    font-weight: 900;
+    font-size: 32px;
+    margin: 0;
+  }
+  .opd-heading{
+    font-size: 20px;
+    font-weight: 600;
+    text-align: left;
+    color: #333;
+    margin-bottom: 0;
+  }
+  
+  .opd-input-pair {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .opd-input-pair .opd-form-group {
+    flex: 1;
+  }
+  
+  .opd-form-group {
+    margin-bottom: 15px;
+    position: relative;
+  }
+  .o-label{
+    display: flex;
+    flex-direction: row;
+  }
+
+
+  .opd-form-group label {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 16px;
+  }
+  
+  .opd-form-group input,
+  .opd-form-group select {
+    width: 100%;
+    padding: 12px 8px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #fafafa;
+    transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .opd-form-group input:focus,
+  .opd-form-group select:focus {
+    border-color: #007bff;
+    background-color: #fff;
+    outline: none;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+  }
+  
+  .opd-form-group input:hover,
+  .opd-form-group select:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .opd-submit-btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: var(--base);
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .opd-submit-btn:hover {
+    background-color: var(--base-hover);
+  }
+  /* Style the suggestions list */
+.suggestions-list {
+  position: absolute; /* Position it under the input field */
+  top: 100%; /* Align it below the input */
+  left: 0;
+  width: 100%; /* Match the width of the input */
+  max-height: 200px; /* Set a max height to avoid overflowing */
+  overflow-y: auto; /* Scroll if there are too many suggestions */
+  background-color: white; /* White background for the suggestions */
+  border: 1px solid #ccc; /* Light border for the suggestions */
+  border-radius: 4px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Soft shadow for a raised effect */
+  z-index: 100; /* Ensure it's above other elements */
+  margin-top: 2px; /* Small space between input and suggestions */
+  padding: 0; /* Remove padding */
+  list-style-type: none; /* Remove default list style */
+  box-sizing: border-box; /* Ensure padding and borders are included in the element's total width/height */
+}
+
+/* Style individual suggestion items */
+.suggestions-list li {
+  padding: 10px; /* Add some padding for clickable area */
+  cursor: pointer; /* Make it clear that it's clickable */
+  transition: background-color 0.3s; /* Smooth background change on hover */
+}
+
+/* Hover effect for suggestion items */
+.suggestions-list li:hover {
+  background-color: #f0f0f0; /* Light gray background on hover */
+}
+
+/* Style the input to look better when suggestions are shown */
+.opd-form-group input {
+  position: relative; /* Ensures suggestions are positioned correctly relative to the input */
+}
+
+.opd-letter-head-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  padding: 30px 0;
+  border-top: 1px solid #ddd;
+  /* background-color: #f9f9f9; */
+  color: #333;
+  font-weight: 500;
+}
+
+.center-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 250px 0;
+  position: relative;
+  background-image: url("../assets/design-pattern.png"); /* Add your design pattern background */
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 150px; /* Adjust the size of the section */
+}
+
+.center-logo {
+  max-width: 50%; /* Adjust size as needed */
+  opacity: 0.5; /* Set opacity */
+  filter: brightness(0.7); /* Optional: adjusts brightness for better visibility */
+}
+
+.vitals-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 15px 20px;
+  position: relative;
+  z-index: 1; /* Ensures it stays above the background logo */
+}
+
+.vital-detail {
+  display: flex;
+  justify-content: space-between;
+  width: 40%; /* Keeps it aligned on the left */
+  padding: 5px 0;
+  /* border-bottom: 1px solid #ccc; */
+}
+
+.vital-label {
+  font-weight: bold;
+  color: #333;
+  font-size: 20px;
+}
+
+.vital-value {
+  color: #555;
+  font-weight: bold;
+}
+
+
+@media print {
+  .print-content {
+    page-break-after: always;
+    page-break-before: always;
+  }
+
+  .center-logo-container {
+    margin-top: 250px; /* Adjust if necessary */
+  }
+
+  .center-logo {
+    opacity: 0.5; /* Maintain opacity on print */
+  }
+
+
+  .opd-letter-head-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    padding: 30px 0;
+    border-top: 1px solid #ddd;
+    /* background-color: #f9f9f9; */
+    color: #333;
+  }
+
+  /* You can adjust the page height and margins if needed */
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .print-content {
+    min-height: calc(100vh - 80px); /* Adjust content height to fit footer */
+  }
+}

@@ -1,0 +1,58 @@
+.sidenav {
+    width: 18%;
+    background-color: var(--front-op);
+    border-right: 1px solid #fcf2f2;
+    height: calc(100vh - 64px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -10px;
+  }
+  
+  .sidenav h3 {
+    color: var(--secondBase);
+    font-style: italic;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-decoration: underline;
+    font-size: 2rem;
+  }
+  
+  .sidenav ul {
+    list-style: none;
+    width: 100%;
+  }
+  
+  .sidenav li {
+    margin: auto 0;
+    /* padding: 10px 0; */
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.244);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+  }
+   
+
+  .sidenav li:hover a{
+    color: var(--textCol);
+  }
+  
+  .sidenav li:hover {
+    background-color: var(--base-hover);
+  }
+  .full-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    text-decoration: none;
+    color: var(--base);
+    font-weight: 500;
+    padding: 10px 0;
+    /* padding: 10px; */
+  }

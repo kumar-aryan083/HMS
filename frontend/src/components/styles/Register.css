@@ -1,0 +1,133 @@
+/* Container with elevation and unique border */
+.register-form-container {
+  max-width: 800px;
+  width: 90%;
+  margin: 30px auto;
+  padding:  10px 30px;
+  background-color: var(--front-op);
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  /* box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06); */
+}
+
+.register-form-container h2 {
+  text-align: center;
+  color: var(--base);
+  font-weight: 900;
+  font-size: 32px;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.register-form-row {
+  display: flex;
+  gap: 10px;
+}
+
+.register-form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+/* .register-roles {
+  width: fit-content;
+  margin: 0;
+  padding: 0;
+  height: fit-content;
+} */
+#register-role {
+  padding: 7px;
+  margin-top: 5px;
+}
+.ex-register {
+  padding-top: 20px;
+  font-weight: 500;
+}
+.ex-register p a {
+  color: black;
+}
+.register-submit-btn{
+  background-color: var(--secondBase);
+  font-weight: 500;
+}
+
+.staff-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.staff-modal-content {
+  background: white;
+  /* padding: 10px; */
+  border-radius: 10px;
+  width: 800px;
+  position: relative;
+  height: 85%;
+  overflow-y: auto;
+}
+.staff-modal-content::-webkit-scrollbar{
+  display: none;
+}
+.staff-modal-close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* background: transparent; */
+  background: none;
+  font-weight: 600;
+  color: #333;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  width: fit-content;
+}
+.staff-modal-close-btn:hover{
+  background: none;
+}
+.appointment-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.appointment-modal-content {
+  background: white;
+  /* padding: 10px; */
+  border-radius: 10px;
+  height: 94%;
+  overflow-y: auto;
+  width: 1000px;
+  position: relative;
+}
+.appointment-modal-content::-webkit-scrollbar{
+  display: none;
+}
+.appointment-modal-close-btn {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  /* background: transparent; */
+  background: none;
+  font-weight: 600;
+  color: #333;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  width: fit-content;
+}
+.appointment-modal-close-btn:hover{
+  background: none;
+}

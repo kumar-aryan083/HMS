@@ -1,0 +1,148 @@
+.ipd-profile {
+  font-family: Arial, sans-serif;
+  color: #333;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1200px;
+  /* background-color: #f9f9f9; */
+  border-radius: 8px;
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+}
+
+.ipd-profile-title {
+  font-size: 2rem;
+  color: var(--base);
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.ipd-profile-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.ipd-profile-section {
+  flex: 1;
+  min-width: 300px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ipd-profile-section h2 {
+  font-size: 1.5rem;
+  color: var(--base);
+  margin-bottom: 15px;
+  border-bottom: 2px solid var(--base);
+  padding-bottom: 5px;
+}
+
+.ipd-profile-section p {
+  margin: 8px 0;
+  line-height: 1.6;
+  text-align: left;
+  color: rgba(0, 0, 0, 0.832);
+  font-size: 14px;
+}
+
+.ipd-profile-section p strong {
+  font-weight: 600;
+  color: #444;
+}
+
+.medications-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.medications-table th,
+.medications-table td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.medications-table th {
+  background-color: var(--base);
+  color: #fff;
+  font-weight: bold;
+}
+
+.medications-table tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.medications-table tr:nth-child(even) {
+  background-color: #fff;
+}
+
+.medications-table tr:hover {
+  background-color: #e0f7fa;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.table td.label {
+  font-weight: bold;
+  color: #555;
+  padding: 10px;
+  width: 30%;
+  background-color: #f7f7f7;
+}
+
+.table td.value {
+  padding: 10px;
+  color: #333;
+  background-color: #fff;
+  word-wrap: break-word;
+}
+
+.error {
+  color: #d32f2f;
+  font-weight: bold;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.fg-group {
+  gap: 20px;
+}
+
+.fg-group > div {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .ipd-profile-grid {
+    flex-direction: column;
+  }
+
+  .ipd-profile-section {
+    min-width: 100%;
+  }
+}
+.handover-label{
+  font-weight: 600;
+  padding: 4px;
+  font-size: 13px;
+  border: 1px solid #9b9999;
+  /* background-color: #d1caca83; */
+  width: 250px;
+  text-align: left;
+}
+.handover-value{
+  padding: 4px;
+  border: 1px solid #9b9999;
+  font-size: 13px;
+  /* background-color: #fff; */
+  color: #555;
+}

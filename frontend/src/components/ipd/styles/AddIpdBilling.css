@@ -1,0 +1,126 @@
+.ipd-billing-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .ipd-billing-modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 1000px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    height: 90%;
+    overflow-y: auto;
+  }
+  .ipd-billing-modal-content::-webkit-scrollbar{
+    display: none;
+  }
+  
+  .ipd-billing-close-btn {
+    width: fit-content;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 10px 15px;
+  }
+  
+  .ipd-billing-close-btn:hover {
+    background-color: var(--secondBase2);
+  }
+  
+  .ipd-billing-title {
+    margin: 0 0 20px 0;
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  .ipd-billing-form {
+    margin-bottom: 20px;
+  }
+  
+  .ipd-billing-form-group {
+    margin-bottom: 15px;
+  }
+  
+  .ipd-billing-form-group label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+  }
+  
+  .ipd-billing-form-group input {
+    width: 60%;
+    padding: 5px;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .ipd-billing-add-item-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .ipd-billing-add-item-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .ipd-billing-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  .ipd-bill-m{
+    margin-top: 20px;
+  }
+  
+  .ipd-billing-table th,
+  .ipd-billing-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .ipd-billing-table th {
+    background-color: #f4f4f4;
+  }
+  
+  .ipd-billing-submit-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 14px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .ipd-billing-submit-btn:hover {
+    background-color: #218838;
+  }
+  

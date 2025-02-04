@@ -1,0 +1,103 @@
+.edit-investigation-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .edit-investigation-popup-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+  }
+  
+  .edit-investigation-close-btn {
+    border: none;
+    font-size: 1.5rem;
+    position: absolute;
+    background: none;
+    color: #333;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    width: fit-content;
+    border-radius: 50%;
+    font-weight: 500;
+    padding: 4px 10px;
+  }
+  .edit-investigation-close-btn:hover{
+    background:none;
+    color: #333333c0;
+  }
+  
+  .edit-investigation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .edit-investigation-form .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .edit-investigation-form .form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .edit-investigation-form .form-group input,
+  .edit-investigation-form .form-group select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .edit-investigation-save-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .edit-investigation-save-btn:hover {
+    background: #0056b3;
+  }
+  .lab-search-suggestions {
+    position: absolute;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    z-index: 9999;
+    top: calc(100% - 10px);
+  }
+  
+  /* Style for each suggestion item */
+  .lab-suggestion-item {
+    padding: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  /* Change background color on hover */
+  .lab-suggestion-item:hover {
+    background-color: #f0f0f0;
+  }
+  

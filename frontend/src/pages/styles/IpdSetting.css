@@ -1,0 +1,30 @@
+.upper-is{
+    padding: 20px 50px 0 100px;
+    /* margin: 0 auto; */
+}
+.tab-menu{
+    display: flex;
+    /* justify-content: space-between; */
+    gap: 10px;
+}
+.tab-menu>button {
+    padding: 10px;
+    border: none;
+    /* border-left: 1px solid rgba(0, 0, 0, 0.442); */
+    background: var(--secondBase);
+    cursor: pointer;
+    width: fit-content;
+    font-weight: 600;
+}
+
+.tab-menu>button:hover{
+    background-color: var(--front-op);
+    color: black;
+}
+.tab-menu > button.active {
+    background-color: var(--base-hover); 
+    color: white; 
+}
+.lower-is{
+    padding: 10px 60px 10px 100px;
+}

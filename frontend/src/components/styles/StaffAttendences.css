@@ -1,0 +1,41 @@
+/* General styling for StaffAttendences */
+.staff-attendances {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Search Bar styles */
+.search-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 auto;
+  margin-top: 10px;
+  width: fit-content;
+  
+}
+
+.search-bar input,
+.search-bar button {
+  padding: 10px;
+  font-size: 16px;
+  height: fit-content;
+  width: fit-content;
+  margin: auto;
+}
+
+.search-bar button {
+  cursor: pointer;
+  background-color: var(--base);
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+.search-bar button:hover {
+  background-color: var(--base-hover);
+}

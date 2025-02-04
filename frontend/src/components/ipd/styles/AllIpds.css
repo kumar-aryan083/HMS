@@ -1,0 +1,129 @@
+/* Header styling */
+.full-all-ipd{
+  padding-bottom: 40px;
+}
+.all-ipds-header {
+    /* margin: 20px 0; */
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 40px;
+  }
+  
+  .all-ipds-header h1 {
+    font-size: 24px;
+    color: #333;
+    margin: 0;
+  }
+  
+  /* Table container */
+  .all-ipds-table-container {
+    border-radius: 8px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  /* Table styling */
+  .all-ipds-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .all-ipds-table th,
+  .all-ipds-table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+  
+  .all-ipds-table th {
+    background-color: var(--base-hover);
+    color: var(--textCol);
+    font-weight: bold;
+  }
+  
+  
+  .all-ipds-table tbody tr:nth-child(even) {
+    background-color: #e6e6e6c8 !important; /* Ensures no other styles override this */
+}
+
+/* .all-ipds-table tbody tr:nth-child(even) {
+    background-color: #fff !important;
+}
+   */
+  .all-ipds-table tbody tr:hover {
+    background-color: #e6e6e6;
+  }
+  
+  
+  /* .all-ipds-actions {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+  } */
+  
+  .all-ipds-icon {
+    cursor: pointer;
+    color: #555;
+    transition: color 0.3s ease;
+    padding: 0 10px;
+  }
+  
+  .all-ipds-icon:hover {
+    color: #007bff;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 5px;
+  }
+  
+  .pagination-btn {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    color: black;
+    border-color: rgb(170, 166, 166);
+    width: fit-content;
+  }
+  
+  .pagination-btn:hover {
+    background-color: var(--front);
+    color: var(--textCol);
+  }
+  
+  .pagination-btn.active {
+    background-color: var(--base);
+    color: #fff;
+    border-color: var(--base-hover);
+  }
+  
+  .pagination-btn:disabled {
+    background-color: #f1f1f1;
+    cursor: not-allowed;
+  }
+  .all-ipds-search {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    width: 65%;
+    margin: 20px auto;
+  }
+  
+  .all-ipds-search-input {
+    width: 20%;
+    padding: 8px;
+    border: 1px solid #c1bbbb;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .all-ipds-search-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  

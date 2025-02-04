@@ -1,0 +1,118 @@
+.upper-wing {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  padding: 10px 0;
+}
+.upper-wing > h2 {
+  margin: auto 0;
+}
+.upper-wing > button {
+  height: fit-content;
+  padding: 12px 20px;
+  margin: auto 0;
+  border: none;
+  background-color: var(--secondBase2);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 20px;
+  width: fit-content;
+}
+.upper-wing > button:hover {
+  background-color: var(--secondBase);
+}
+
+.wing-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.wing-table th,
+.wing-table td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.wing-table td {
+  height: 40px;
+}
+
+.wing-table th {
+  background-color: var(--base-hover);
+  color: var(--textCol);
+  font-weight: bold;
+}
+
+.wing-table tr:nth-child(even) {
+  background-color: #e6e6e6d0;
+}
+
+.wing-table tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.wing-table tr:hover {
+  background-color: #e6e6e6;
+}
+.wing-btn {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  /* margin: auto 0; */
+  height: 90px;
+}
+.wings-rooms {
+  width: 150px;
+}
+.icon {
+  cursor: pointer;
+  font-size: 20px;
+}
+.icon:hover {
+  color: rgb(71, 71, 71);
+}
+.edit-wing {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.pagination-controls button {
+  background-color: var(--base);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: fit-content;
+  user-select: none;
+}
+
+.pagination-controls button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination-controls span {
+  font-size: 18px;
+}

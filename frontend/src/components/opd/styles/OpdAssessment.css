@@ -1,0 +1,106 @@
+/* Main container */
+.opd-assessment-container {
+  max-width: 900px;
+  margin: 50px auto;
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 30px 25px;
+  font-family: 'Roboto', sans-serif;
+  color: #444;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.opd-assessment-container:hover {
+  transform: scale(1.01);
+  box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Header styling */
+.opd-assessment-header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.opd-assessment-header h3 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--base);
+  letter-spacing: 1px;
+  margin: 0;
+  text-transform: uppercase;
+  border-bottom: 3px solid var(--base);
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+/* Form group */
+.form-group {
+  margin-bottom: 25px;
+}
+
+/* .react-quill {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+.react-quill .ql-toolbar {
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ddd;
+  border-radius: 8px 8px 0 0;
+}
+
+.react-quill .ql-container {
+  min-height: 250px;
+  font-size: 15px;
+  line-height: 1.7;
+  padding: 10px;
+  border-radius: 0 0 8px 8px;
+} */
+
+/* Button styling */
+.opd-assessment-btn {
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+  background: linear-gradient(90deg, var(--base-hover), var(--base));
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.opd-assessment-btn:hover {
+  background: linear-gradient(90deg, var(--base-hover), var(--base));
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.opd-assessment-btn:active {
+  transform: translateY(0);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .opd-assessment-container {
+    padding: 20px;
+  }
+
+  .opd-assessment-header h3 {
+    font-size: 22px;
+  }
+
+  /* .react-quill .ql-container {
+    min-height: 180px;
+  }
+
+  .opd-assessment-btn {
+    font-size: 16px;
+    padding: 12px 16px;
+  } */
+}

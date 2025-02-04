@@ -1,0 +1,62 @@
+.allergies-container {
+    padding: 20px;
+    max-width: 900px;
+    margin: 10px auto;
+    background-color: var(--front-op);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .allergy-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .allergies-row-gap{
+    margin-bottom: -20px;
+  }
+  .allergy-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .allergy-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .allergy-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .allergies-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .allergy-item {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .no-allergies {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+  }
+  
+  .status-message {
+    color: #ff0000;
+    margin-bottom: 10px;
+  }
+  

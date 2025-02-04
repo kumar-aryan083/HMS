@@ -1,0 +1,122 @@
+/* General popup container styling */
+.edit-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Popup content box */
+  .edit-popup-content {
+    background: #ffffff;
+    width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+  }
+  
+  /* Popup title */
+  .edit-popup-content h2 {
+    margin: 0;
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #333;
+    text-align: center;
+  }
+  
+  /* Close button */
+  .close-popup-btn {
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    border: none;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 4px 10px;
+  }
+  
+  .close-popup-btn:hover {
+    color: #ff4d4d;
+  }
+  
+  /* Input fields */
+  .edit-popup-content input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+ 
+  
+  /* Focused input styling */
+  .edit-popup-content input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.2);
+  }
+  
+  /* Update button */
+  .update-med-btn {
+    width: 100%;
+    padding: 10px;
+    background: var(--secondBase);
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: 500;
+  }
+  
+  .update-med-btn:hover {
+    background: var(--secondBase2);
+  }
+  
+  /* CSS for the suggestion dropdown */
+.edit-medicine-suggestions {
+    position: absolute; /* Align the dropdown relative to the input container */
+    background-color: white;
+    /* border: 1px solid #ccc; */
+    border-radius: 4px;
+    max-height: 200px;
+    width: calc(100% - 40px);
+    overflow-y: auto;
+    z-index: 100;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Ensure the dropdown is positioned directly below the input field */
+  .input-container {
+    position: relative; /* Establish a local positioning context */
+  }
+  
+  .input-container input {
+    position: relative;
+    display: block;
+  }
+  
+  .edit-medicine-suggestions li {
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .edit-medicine-suggestions li:hover {
+    background-color: #f0f0f0;
+  }
+  

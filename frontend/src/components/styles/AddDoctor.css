@@ -1,0 +1,134 @@
+/* Container with elevation and unique border */
+.doctor-form-container {
+    max-width: 1300px;
+    width: 100%;
+    margin: 20px auto;
+    padding: 5px 30px;
+    background-color: var(--front-op);
+    border-radius: 15px;
+    border: 1px solid #e0e0e0;
+    /* box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; */
+}
+
+/* .doctor-form-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15), 0 8px 24px rgba(0, 0, 0, 0.1);
+} */
+
+/* Heading styles */
+.doctor-form-heading {
+    text-align: center;
+    color: var(--base);
+    font-weight: 900;
+    font-size: 32px;
+}
+
+/* Pairs of inputs side by side */
+.input-pair {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+/* Adjust to make each form group in a pair take equal space */
+.input-pair .doctor-form-group {
+    flex: 1;
+}
+
+
+/* Form Group */
+.doctor-form-group {
+    margin-bottom: 15px;
+}
+
+/* Labels */
+.doctor-form-group label {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+/* Input and Select Styling */
+.doctor-form-group input, .doctor-form-group select {
+    width: 100%;
+    padding: 12px 8px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #fafafa;
+    transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding elevation */
+}
+
+.doctor-form-group input:focus, .doctor-form-group select:focus {
+    border-color: #007bff;
+    background-color: #fff;
+    outline: none;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3); /* Increased shadow on focus */
+}
+
+.doctor-form-group input:hover, .doctor-form-group select:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Slight shadow on hover */
+}
+
+/* Inline time groups for time fields */
+.inline-time {
+    display: flex;
+    gap: 20px;
+}
+
+.inline-time-item {
+    flex: 1;
+}
+
+/* Available Days checkboxes */
+.available-days-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-top: 20px;
+}
+
+.day-checkbox {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+
+}
+
+/* Submit Button */
+.doctor-submit-btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: var(--base);
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.doctor-submit-btn:hover {
+    background-color: var(--base-hover);
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .inline-time {
+        flex-direction: column;
+    }
+
+    .inline-time-item {
+        width: 100%;
+    }
+}

@@ -1,0 +1,77 @@
+/* Followup.css */
+
+.follow-up-component {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    background-color: var(--front-op);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .follow-up-component h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+  }
+  
+  .form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group label {
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #555;
+  }
+  
+  .form-group input[type="date"],
+  .form-group select,
+  .form-group textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--base);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: var(--base-hover);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .form-row {
+      flex-direction: column;
+    }
+  
+    button[type="submit"] {
+      font-size: 14px;
+      padding: 10px;
+    }
+  }
+  

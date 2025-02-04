@@ -1,0 +1,130 @@
+/* AddAllergy.css */
+.full-allergy {
+    max-width: 1000px;
+    width: 70%;
+    margin: 0 auto;
+    padding: 20px 40px;
+    background-color: var(--front-op);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .allergy-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .allergy-header h3 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .form-group {
+    margin-bottom: 10px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .allergy-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .allergy-input:focus {
+    outline: none;
+    border-color: var(--base-hover);
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.25);
+  }
+  
+  .allergy-btn {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    background-color: var(--secondBase);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    font-weight: 600;
+  }
+  
+  .allergy-btn:hover {
+    background-color: var(--secondBase2);
+  }
+
+  /* Style for React-Quill Toolbar */
+.ql-toolbar {
+  background-color: #ffffff; /* White background for toolbar */
+  border: 1px solid #ccc; /* Border similar to TinyMCE */
+  border-radius: 5px; /* Rounded edges */
+  padding: 5px; /* Add padding for better spacing */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add subtle shadow for elevation */
+  display: flex;
+  flex-wrap: wrap; /* Make sure toolbar items wrap nicely */
+}
+
+/* Style toolbar buttons */
+.ql-toolbar .ql-formats {
+  margin-right: 10px; /* Add spacing between groups */
+  display: flex; /* Align toolbar items in a row */
+  gap: 8px; /* Space between buttons */
+}
+
+.ql-toolbar button,
+.ql-toolbar select {
+  background-color: #f9f9f9; /* Light gray for buttons */
+  border: 1px solid #ddd; /* Soft border */
+  border-radius: 4px; /* Rounded corners */
+  padding: 5px 8px; /* Button padding */
+  margin: 0; /* Remove extra margin */
+  cursor: pointer; /* Pointer cursor for buttons */
+}
+
+.ql-toolbar button:hover,
+.ql-toolbar select:hover {
+  background-color: #ececec; /* Slightly darker gray on hover */
+}
+
+.ql-toolbar button.ql-active {
+  background-color: #007bff; /* Active state color */
+  color: #fff; /* White text for active state */
+  border-color: #007bff; /* Match active border color */
+}
+
+/* Dropdown menus in the toolbar */
+.ql-toolbar select {
+  min-width: 100px; 
+  padding: 5px; 
+}
+
+/* Spacing between the editor and toolbar */
+.ql-container {
+  margin-top: 1px; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  font-family: Arial, sans-serif !important; 
+  font-size: 10px !important; 
+}
+
+/* Editor container styling */
+.ql-editor {
+  min-height: 200px; 
+  padding: 10px;
+  font-size: 10px; 
+  font-family: Arial, sans-serif; 
+  background-color: #ffffff; 
+  border-radius: 5px; 
+  line-height: 1.6; 
+  text-align: left;
+}

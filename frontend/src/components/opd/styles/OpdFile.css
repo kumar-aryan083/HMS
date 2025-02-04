@@ -1,0 +1,169 @@
+/* OpdFile.css */
+
+/* Container and Header */
+.opd-file-container {
+    padding: 10px;
+    /* background-color: #f9f9f9; */
+    border-radius: 8px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    width: 85%;
+    margin: 0 auto;
+}
+
+.opd-file-heading {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Search Inputs */
+.opd-search-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 auto;
+    width: fit-content;
+    width: 800px;
+}
+
+.opd-search-input {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 250px;
+}
+
+.opd-search-btn {
+    padding: 8px 12px;
+    background-color: var(--base);
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.opd-search-btn:hover {
+    background-color: var(--base-hover);
+}
+
+/* Table Styles */
+.opd-file-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.opd-file-header {
+    background-color: var(--base-hover);
+    color: #fff;
+    
+}
+.opd-close{
+    background: none;
+    top: 10px;
+    right:20px;
+    font-weight: 500;
+    font-size: 20px;
+    position: absolute;
+    cursor: pointer;
+}
+.opd-close:hover{
+    color: #333333d0;
+}
+
+.opd-file-header th {
+    padding: 10px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.row-item {
+    padding: 8px 0;  
+    text-align: center;
+    color: #333;
+}
+
+
+/* Action Buttons */
+.actions-item {
+    display: flex;
+    gap: 10px;
+}
+
+.opd-edit-btn,
+.opd-delete-btn,
+.opd-rx-btn {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.opd-edit-btn {
+    background-color: var(--front);
+    color: #fff;
+}
+
+.opd-edit-btn:hover {
+    background-color: var(--base);
+}
+
+.opd-delete-btn {
+    background-color: var(--secondBase);
+    color: #fff;
+}
+
+.opd-delete-btn:hover {
+    background-color: var(--secondBase2);
+}
+
+.opd-rx-btn{
+    background-color: var(--base);
+    color: var(--textCol);
+}
+.opd-rx-btn:hover{
+    background-color: var(--base-hover);
+}
+
+/* Pagination */
+.opd-pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.opd-pagination-btn {
+    padding: 3px 6px;   
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.opd-pagination-btn.active {
+    background-color: var(--base);
+    color: white;
+    font-weight: bold;
+}
+
+.opd-pagination-btn:hover {
+    background-color: var(--base-hover);
+}
+.opd-file-table tbody tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.opd-file-table tbody tr:nth-child(even) {
+    background-color: #e6e6e6c8;
+}
+.opd-file-table tbody tr:hover {
+    background-color: #e6e6e6;
+}

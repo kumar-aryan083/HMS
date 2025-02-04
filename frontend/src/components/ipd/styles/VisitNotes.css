@@ -1,0 +1,35 @@
+.visit-notes-container {
+    margin: 20px;
+    background-color: var(--front-op);
+    padding: 20px;
+  }
+
+  .add-note-section {
+    margin-top: 20px;
+  }
+  
+  .add-note-btn {
+    margin-top: 20px;
+    background-color: var(--base-hover);
+    color: var(--textCol);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 10px;
+    width: 100%;
+  }
+  .add-note-btn:hover{
+    background-color: var(--base);
+  }
+  
+  .last-updated {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .error {
+    color: red;
+  }
+  

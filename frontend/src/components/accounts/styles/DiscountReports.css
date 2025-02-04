@@ -1,0 +1,36 @@
+.discount-reports-container {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .discount-reports-header {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  
+  .discount-reports-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .discount-reports-table th,
+  .discount-reports-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .discount-reports-table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  
+  .no-data {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+  }
