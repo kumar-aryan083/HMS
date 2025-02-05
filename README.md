@@ -1,6 +1,6 @@
 ## Hospital Management System (HMS)
 
-This is a full-stack Hospital Management System that helps manage various hospital operations, including OPD, IPD, doctor management, patient admission, payments, and staff attendance tracking. The system allows administrators to oversee and manage hospital functionalities efficiently.
+This is a full-stack Hospital Management System that helps manage various hospital operations, including OPD, IPD, doctor management, patient admission, payments, and staff attendance tracking, pharmacy, laboratory. The system allows administrators to oversee and manage hospital functionalities efficiently.
 
 ### Deployment:
 
@@ -12,9 +12,10 @@ The application is deployed and accessible at:  http://122.160.138.35:3013/
 - **Doctor & Staff Management:** Store and manage doctor details, specializations, availability, and staff attendance.
 - **Payment & Billing:** Handle patient billing, track earnings per doctor, and manage store vendor bills.
 - **Accounts Section:** Keep records of financial transactions and hospital expenses.
+- **Pharmacy & Laboratory Section:** Store and manage medicines and lab tests along with it's billing.
 - **Room Allocation:** Assign patients to available rooms based on preconfigured settings.
 - **Attendance Tracking:** HR can track staff leaves and attendance.
-- **Role based access:** Implemented role based access to the different sections for counter, admin, nurse, staffs.
+- **Role based access:** Implemented role based access to the different sections for counter, admin, nurse, staffs, pharmacy and laboratory.
 
 ### Tech Stack:
 
