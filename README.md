@@ -1,6 +1,6 @@
 ## Hospital Management System (HMS)
 
-This is a full-stack Hospital Management System that helps manage various hospital operations, including OPD, IPD, doctor management, patient admission, payments, and staff attendance tracking, pharmacy, laboratory. The system allows administrators to oversee and manage hospital functionalities efficiently.
+This is a full-stack Hospital Management System that helps manage various hospital operations, including OPD, IPD, doctor management, patient admission, payments, staff attendance tracking, pharmacy and laboratory. The system allows administrators to oversee and manage hospital functionalities efficiently.
 
 ### Deployment:
 
